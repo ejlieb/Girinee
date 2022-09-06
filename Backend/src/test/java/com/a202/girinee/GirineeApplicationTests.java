@@ -1,10 +1,10 @@
-package com.a202.guirini;
+package com.a202.girinee;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GuiriniApplicationTests {
+class GirineeApplicationTests {
 
     @Test
     void contextLoads() {
