@@ -1,9 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
-
+import dumpReducer from '../features/backingtrack/DumpSlice'
 export const store = configureStore({
+  // Reducer 등록
   reducer: {
-    counter: counterReducer,
+    dump: dumpReducer
   },
 });
 

@@ -1,10 +1,10 @@
-export function MyRecord() {
+export function ChordGame() {
     // script
   
     // JSX
     return (
       <div>
-        <h1>MyRecord</h1>
+        <h1>ChordGame</h1>
       </div>
     )
   }
