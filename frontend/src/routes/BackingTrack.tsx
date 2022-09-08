@@ -1,10 +1,10 @@
-export function MyRecord() {
+export function BackingTrack() {
     // script
   
     // JSX
     return (
       <div>
-        <h1>MyRecord</h1>
+        <h1>BackingTrack</h1>
       </div>
     )
   }
