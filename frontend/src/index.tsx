@@ -14,7 +14,7 @@ import { KakaoLogin } from './routes/KakaoLogin';
 import { ChordGame } from './routes/ChordGame';
 import { BackingTrack } from './routes/BackingTrack';
 
-// CODE
+// CODEgit 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
