@@ -1,10 +1,10 @@
-export function MyRecord() {
+export function LowLevel() {
     // script
   
     // JSX
     return (
       <div>
-        <h1>MyRecord</h1>
+        <h1>LowLevel</h1>
       </div>
     )
   }
