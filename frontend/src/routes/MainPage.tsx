@@ -5,6 +5,7 @@ import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
 import { Box } from '../components/mainpage/three'
 import { Model } from '../components/mainpage/Thr10'
 import { Test } from '../components/mainpage/Test'
+import { MatTest } from '../components/mainpage/Mattest'
 
 
 export function MainPage() {
@@ -17,7 +18,8 @@ export function MainPage() {
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       <Box position={[-1.2, 0, 0]} />
-      <Test/>
+      {/* <Test/> */}
+      <MatTest/>
     </Canvas>,
     </div>
   )
