@@ -1,0 +1,22 @@
+#main-body {
+  background-image: url(../assets/images/background_image.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#main-h1 {
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding-bottom: 50px;
+}
+
+#main-button {
+  text-align: center;
+}
