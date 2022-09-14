@@ -49,7 +49,7 @@ export function ChordGame() {
           <Box sx={{ display: 'flex'}}>
             {/* 컨트롤러 */}
             <div id="level-controller" className={`degree${ controllerDegree } metal radial`}>
-                <div id="level-index"></div>
+              <div id="level-index"></div>
             </div>
 
             {/* 레벨버튼 누르면 해당하는 부분으로 위의 컨트롤러가 회전 */}
@@ -67,7 +67,7 @@ export function ChordGame() {
           </Box>
 
           {/* 현재 난이도 표시 */}
-          <h1 className='white-text'> {levelValue} </h1>
+          <h1 className='level-text'> {levelValue} </h1>
 
           <Stack>
             {/* 메인화면으로 돌아가기 */}

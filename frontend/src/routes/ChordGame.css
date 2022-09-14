@@ -54,6 +54,11 @@
   font-size: 2rem;
 }
 
+/* 난이도 텍스트 */
+.level-text {
+  color: rgb(242, 241, 241);
+}
+
 /* 컨트롤 상태 따라서 회전 */
 .degree0 {
   transform: rotate(0deg);
@@ -65,7 +70,7 @@
   transform: rotate(80deg);
 }
 
-
+/* 노브 */
 .metal {
   position: relative;
   outline: none;
@@ -76,6 +81,9 @@
     inset hsla(0,0%,15%, .8) 0 -1px 5px 1px, /* soft SD */
     inset hsla(0,0%,0%, .25) 0 -1px 0px 3px, /* bottom SD */
     inset hsla(0,0%,100%,.7) 0  2px 1px 3px, /* top HL */
+
+    hsla(0,0%, 0%,.2) 0 -2px 1px 1px, /* outer SD */
+    hsla(0,0%,100%,.8) 0 0px 0px 0px; /* outer HL */ 
 }
 
 /* Radial */
