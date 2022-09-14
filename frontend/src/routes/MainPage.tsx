@@ -19,7 +19,7 @@ export function MainPage() {
     <Canvas>
         {/* <Center> */}
           {/* <PerspectiveCamera makeDefault position={[0,0,5]} /> */}
-          <ambientLight />
+          {/* <ambientLight /> */}
           <pointLight position={[10, 10, 10]} />
           {/* <Box position={[-1.2, 0, 0]} /> */}
           <Model scale={[5,5,5]}/>
