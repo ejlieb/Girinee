@@ -3,8 +3,8 @@ export function MyRecord() {
   
     // JSX
     return (
-      <div>
-        <h1>MyRecord</h1>
+      <div id="kakao-body">
+        
       </div>
     )
   }

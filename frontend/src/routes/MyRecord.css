@@ -1,0 +1,11 @@
+#kakao-body {
+  background-image: url(../assets/images/background_image.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
