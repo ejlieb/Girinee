@@ -9,8 +9,8 @@ import {MeshDistortMaterial} from '@react-three/drei'
 export function MatTest(props) {
   const { nodes, materials } = useGLTF('/mattest.glb')
   return (
-    <group {...props} dispose={null} scale={[6,6,6]}>
-      <mesh geometry={nodes.mesh_0.geometry} material={nodes.mesh_0.material} />
+    <group {...props} dispose={null} scale={[6,6,6]} >
+      <mesh geometry={nodes.mesh_0.geometry} material={nodes.mesh_0.material}  />
       <lineSegments geometry={nodes.mesh_1.geometry} material={nodes.mesh_1.material} />
       <lineSegments geometry={nodes.mesh_2.geometry} material={nodes.mesh_2.material} />
       <mesh geometry={nodes.mesh_3.geometry} material={nodes.mesh_3.material} />
@@ -35,7 +35,7 @@ export function MatTest(props) {
       <mesh geometry={nodes.mesh_22.geometry} material={nodes.mesh_22.material} />
       <mesh geometry={nodes.mesh_23.geometry} material={nodes.mesh_23.material} />
       <mesh geometry={nodes.mesh_24.geometry} material={nodes.mesh_24.material} />
-      <mesh geometry={nodes.mesh_25.geometry} >
+      <mesh geometry={nodes.mesh_25.geometry} sdf>
       <meshStandardMaterial color={'#2fe4fc'}/>
       </mesh>
       <mesh geometry={nodes.mesh_26.geometry} material={nodes.mesh_26.material} />
