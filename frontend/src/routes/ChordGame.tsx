@@ -26,7 +26,6 @@ export function ChordGame() {
     }
 
 
-
     // JSX
     return (
       <Box id="game-body" sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -69,7 +68,6 @@ export function ChordGame() {
           {/* 현재 난이도 표시 */}
           <h1 className='level-text'> {levelValue} </h1>
 
-          <Stack>
             {/* 메인화면으로 돌아가기 */}
             {/* <Stack spacing={2} sx={{ my: 3 }} direction="row">
               <PowerSettingsNew fontSize="large" sx={{ color: 'white'}} />
@@ -77,19 +75,15 @@ export function ChordGame() {
               <h3 className='white-text'>On / Off</h3>
             </Stack> */}
 
-            {/* 선택한 난이도 시작하기 */}
-            <form>
-            	<input type="checkbox" name="lever" className="lever pristine" id="lever" value="lever value" role="switch" aria-label="lever" aria-checked="false" />
-            	<label htmlFor="lever"><span>On</span></label>
-            	<label htmlFor="lever"><span>Off</span></label>
-            </form>
-          </Stack>
+          {/* 선택한 난이도 시작하기 */}
+
+          {/* 메인 화면 */}
+          <form id="quitLever">
+          	<input type="checkbox" name="lever" className="lever pristine" id="lever" value="lever value" role="switch" aria-label="lever" aria-checked="false" />
+          	<label htmlFor="lever"><span>On</span></label>
+          	<label htmlFor="lever"><span>Off</span></label>
+          </form>
           {/* https://mui.com/material-ui/react-switch/#basic-switches */}
-        </Box>
-
-        {/* 메인 화면 */}
-        <Box id="game-content">
-
         </Box>
       </Box>
     )
