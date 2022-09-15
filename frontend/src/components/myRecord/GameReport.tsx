@@ -65,7 +65,7 @@ export const data = {
 
 export function GameReport() {
     return (
-      <Box>
+      <Box component="div">
         <Line options={options} data={data} />
       </Box>
     )

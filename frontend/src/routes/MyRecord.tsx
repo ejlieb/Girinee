@@ -6,8 +6,8 @@ import Stack from '@mui/material/Stack'
 import { Typography } from '@mui/material'
 import './MyRecord.css'
 import Paper from '@mui/material/Paper';
-import { GameReport } from '../components/myRecord/GameReport'
-import { PracticeReport } from '../components/myRecord/PracticeReport'
+// import { GameReport } from '../components/myRecord/GameReport'
+// import { PracticeReport } from '../components/myRecord/PracticeReport'
 import { styled } from '@mui/material/styles';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -55,7 +55,7 @@ export function MyRecord() {
           {...other}
         >
           {value === index && (
-            <Box sx={{ p: 3 }}>
+            <Box component="div" sx={{ p: 3 }}>
               <Typography>{children}</Typography>
             </Box>
           )}
@@ -78,11 +78,12 @@ export function MyRecord() {
 
     // JSX
     return (
+      <div>
 
-        <Box id="my-record-body" sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Box component="div" id="my-record-body" sx={{ display: 'flex', flexDirection: 'column' }}>
 
           {/* Navbar */}
-          <Box id="my-record-menu-bar" sx={{ mt: 4, px: 8, display: 'flex', justifyContent: 'space-between'}}>
+          <Box component="div" id="my-record-menu-bar" sx={{ mt: 4, px: 8, display: 'flex', justifyContent: 'space-between'}}>
             {/* 텍스트로고 */}
             <img id="girinee-img" src={GIRINEE} alt="GIRINEE.png" />
             <Stack spacing={2} direction="row">
@@ -96,8 +97,8 @@ export function MyRecord() {
           </Box>
 
           {/* 그래프 */}
-          <Box>
-            <Box sx={{ borderBottom: 2, borderColor: 'secondary', display: 'flex', justifyContent: 'center' }}>
+          <Box component="div">
+            <Box component="div" sx={{ borderBottom: 2, borderColor: 'secondary', display: 'flex', justifyContent: 'center' }}>
               <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" indicatorColor="secondary" textColor="secondary">
                 <Tab label="Code 정확도" {...a11yProps(0)} />
                 <Tab label="Game" {...a11yProps(1)} />
@@ -118,6 +119,7 @@ export function MyRecord() {
           </Box>
 
         </Box>          
+      </div>
     )
   }
 
