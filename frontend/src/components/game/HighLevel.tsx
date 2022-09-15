@@ -4,7 +4,7 @@ export function HighLevel() {
     // JSX
     return (
       <div>
-        <h1>HighLevel</h1>
+        <h1 className="white-text">HighLevel</h1>
       </div>
     )
   }
