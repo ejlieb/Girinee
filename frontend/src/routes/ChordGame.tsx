@@ -42,9 +42,9 @@ export function ChordGame() {
 
     // JSX
     return (
-      <Box id="game-body" sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Box component="div" id="game-body" sx={{ display: 'flex', flexDirection: 'column' }}>
         {/* Navbar */}
-        <Box id="menu-bar" sx={{ mt: 4, px: 8, display: 'flex', justifyContent: 'space-between'}}>
+        <Box component="div" id="menu-bar" sx={{ mt: 4, px: 8, display: 'flex', justifyContent: 'space-between'}}>
           {/* 텍스트로고 */}
           <img id="girinee-img" src={GIRINEE} alt="GIRINEE.png" />
           <Stack spacing={2} direction="row">
@@ -58,15 +58,15 @@ export function ChordGame() {
         </Box>
       
         {/* 컨트롤패널 */}
-        <Box id="control-panel" sx={{ mt: 5, px: 10, display: 'flex', justifyContent: 'space-between'}}>
-          <Box sx={{ display: 'flex'}}>
+        <Box component="div" id="control-panel" sx={{ mt: 5, px: 10, display: 'flex', justifyContent: 'space-between'}}>
+          <Box component="div" sx={{ display: 'flex'}}>
             {/* 컨트롤러 */}
             <div id="level-controller" className={`degree${ controllerDegree } metal radial`}>
               <div id="level-index"></div>
             </div>
 
             {/* 레벨버튼 누르면 해당하는 부분으로 위의 컨트롤러가 회전 */}
-            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+            <Box component="div" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
               <Button id="low-level-btn" variant="text" onClick={clickLow}>
                 <Typography className="white-text">LOW</Typography>
               </Button>
@@ -96,7 +96,7 @@ export function ChordGame() {
         </Box>
 
         {/* 선택한 난이도 따라서 나타나는 내용 */}
-        <Box>
+        <Box component="div">
           {controllerDegree === 0 ? <LowLevel/> : controllerDegree === 1 ? <IntermediateLevel/> : <HighLevel/>}
         </Box>
 
