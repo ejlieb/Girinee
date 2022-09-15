@@ -1,3 +1,5 @@
+// import { useState } from 'react';
+// import { createAction } from '@reduxjs/toolkit'
 import kakaoImage from '../assets/images/kakao_login_large_wide.png';
 import './KakaoLogin.css';
 // import MainPage from './MainPage';
@@ -5,19 +7,30 @@ import './KakaoLogin.css';
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export function KakaoLogin() {
-    // script
+    // // 로그인 액션 
+    // const SET_USER = "SET_USER";
+    // // 로그인 액션 생성
+    // const setUser = createAction(SET_USER, (accessToken) => ({ accessToken }));
+    // // 초기값
+    // const initialState = {
+    //   accessToken: null,
+    //   isLogin: false,
+    // }
+
+
     const REDIRECT_URI = "http://localhost:8080/oauth2/authorize/kakao";
     const code = new URL(window.location.href)
     const accessToken = code.searchParams.get('accessToken')
+
+    
     
     if(accessToken) {
-      window.location.replace('http://localhost:3000')
+      window.location.replace('http://localhost:3000') 
       console.log("현재 login됨")
       console.log(accessToken)
       
       localStorage.setItem("token", accessToken); // 토큰을 로컬 스토리지에 저장 === 로그인 함.
       console.log("localStorage = ", window.localStorage)
-      window.location.replace('http://localhost:3000')
     } else {
       console.log("현재 login안되어 있으니까 로그인 해주세여")
       console.log(accessToken)
