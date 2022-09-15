@@ -4,7 +4,7 @@ export function IntermediateLevel() {
     // JSX
     return (
       <div>
-        <h1>IntermediateLevel</h1>
+        <h1 className="white-text">MidLevel</h1>
       </div>
     )
   }

@@ -1,13 +1,24 @@
+// Systems
 import { useState, useEffect } from 'react'
+
+// Other Component 
 import GIRINEE from '../assets/images/GIRINEE.png'
+import './ChordGame.css'
+import '../assets/fonts/font.css'
+
+import { LowLevel } from '../components/game/LowLevel'
+import { IntermediateLevel } from '../components/game/IntermediateLevel'
+import { HighLevel } from '../components/game/HighLevel'
+
+// Material UI
 import { Box } from '@mui/system'
 import { Typography } from '@mui/material'
-import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import { PowerSettingsNew } from '@mui/icons-material'
-// import { typography } from '@mui/system'
-import './ChordGame.css'
+// import Switch from '@mui/material/Switch';  
+// import { PowerSettingsNew } from '@mui/icons-material'
+
+// -----------------------------------------------------------------------------------------------------
 
 export function ChordGame() {
     // script
@@ -16,15 +27,18 @@ export function ChordGame() {
     const clickMid = () => setDegree((prev) => 1)
     const clickHigh = () => setDegree((prev) => 2)
     
-    let levelValue = ""
+    let levelValue = "초급 난이도"
+    let levelExplanation = "쉬워요"
     if (controllerDegree === 0) {
-      levelValue = '초급 난이도'
+      levelValue = 'EASY LEVEL'
+      levelExplanation = "쉬워요"  
     } else if (controllerDegree === 1) {
       levelValue = '중급 난이도'
+      levelExplanation = "괜찮아요"
     } else {
       levelValue = '상급 난이도'
+      levelExplanation = "어려워요"
     }
-
 
     // JSX
     return (
@@ -66,25 +80,26 @@ export function ChordGame() {
           </Box>
 
           {/* 현재 난이도 표시 */}
-          <h1 className='level-text'> {levelValue} </h1>
+          {/* 캐루젤로 바꾸고 싶은 마음이 굴뚝 같음 */}
+          <Stack>
+            <h1 id="level-value" key={levelValue} className='level-text line-up'> {levelValue} </h1>
+            <h3 className='white-text'> {levelExplanation} </h3>
+          </Stack>
 
-            {/* 메인화면으로 돌아가기 */}
-            {/* <Stack spacing={2} sx={{ my: 3 }} direction="row">
-              <PowerSettingsNew fontSize="large" sx={{ color: 'white'}} />
-              <Switch></Switch>
-              <h3 className='white-text'>On / Off</h3>
-            </Stack> */}
-
-          {/* 선택한 난이도 시작하기 */}
-
-          {/* 메인 화면 */}
+          {/* 메인화면으로 돌아가기 */}
           <form id="quitLever">
           	<input type="checkbox" name="lever" className="lever pristine" id="lever" value="lever value" role="switch" aria-label="lever" aria-checked="false" />
           	<label htmlFor="lever"><span>On</span></label>
           	<label htmlFor="lever"><span>Off</span></label>
           </form>
-          {/* https://mui.com/material-ui/react-switch/#basic-switches */}
+
         </Box>
+
+        {/* 선택한 난이도 따라서 나타나는 내용 */}
+        <Box>
+          {controllerDegree === 0 ? <LowLevel/> : controllerDegree === 1 ? <IntermediateLevel/> : <HighLevel/>}
+        </Box>
+
       </Box>
     )
   }
