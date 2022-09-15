@@ -21,13 +21,13 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<MainPage />}></Route>
-      <Route path="/backing" element={<BackingTrack />}></Route>
-      <Route path="/game" element={<ChordGame />}></Route>
-      <Route path="/login" element={<KakaoLogin />}></Route>
-      <Route path="/:userId" element={<MyRecord />}></Route>
-      </Routes>
+        <Routes>
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/backing" element={<BackingTrack />}></Route>
+        <Route path="/game" element={<ChordGame />}></Route>
+        <Route path="/login" element={<KakaoLogin />}></Route>
+        <Route path="/:userId" element={<MyRecord />}></Route>
+        </Routes>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
