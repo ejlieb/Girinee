@@ -27,7 +27,8 @@ export function MainPage() {
   return (
     <div id="main-canvas">
       <MainContainer/>
-      <div id="main-body">
+      <button><Link to="/login">kakaoLogin</Link></button>
+      {/* <div id="main-body">
       <div>
         <h1 id="main-h1">MainPage</h1>
           <button><Link to="/login">kakaoLogin</Link></button>
@@ -38,7 +39,7 @@ export function MainPage() {
           <button><Link to="/backing">backing</Link></button>
         </div>
       </div>
-    </div>
+    </div> */}
     </div>
     
 
