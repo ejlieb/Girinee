@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { isConstructorDeclaration } from "typescript";
 import './MainPage.css';
 
 export function MainPage() {
@@ -12,8 +11,8 @@ export function MainPage() {
       window.location.replace('http://localhost:3000')
     }
   }
-  console.log("리프레시토근 화긴")
-  console.log(window)
+  // console.log("리프레시토근 화긴")
+  // console.log(window)
   // JSX
   return (
     <div id="main-body">
