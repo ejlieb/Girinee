@@ -47,6 +47,9 @@
   border-radius: 50%;
 }
 
+#level-value{
+	margin: 0;
+}
 /* class로 지정 */
 /* 하얀 텍스트 */
 .white-text {
@@ -61,6 +64,9 @@
 
 /* 난이도 텍스트 */
 .level-text {
+	font-family:'Pretendard-regular';
+	font-weight: 200;
+	font-size: 2rem;
   color: rgb(242, 241, 241);
 }
 
@@ -73,6 +79,28 @@
 }
 .degree2 {
   transform: rotate(80deg);
+}
+
+/* 폰트 애니메이션 */
+.line-up {
+  animation: 1s anim-lineUp ease-out;
+}
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 
 /* 노브 */
