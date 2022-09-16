@@ -28,13 +28,14 @@ export function MainPage() {
     <div id="main-canvas">
       <MainContainer/>
       <button><Link to="/login">kakaoLogin</Link></button>
+      <button><Link to="/:userId">myRecord</Link></button>
       {/* <div id="main-body">
       <div>
         <h1 id="main-h1">MainPage</h1>
           <button><Link to="/login">kakaoLogin</Link></button>
           <button onClick={logout}>Logout</button>
         <div id="main-button">
-          <button><Link to="/:userId">myRecord</Link></button>
+          
           <button><Link to="/game">game</Link></button>
           <button><Link to="/backing">backing</Link></button>
         </div>
@@ -47,17 +48,5 @@ export function MainPage() {
 }
 export default MainPage;
 
-// store function
-// function logged( state, action) {
-//   switch(action.type) {
-//     case LOG_IN:
-//       return true
-//     case LOG_OUT:
-//       return false
-//     default:
-//       return false
-//   }
-    
-// }
 
 // Three Function

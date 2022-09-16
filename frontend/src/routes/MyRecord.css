@@ -25,12 +25,12 @@
 #girinee-img {
   height: 35px;
 }
-
+#graph-text {
+  color: beige; 
+}
 /* week-report-body */
 #game-report-body {
   height: 100%;
-
-
 }
 
 #daily-report-body {
