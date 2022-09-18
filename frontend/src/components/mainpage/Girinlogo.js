@@ -32,15 +32,23 @@ function useInterval(callback, delay) {
 export function Logo(props) {
   const { nodes, materials } = useGLTF('/girinlogo.glb')
   let [intensity, setIntensity] = useState(0)
-  let timer = useInterval(() => {setIntensity(intensity + 0.01)
-  clearInterval(timer)
-  console.log('hi' + intensity)}, 60)
+
+  let timer = useInterval(() => {
+    if (localStorage.getItem('token') != null) {
+      setIntensity(intensity + 0.01)
+      clearInterval(timer)
+      console.log('hi' + intensity)}
+    else {
+      console.log('로그인 x')
+    }
+    }
+  , 60)
   
   
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.mesh_4.geometry} material={nodes.mesh_4.material} receiveShadow castShadow >
-      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={0} color="lightblue" roughness={0} metalness={0.3} />
+      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={intensity} color="lightblue" roughness={0} metalness={0.3} />
       </mesh>
       <mesh geometry={nodes.mesh_5.geometry} material={nodes.mesh_5.material} receiveShadow castShadow>
       <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={intensity} color="lightblue" roughness={0} metalness={0.3} />
