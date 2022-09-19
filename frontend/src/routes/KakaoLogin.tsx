@@ -17,15 +17,11 @@ export function KakaoLogin() {
     //   isLogin: false,
     // }
 
-
-    const REDIRECT_URI = "http://localhost:8080/oauth2/authorize/kakao";
+    const REDIRECT_URI = "https://j7a202.p.ssafy.io/oauth2/authorize/kakao";
     const code = new URL(window.location.href)
     const accessToken = code.searchParams.get('accessToken')
 
-    
-    
     if(accessToken) {
-      window.location.replace('http://localhost:3000') 
       console.log("현재 login됨")
       console.log(accessToken)
       
