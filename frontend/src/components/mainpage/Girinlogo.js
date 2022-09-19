@@ -33,8 +33,8 @@ export function Logo(props) {
   const { nodes, materials } = useGLTF('/girinlogo.glb')
   let [intensity, setIntensity] = useState(0)
 
-  let timer = useInterval(() => {
-    if (localStorage.getItem('token') != null) {
+   let timer = useInterval(() => {
+    if (localStorage.getItem('accessToken') != null) {
       setIntensity(intensity + 0.01)
       clearInterval(timer)
       console.log('hi' + intensity)}
@@ -43,6 +43,7 @@ export function Logo(props) {
     }
     }
   , 60)
+
   
   
   return (
