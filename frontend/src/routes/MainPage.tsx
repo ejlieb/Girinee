@@ -28,7 +28,7 @@ export function MainPage() {
   return (
     <div id="main-canvas">
       <MainContainer/>
-      <button><Link to="/login">kakaoLogin</Link></button>
+      <RotatingBtn/>
       <button><Link to="/:userId">myRecord</Link></button>
       {/* <div id="main-body">
       <div>
