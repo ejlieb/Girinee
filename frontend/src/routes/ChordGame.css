@@ -28,8 +28,8 @@
 
 /* 난이도 컨트롤러 */
 #level-controller{
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   /* background-color: transparent; */
   /* border: 3px double white; */
   /* border-radius: 50%; */
@@ -39,27 +39,35 @@
 
 /* 컨트롤러 내부의 인덱스 */
 #level-index{
-  width: 10px;
-  height: 10px;
-  margin-top: 32px;
-  margin-left: 115px;
+  width: 8px;
+  height: 8px;
+  margin-top: 25px;
+  margin-left: 90px;
   background-color: maroon;
   border-radius: 50%;
 }
 
+/* 레벨 값 */
 #level-value{
 	margin: 0;
 }
+
+/* 운지법 이미지 */
+#chord-img{
+	height: 200px;
+}
+
 /* class로 지정 */
 /* 하얀 텍스트 */
-.white-text {
+.white-text {	
   color: rgb(221, 237, 246);
 }
 
 /* 메뉴 텍스트 */
 .menu-text {
   color: lightgrey;
-  font-size: 2rem;
+  font-size: 1rem;
+	text-decoration: none;
 }
 
 /* 난이도 텍스트 */
@@ -164,7 +172,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 14em;
+	width: 12em;
 }
 #quitLever label {
   background-color: #0d0;
@@ -177,8 +185,8 @@
 	box-shadow: 0 0 0.75em #0d0, 0 0.5em 0.75em rgba(0,0,0,0.3);
 	display: inline-block;
 	transition: all 0.15s 0.15s linear;
-	width: 1.5em;
-	height: 1.5em;
+	width: 1em;
+	height: 1em;
 }
 #quitLever label:first-of-type {
   background-color: #500;
@@ -214,8 +222,8 @@ label span {
 	display: block;
 	outline: 0;
 	position: relative;
-	width: 7em;
-	height: 7em;
+	width: 6em;
+	height: 6em;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
