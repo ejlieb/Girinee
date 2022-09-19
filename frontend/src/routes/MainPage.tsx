@@ -7,6 +7,7 @@ import { Box } from '../components/mainpage/three'
 import { Logo } from '../components/mainpage/Girinlogo'
 import { Firstamp } from '../components/mainpage/Firstamp'
 import { Secondamp } from '../components/mainpage/Secondamp'
+import { RotatingBtn } from "../widgets/RotatingBtn";
 import { PerspectiveCamera, Center, Backdrop, Float, Bounds } from '@react-three/drei'
 import { MainContainer } from '../components/mainpage/mainContainer'
 import './MainPage.css';
@@ -28,6 +29,10 @@ export function MainPage() {
     <div id="main-canvas">
       <MainContainer/>
       <button><Link to="/login">kakaoLogin</Link></button>
+      <div>
+      <RotatingBtn/>
+      </div>
+      
       {/* <div id="main-body">
       <div>
         <h1 id="main-h1">MainPage</h1>

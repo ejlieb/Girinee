@@ -1,0 +1,90 @@
+#rotating-btn {
+    opacity: 1; 
+    visibility: inherit;
+    
+}
+
+/* #rotating-div {
+    transform-origin: center;
+} */
+
+#rotating-svg {
+    stroke-dashoffset: 93px; 
+    /* transform: translate(0px, 0px);  */
+    opacity: 1;
+}
+
+#rotating-circle {
+    stroke-dasharray: 564.573; stroke: rgb(230, 134, 88);
+}
+
+#rotating-span {
+    color: rgb(230, 134, 88); 
+    opacity: 1;
+}
+.ro-button {
+    display: inline-block;
+    padding: 0;
+    color: #000;
+    text-decoration: none;
+    background: none;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+.ro-button-start {
+    /* opacity: 0;
+    visibility: hidden; */
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 180px;
+    margin: auto;
+}
+
+.svg-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+.svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    /* opacity: 0; */
+    overflow: visible;
+}
+
+.circle {
+    fill: transparent;
+    stroke-width: 2px;
+    stroke: #f69f33;
+    transform-origin: center;
+    transition: transform .5s ease-in-out;
+}
+
+.label {
+    /* opacity: 0; */
+    margin-left: 1.06667rem;
+    font-family: "Formula Condensed",sans-serif;
+    font-size: 1.2rem;
+    line-height: 3.2rem;
+    letter-spacing: .4em;
+    color: #f69f33;
+    text-transform: uppercase;
+}
