@@ -56,8 +56,8 @@ export function MainContainer() {
         shadow-camera-top={10}
         shadow-camera-bottom={-10}
       /> */}
-      <pointLight position={[-10, 0, -20]} color="red" intensity={pointIntensity} />
-      <pointLight position={[10, 0, -20]} color="red" intensity={pointIntensity} />
+      <pointLight position={[-10, 0, -20]} color={localStorage.getItem('accessToken') != null ? "red" : "lightblue"} intensity={pointIntensity} />
+      <pointLight position={[10, 0, -20]} color={localStorage.getItem('accessToken') != null ? "red" : "lightblue"} intensity={pointIntensity} />
       <pointLight position={[0, -10, 0]} intensity={whiteIntensity} />
       <group position={[0, -3.2, 0]} scale={[3,3,3]}>
         {/* <mesh receiveShadow castShadow>

@@ -25,7 +25,7 @@ export function KakaoLogin() {
 
     const REDIRECT_URI = "http://localhost:8080/oauth2/authorize/kakao";
     let [kakaoBtnState, setKakaoBtnState] = useState(false)
-    let timer = setTimeout(() => setKakaoBtnState(true), 5000)
+    let timer = setTimeout(() => setKakaoBtnState(true), 2600)
 
     
   
