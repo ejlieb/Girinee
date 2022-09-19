@@ -15,19 +15,23 @@
 }
 
 #rotating-circle {
-    stroke-dasharray: 564.573; stroke: rgb(230, 134, 88);
+    stroke-dasharray: 564.573;
+    stroke: rgb(230, 134, 88);
+    animation: fadein 5s;
 }
+
+#rotating-circle-out {
+    stroke-dasharray: 564.573;
+    stroke: rgb(255,255,255);
+    animation: fadeout 3s;
+}
+
 
 #rotating-circle:hover {
     transform: scale(1.05);
     stroke: rgb(255,255,255);
 }
 
-
-#rotating-span:hover {
-    transform: scale(1.05);
-    stroke: rgb(255,255,255);
-}
 
 .ro-button {
     display: inline-block;
@@ -95,4 +99,59 @@
     letter-spacing: .4em;
     color: #f69f33;
     text-transform: uppercase;
+    animation: text-fadein 5s;
+}
+
+.label-out {
+    /* opacity: 0; */
+    margin-left: 1.06667rem;
+    font-family: "Formula Condensed",sans-serif;
+    font-size: 1.2rem;
+    line-height: 3.2rem;
+    letter-spacing: .4em;
+    color: rgb(255,255,255);
+    text-transform: uppercase;
+    animation: text-fadeout 3s;
+}
+
+
+/* keyframes */
+@keyframes fadein{
+    from {
+        stroke-dasharray: 0;
+        stroke: rgb(255,255,255);
+    }
+    to {
+        stroke-dasharray: 564.573;
+        stroke: rgb(230,134,88);
+    }
+}
+
+@keyframes fadeout{
+    from {
+        stroke-dasharray: 564.573;
+        stroke: rgb(230,134,88);
+    }
+    to {
+        stroke-dasharray: 0;
+        stroke: rgb(255,255,255);
+    }
+}
+
+@keyframes text-fadein{
+    from {
+        color: rgb(255,255,255);
+    }
+    to {
+        color: rgb(230,134,88);
+    }
+}
+
+@keyframes text-fadeout {
+    from {
+        color: #f69f33;
+    }
+    to {
+        color: rgb(255,255,255);
+    }
 }
