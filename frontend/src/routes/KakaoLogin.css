@@ -1,13 +1,7 @@
-#kakao-body {
-  background-image: url(../assets/images/background_image.jpg);
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: cover;
-  background-attachment: fixed;
+#kakao-body {  
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100vw;
+  background-color: black;
 }
 
 #kakao-h1 {
@@ -20,4 +14,22 @@
 #kakao-button {
   text-align: center;
   vertical-align: middle;
+}
+
+#kakao-div{
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 180px;
+  margin: auto;
+}
+
+.component-off {
+  opacity: 0;
 }

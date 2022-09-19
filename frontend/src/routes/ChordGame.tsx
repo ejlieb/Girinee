@@ -1,5 +1,8 @@
 // Systems
 import { useState, useEffect } from 'react'
+import { Link } from "react-router-dom"
+import { AnimatePresence } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 // Other Component 
 import GIRINEE from '../assets/images/GIRINEE.png'
@@ -22,6 +25,17 @@ import Stack from '@mui/material/Stack'
 
 export function ChordGame() {
     // script
+    // 로그아웃
+    const logout = () => {
+      const logoutConfirm = window.confirm('로그아웃 하시겠습니까?')
+      if (logoutConfirm) {
+        localStorage.setItem("token", ' ');
+        console.log('로그아웃 되었습니다.')
+        window.location.replace('http://localhost:3000')
+      }
+    };
+  
+    // 난이도 따라서 하단 컴포넌트 변경하기
     const [controllerDegree, setDegree] = useState(0)
     const clickLow = () => setDegree((prev) => 0)
     const clickMid = () => setDegree((prev) => 1)
@@ -40,6 +54,8 @@ export function ChordGame() {
       levelExplanation = "어려워요"
     }
 
+    const navigate = useNavigate()
+
     // JSX
     return (
       <Box component="div" id="game-body" sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -48,11 +64,15 @@ export function ChordGame() {
           {/* 텍스트로고 */}
           <img id="girinee-img" src={GIRINEE} alt="GIRINEE.png" />
           <Stack spacing={2} direction="row">
+
+            {/* 마이페이지 */}
             <Button variant="text">
-              <Typography className="menu-text">MY PAGE</Typography>
+              <Typography className="menu-text"><Link to="/:userId" className="none-deco menu-text">MY PAGE</Link></Typography>
             </Button>
+
+            {/* 로그아웃 */}
             <Button variant="text">
-              <Typography className="menu-text">LOGOUT</Typography>
+              <Typography className="menu-text" onClick={logout}>LOGOUT</Typography>
             </Button>
           </Stack>
         </Box>
@@ -80,26 +100,24 @@ export function ChordGame() {
           </Box>
 
           {/* 현재 난이도 표시 */}
-          {/* 캐루젤로 바꾸고 싶은 마음이 굴뚝 같음 */}
           <Stack>
             <h1 id="level-value" key={levelValue} className='level-text line-up'> {levelValue} </h1>
             <h3 className='white-text'> {levelExplanation} </h3>
           </Stack>
 
           {/* 메인화면으로 돌아가기 */}
-          <form id="quitLever">
+          <form id="quitLever" onClick={() => {
+            setTimeout(() => {navigate('/')}, 600)}}>
           	<input type="checkbox" name="lever" className="lever pristine" id="lever" value="lever value" role="switch" aria-label="lever" aria-checked="false" />
           	<label htmlFor="lever"><span>On</span></label>
           	<label htmlFor="lever"><span>Off</span></label>
           </form>
-
         </Box>
 
         {/* 선택한 난이도 따라서 나타나는 내용 */}
         <Box component="div">
           {controllerDegree === 0 ? <LowLevel/> : controllerDegree === 1 ? <IntermediateLevel/> : <HighLevel/>}
         </Box>
-
       </Box>
     )
   }
