@@ -26,6 +26,13 @@
     animation: fadeout 3s;
 }
 
+#rotating-circle-fade {
+    stroke-dasharray: 564.573;
+    stroke: rgb(230, 134, 88);
+    animation: fade 5s;
+    opacity:0
+}
+
 
 #rotating-circle:hover {
     transform: scale(1.05);
@@ -114,6 +121,18 @@
     animation: text-fadeout 3s;
 }
 
+.label-fade {
+    /* opacity: 0; */
+    margin-left: 1.06667rem;
+    font-family: "Formula Condensed",sans-serif;
+    font-size: 1.2rem;
+    line-height: 3.2rem;
+    letter-spacing: .4em;
+    color: #f69f33;
+    text-transform: uppercase;
+    animation: text-fade 5s;
+    opacity: 0;
+}
 
 /* keyframes */
 @keyframes fadein{
@@ -131,10 +150,24 @@
     from {
         stroke-dasharray: 564.573;
         stroke: rgb(230,134,88);
+        opacity: 1;
     }
     to {
+        stroke-dasharray: 8;
+        stroke: rgb(255,255,255);
+    }
+}
+
+@keyframes fade{
+    from {
         stroke-dasharray: 0;
         stroke: rgb(255,255,255);
+        opacity: 1;
+    }
+    to {
+        stroke-dasharray: 564.573;
+        stroke: rgb(230,134,88);
+        opacity: 0;
     }
 }
 
@@ -147,9 +180,21 @@
     }
 }
 
+@keyframes text-fade{
+    from {
+        color: rgb(255,255,255);
+        opacity: 1;
+    }
+    to {
+        color: rgb(230,134,88);
+        opacity: 0;
+    }
+}
+
 @keyframes text-fadeout {
     from {
         color: #f69f33;
+        opacity: 1;
     }
     to {
         color: rgb(255,255,255);
