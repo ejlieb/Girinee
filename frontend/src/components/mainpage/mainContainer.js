@@ -80,8 +80,8 @@ export function MainContainer() {
           <shadowMaterial attach="material" transparent opacity={0.4}   />
         </mesh>
         <Logo position={[-1.1, 2.2, 1.8]} />
-        <Firstamp position={[-1.5,0.95,0]} rotation={[0,0.4,0]}/>
-        <Secondamp position={[1.5,1.0,0]} rotation={[0,-0.5,0]}/>
+        {/* <Firstamp position={[-1.5,0.95,0]} rotation={[0,0.4,0]}/>
+        <Secondamp position={[1.5,1.0,0]} rotation={[0,-0.5,0]}/> */}
       </group>
       <EffectComposer>
         <Bloom luminanceThreshold={0.25} luminanceSmoothing={0.9} height={300} />

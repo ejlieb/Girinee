@@ -2,6 +2,8 @@
 // import { createAction } from '@reduxjs/toolkit'
 import kakaoImage from '../assets/images/kakao_login_large_wide.png';
 import './KakaoLogin.css';
+import { RotatingBtn } from '../widgets/RotatingBtn';
+import { MainContainer } from '../components/mainpage/mainContainer';
 // import MainPage from './MainPage';
 // import Auth from "../Auth";
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -39,9 +41,13 @@ export function KakaoLogin() {
     // JSX
     return (
       <div id="kakao-body">
-        <div>
-          <h1 id="kakao-h1">카카오 계정으로 시작해 보세요</h1>
-            <a href={REDIRECT_URI}><div id="kakao-button"><img src={kakaoImage} width="400" alt="kakao_login_large_wide" /></div></a>
+        <MainContainer/>
+        <RotatingBtn/>
+        <div id="kakao-div">
+            <a href={REDIRECT_URI}>
+              <div id="kakao-button"><img src={kakaoImage} width="400" alt="kakao_login_large_wide" />
+              </div>
+            </a>
         </div>
       </div>
     )
