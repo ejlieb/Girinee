@@ -10,6 +10,8 @@ import { RotatingBtn } from "../widgets/RotatingBtn";
 import { Secondamp } from '../components/mainpage/Secondamp'
 import { PerspectiveCamera, Center, Backdrop, Float, Bounds } from '@react-three/drei'
 import { MainContainer } from '../components/mainpage/mainContainer'
+import { KakaoLogin } from "./KakaoLogin";
+import { MainBtn } from "../widgets/MainBtn"
 import './MainPage.css';
 
 export function MainPage() {
@@ -45,25 +47,31 @@ export function MainPage() {
   // console.log(window)
   // JSX
   return (
+    <div>
     <div id="main-canvas">
       <MainContainer/>
       <RotatingBtn/>
-      <button><Link to="/:userId">myRecord</Link></button>
-      <button onClick={logout}>Logout</button>
-      {/* <div id="main-body">
-      <div>
-        <h1 id="main-h1">MainPage</h1>
-          <button><Link to="/login">kakaoLogin</Link></button>
-          <button onClick={logout}>Logout</button>
-        <div id="main-button">
-          
-          <button><Link to="/game">game</Link></button>
-          <button><Link to="/backing">backing</Link></button>
-        </div>
-      </div>
-    </div> */}
+      <MainBtn/>
     </div>
-    
+    <div id="main2">
+      <h1>하하</h1>
+    </div>
+    {/* <button><Link to="/:userId">myRecord</Link></button> */}
+    {/* <button onClick={logout}>Logout</button> /}
+    {/ <div id="main-body">
+    <div>
+      <h1 id="main-h1">MainPage</h1>
+        <button><Link to="/login">kakaoLogin</Link></button>
+        <button onClick={logout}>Logout</button>
+      <div id="main-button">
+
+        <button><Link to="/game">game</Link></button>
+        <button><Link to="/backing">backing</Link></button>
+      </div>
+    </div>
+  </div> /}
+    {/ <div className="swiper-pagination"></div> */}
+  </div>
 
   )
 }
