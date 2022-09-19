@@ -34,7 +34,7 @@ export function Logo(props) {
   let [intensity, setIntensity] = useState(0)
 
   let timer = useInterval(() => {
-    if (localStorage.getItem('accessToken') != null) {
+    if (localStorage.getItem('accessToken') != '') {
       setIntensity(intensity + 0.01)
       clearInterval(timer)
       console.log('hi' + intensity)}

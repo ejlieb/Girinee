@@ -17,7 +17,7 @@ export function MainPage() {
   const logout = () => {
     const logoutConfirm = window.confirm('로그아웃 하시겠습니까?')
     if (logoutConfirm) {
-      localStorage.setItem("token", ' ');
+      localStorage.setItem("accessToken",'');
       console.log('로그아웃 되었습니다.')
       window.location.replace('http://localhost:3000')
     }
@@ -30,6 +30,7 @@ export function MainPage() {
       <MainContainer/>
       <RotatingBtn/>
       <button><Link to="/:userId">myRecord</Link></button>
+      <button onClick={logout}>Logout</button>
       {/* <div id="main-body">
       <div>
         <h1 id="main-h1">MainPage</h1>
