@@ -29,7 +29,7 @@ export function KakaoLogin() {
       console.log("현재 login됨")
       console.log(accessToken)
       
-      localStorage.setItem("token", accessToken); // 토큰을 로컬 스토리지에 저장 === 로그인 함.
+      localStorage.setItem("accessToken", accessToken); // 토큰을 로컬 스토리지에 저장 === 로그인 함.
       console.log("localStorage = ", window.localStorage)
     } else {
       console.log("현재 login안되어 있으니까 로그인 해주세여")

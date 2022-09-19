@@ -6,7 +6,7 @@ import { Logo } from './Girinlogo'
 import { Firstamp } from './Firstamp'
 import { Secondamp } from './Secondamp'
 import { Gtwo } from './G-2'
-import { PerspectiveCamera, Center, Backdrop, Float, Bounds } from '@react-three/drei'
+import { PerspectiveCamera, Center, Backdrop, Float, Bounds, MeshReflectorMaterial } from '@react-three/drei'
 import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
 import { useEffect } from 'react'
 
@@ -64,8 +64,19 @@ export function MainContainer() {
           <boxBufferGeometry attach="geometry" args={[4, 1, 1]} />
           <meshStandardMaterial attach="material" />
         </mesh> */}
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]} receiveShadow>
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0, 0]} receiveShadow>
           <planeGeometry attach="geometry" args={[100, 100]} />
+          <MeshReflectorMaterial
+            blur={[400, 100]}
+            resolution={1024}
+            mixBlur={1}
+            mixStrength={15}
+            depthScale={1}
+            minDepthThreshold={0.85}
+            color="#151515"
+            metalness={0.6}
+            roughness={1}
+          />
           <shadowMaterial attach="material" transparent opacity={0.4}   />
         </mesh>
         <Logo position={[-1.05, 2, 1.5]} />

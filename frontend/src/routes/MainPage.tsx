@@ -6,6 +6,7 @@ import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
 import { Box } from '../components/mainpage/three'
 import { Logo } from '../components/mainpage/Girinlogo'
 import { Firstamp } from '../components/mainpage/Firstamp'
+import { RotatingBtn } from "../widgets/RotatingBtn";
 import { Secondamp } from '../components/mainpage/Secondamp'
 import { PerspectiveCamera, Center, Backdrop, Float, Bounds } from '@react-three/drei'
 import { MainContainer } from '../components/mainpage/mainContainer'
