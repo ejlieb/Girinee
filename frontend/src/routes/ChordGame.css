@@ -47,9 +47,16 @@
   border-radius: 50%;
 }
 
+/* 레벨 값 */
 #level-value{
 	margin: 0;
 }
+
+/* 운지법 이미지 */
+#chord-img{
+	height: 200px;
+}
+
 /* class로 지정 */
 /* 하얀 텍스트 */
 .white-text {	

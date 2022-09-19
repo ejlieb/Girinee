@@ -1,6 +1,8 @@
 // Systems
 import { useState, useEffect } from 'react'
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import { AnimatePresence } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 // Other Component 
 import GIRINEE from '../assets/images/GIRINEE.png'
@@ -32,7 +34,7 @@ export function ChordGame() {
         window.location.replace('http://localhost:3000')
       }
     };
-
+  
     // 난이도 따라서 하단 컴포넌트 변경하기
     const [controllerDegree, setDegree] = useState(0)
     const clickLow = () => setDegree((prev) => 0)
@@ -51,6 +53,8 @@ export function ChordGame() {
       levelValue = '상급 난이도'
       levelExplanation = "어려워요"
     }
+
+    const navigate = useNavigate()
 
     // JSX
     return (
@@ -102,7 +106,8 @@ export function ChordGame() {
           </Stack>
 
           {/* 메인화면으로 돌아가기 */}
-          <form id="quitLever">
+          <form id="quitLever" onClick={() => {
+            setTimeout(() => {navigate('/')}, 600)}}>
           	<input type="checkbox" name="lever" className="lever pristine" id="lever" value="lever value" role="switch" aria-label="lever" aria-checked="false" />
           	<label htmlFor="lever"><span>On</span></label>
           	<label htmlFor="lever"><span>Off</span></label>
@@ -113,7 +118,6 @@ export function ChordGame() {
         <Box component="div">
           {controllerDegree === 0 ? <LowLevel/> : controllerDegree === 1 ? <IntermediateLevel/> : <HighLevel/>}
         </Box>
-
       </Box>
     )
   }
