@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import dumpReducer from '../features/backingtrack/DumpSlice'
+import rotateReducer from '../features/rotatingbtn/RotateSlice'
 export const store = configureStore({
   // Reducer 등록
   reducer: {
-    dump: dumpReducer
+    dump: dumpReducer,
+    rotate: rotateReducer,
   },
 });
 
