@@ -1,73 +1,63 @@
 import React from 'react';
 import { Box } from '@mui/system'
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from "recharts";
 
 
-// 차트
-export const options = {
-  responsive: true,
-  interaction: {
-    mode: 'index' as const,
-    intersect: false,
+const data = [
+  {
+    name: "A",
+    CodeAccuracy: 5000,
   },
-  stacked: false,
-  plugins: {
-    title: {
-      display: true,
-      text: 'Practice Report',
-    },
+  {
+    name: "B",
+    CodeAccuracy: 4000,
   },
-  scales: {
-    y: {
-      type: 'linear' as const,
-      display: true,
-      position: 'left' as const,
-    },
+  {
+    name: "C",
+    CodeAccuracy: 3500,
   },
-};
-
-const labels = ['7', '6', '5', '4', '3', '2', '1'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
-      borderColor: 'rgb(255,215,0)',
-      backgroundColor: 'rgb(255,215,0)',
-      yAxisID: 'y',
-    },
-
-  ],
-};
+  {
+    name: "D",
+    CodeAccuracy: 3300,
+  },
+  {
+    name: "E",
+    CodeAccuracy: 3000,
+  },
+  {
+    name: "F",
+    CodeAccuracy: 2500,
+  },
+  {
+    name: "G",
+    CodeAccuracy: 2000,
+  }
+];
 
 export function PracticeReport() {
+  
     return (
       <Box component="div">
-        <Line options={options} data={data} />
+        <BarChart
+          width={900}
+          height={600}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5
+          }}
+        >
+          <CartesianGrid strokeDasharray="2 2" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="CodeAccuracy" fill="#ffffff" barSize={30} />
+        </BarChart>
       </Box>
     )
   }
-  
+
+export default PracticeReport;
