@@ -7,10 +7,12 @@ import { Box } from '../components/mainpage/three'
 import { Logo } from '../components/mainpage/Girinlogo'
 import { Firstamp } from '../components/mainpage/Firstamp'
 import { RotatingBtn } from "../widgets/RotatingBtn";
-import { Secondamp } from '../components/mainpage/Secondamp'
-import { PerspectiveCamera, Center, Backdrop, Float, Bounds } from '@react-three/drei'
+import { Secondamp } from '../components/mainpage/Secondamp';
+import { PerspectiveCamera, Center, Backdrop, Float, Bounds } from '@react-three/drei';
 import { MainContainer } from '../components/mainpage/mainContainer'
+import { MainBtn } from "../widgets/MainBtn";
 import './MainPage.css';
+import { KakaoLogin } from "./KakaoLogin";
 
 export function MainPage() {
   // script
@@ -38,18 +40,23 @@ export function MainPage() {
     if (logoutConfirm) {
       localStorage.removeItem('accessToken')
       console.log('로그아웃 되었습니다.')
-      window.location.replace('http://localhost:3000')
+      // window.location.replace('https://j7a202.p.ssafy.io')
     }
   }
-  // console.log("리프레시토근 화긴")
-  // console.log(window)
+
   // JSX
   return (
-    <div id="main-canvas">
-      <MainContainer/>
-      <RotatingBtn/>
+    <div>
+      <div id="main-canvas">
+        <MainContainer/>
+        <RotatingBtn/>
+        <MainBtn/>
+      </div>
+      <div id="main2">
+        <KakaoLogin/>
+      </div>
       <button><Link to="/:userId">myRecord</Link></button>
-      <button onClick={logout}>Logout</button>
+      {/* <button onClick={logout}>Logout</button> */}
       {/* <div id="main-body">
       <div>
         <h1 id="main-h1">MainPage</h1>
@@ -62,9 +69,9 @@ export function MainPage() {
         </div>
       </div>
     </div> */}
+      {/* <div className="swiper-pagination"></div> */}
     </div>
     
-
   )
 }
 
