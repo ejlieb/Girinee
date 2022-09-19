@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import * as THREE from 'three'
 import { createRoot } from 'react-dom/client'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
 import { Box } from '../components/mainpage/three'
 import { Logo } from '../components/mainpage/Girinlogo'
@@ -14,10 +14,29 @@ import './MainPage.css';
 
 export function MainPage() {
   // script
+
+  useEffect(() => {
+    const code = new URL(window.location.href)
+    const accessToken = code.searchParams.get('accessToken')
+
+
+    
+    if(accessToken) {
+      window.location.replace('http://localhost:3000') 
+      console.log("현재 login됨")
+      console.log(accessToken)
+      
+      localStorage.setItem("accessToken", accessToken); // 토큰을 로컬 스토리지에 저장 === 로그인 함.
+      console.log("localStorage = ", window.localStorage)
+    } else {
+      console.log("현재 login안되어 있으니까 로그인 해주세여")
+      console.log(accessToken)
+    }
+  },[])
   const logout = () => {
     const logoutConfirm = window.confirm('로그아웃 하시겠습니까?')
     if (logoutConfirm) {
-      localStorage.setItem("accessToken",'');
+      localStorage.removeItem('accessToken')
       console.log('로그아웃 되었습니다.')
       window.location.replace('http://localhost:3000')
     }
@@ -48,7 +67,6 @@ export function MainPage() {
 
   )
 }
-export default MainPage;
 
 
 // Three Function
