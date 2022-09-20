@@ -71,7 +71,7 @@ export function MainPage() {
       slidesPerView={1}
       // direction={'vertical'}
       centeredSlides={true}
-
+      speed= {2000}
       // import 
       mousewheel={true}
       navigation= {{
