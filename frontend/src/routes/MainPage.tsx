@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import * as THREE from 'three'
 import { createRoot } from 'react-dom/client'
@@ -13,15 +14,30 @@ import { MainContainer } from '../components/mainpage/mainContainer'
 import { MainBtn } from "../widgets/MainBtn";
 import './MainPage.css';
 import { KakaoLogin } from "./KakaoLogin";
+/* swiper */
+import 'swiper/css';
+import SwiperCore, { Keyboard, Mousewheel, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { useSwiper } from 'swiper/react';
+import 'swiper/css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+// import "swiper/swiper.css";
+// import "swiper/components/navigation/navigation.css";
+
 
 export function MainPage() {
   // script
+  SwiperCore.use([Navigation]);
 
+  // 로그인
   useEffect(() => {
     const code = new URL(window.location.href)
     const accessToken = code.searchParams.get('accessToken')
-
-
     
     if(accessToken) {
       window.location.replace('http://localhost:3000') 
@@ -43,37 +59,44 @@ export function MainPage() {
       // window.location.replace('https://j7a202.p.ssafy.io')
     }
   }
-
+  
   // JSX
   return (
-    <div>
-      <div id="main-canvas">
+    <Swiper id="main-swiper"
+      // install Swiper modules
+      modules={[ Keyboard, Mousewheel, Navigation, Pagination, Scrollbar, A11y]}
+      
+      // default
+      spaceBetween={0}
+      slidesPerView={1}
+      // direction={'vertical'}
+      centeredSlides={true}
+
+      // import 
+      mousewheel={true}
+      navigation= {{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }}
+      scrollbar={{ draggable: false }}
+      onSwiper={(swiper) => console.log(swiper)}
+      // onSlideChange={() => console.log('slide change')}
+      // pagination={{ clickable: true }}
+      keyboard={{enabled: true, onlyInViewport: false, pageUpDown:true, }}
+
+    >
+      <SwiperSlide id="main-canvas">
         <MainContainer/>
         <RotatingBtn/>
-        <MainBtn/>
-      </div>
-      <div id="main2">
-        <KakaoLogin/>
-      </div>
-      <button><Link to="/:userId">myRecord</Link></button>
-      {/* <button onClick={logout}>Logout</button> */}
-      {/* <div id="main-body">
-      <div>
-        <h1 id="main-h1">MainPage</h1>
-          <button><Link to="/login">kakaoLogin</Link></button>
-          <button onClick={logout}>Logout</button>
-        <div id="main-button">
-          
-          <button><Link to="/game">game</Link></button>
-          <button><Link to="/backing">backing</Link></button>
-        </div>
-      </div>
-    </div> */}
-      {/* <div className="swiper-pagination"></div> */}
-    </div>
+        
+      </SwiperSlide>
+                  
+      <SwiperSlide id="main2">
+        <h1 id="main2-h1">엠프 두개</h1>
+      </SwiperSlide>
+      <div className="swiper-button-prev swiper-button-disabled" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-b76727acd121080f" aria-disabled="true"><MainBtn/></div>
+      <div className="swiper-button-next" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-110bee5110a8d034d" aria-disabled="false"><MainBtn/></div>
+    </Swiper>
     
   )
 }
-
-
-// Three Function

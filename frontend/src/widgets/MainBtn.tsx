@@ -8,7 +8,7 @@ export function MainBtn() {
 
     // jsx
     return (
-        <a className="go-main-button-start loader-start" onMouseOver={() => setOpacity(0)} onMouseOut={() => setOpacity(1)} id={opacity===0? "":""} href="http://localhost:3000/login">
+        <a className="go-main-button-start loader-start" onMouseOver={() => setOpacity(0)} onMouseOut={() => setOpacity(1)} id={opacity===0? "":""} href="#">
           <div className="go-main-button-top" id={opacity === 0 ? "transform0": "transform1"}></div>
           <div className="go-main-button-middle" id={opacity === 0 ? "transform0": "transform1"}></div>
           <div className="go-main-button-bottom" id={opacity === 0 ? "transform2": ''}></div>
