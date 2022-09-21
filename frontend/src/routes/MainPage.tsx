@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import * as THREE from 'three'
 import { createRoot } from 'react-dom/client'
@@ -33,14 +32,6 @@ import 'swiper/css/scrollbar';
 
 export function MainPage() {
   // script
-  
-  const [swiper, setSwiper] = useState(null);
-  const [mainImageIndex, setMainImageIndex] = useState(0);
-  
-  SwiperCore.use([Navigation]);
-
-  const navigationPrevRef = useRef(null);
-  const navigationNextRef = useRef(null);
 
 
   // 로그인
@@ -82,16 +73,19 @@ export function MainPage() {
       centeredSlides={true}
       speed= {2000}
       // import 
-      loop={true}
+      // loop={true}
       mousewheel={true}
       navigation= {{
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
+        disabledClass: 'swiper-button-disabled',
       }}
-      pagination={{ // 페이징 설정
-        el: '.swiper-pagination',
-        clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
-      }}
+      // pagination={{ // 페이징 설정
+      //   // nextEl: '.swiper-button-next',
+      //   // prevEl: '.swiper-button-prev',
+      //   el: '.swiper-pagination',
+      //   clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
+      // }}
       scrollbar={{ draggable: false }}
       onSwiper={(swiper) => console.log(swiper)}
       // onSlideChange={() => console.log('slide change')}
@@ -113,7 +107,6 @@ export function MainPage() {
 
       <div className="swiper-button-prev swiper-button-disabled"><MainBtn/></div>
       <div className="swiper-button-next"><MainBtn/></div>
-      <div className="swiper-pagination"></div>
     </Swiper>
     
   )

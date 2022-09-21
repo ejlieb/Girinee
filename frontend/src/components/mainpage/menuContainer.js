@@ -16,12 +16,10 @@ export function MenuContainer(props) {
         <orthographicCamera attach="shadow-camera" left={-20} right={20} top={20} bottom={-20} />
       </directionalLight>
       <Suspense fallback={null}>
-        <ScrollControls pages={3}>
           <Center onCentered={({ container, height }) => container.scale.setScalar(3)}>
             {props.num === 0.65 ? <Firstamp position={[-1.8,1.36,0]} /> : <Secondamp position={[1.4,1.5,0.3]}/>}
             
           </Center>
-        </ScrollControls>
         <mesh position={[0, -props.num, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[500, 500]} />
           <MeshReflectorMaterial
