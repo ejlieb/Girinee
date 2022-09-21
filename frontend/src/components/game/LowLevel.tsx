@@ -89,6 +89,24 @@ export function LowLevel() {
                     cntChord ==='A' ? A_chord : cntChord ==='Am' ? Am_chord :
                     cntChord ==='B' ? B_chord : Bm_chord} id="chord-img" alt="..." />
 
+          {/* 음원파일 재생 버튼 */}
+          {/* 음원파일 넣어서 재생해야함 */}
+          {/* <audio src={cntChord ==='C' ? C_sound : cntChord ==='Cm' ? Cm_sound :
+                      cntChord ==='D' ? D_sound : cntChord ==='Dm' ? Dm_sound :
+                      cntChord ==='E' ? E_sound : cntChord ==='Em' ? Em_sound :
+                      cntChord ==='F' ? F_sound : cntChord ==='Fm' ? Fm_sound :
+                      cntChord ==='G' ? G_sound : cntChord ==='Gm' ? Gm_sound :
+                      cntChord ==='A' ? A_sound : cntChord ==='Am' ? Am_sound :
+                      cntChord ==='B' ? B_sound : Bm_sound}>
+            <a href={cntChord ==='C' ? C_sound : cntChord ==='Cm' ? Cm_sound :
+                     cntChord ==='D' ? D_sound : cntChord ==='Dm' ? Dm_sound :
+                     cntChord ==='E' ? E_sound : cntChord ==='Em' ? Em_sound :
+                     cntChord ==='F' ? F_sound : cntChord ==='Fm' ? Fm_sound :
+                     cntChord ==='G' ? G_sound : cntChord ==='Gm' ? Gm_sound :
+                     cntChord ==='A' ? A_sound : cntChord ==='Am' ? Am_sound :
+                     cntChord ==='B' ? B_sound : Bm_sound}></a>
+          </audio> */}
+
           {/* 녹화버튼 */}
           <div>
             <audio src={audioURL} controls />
