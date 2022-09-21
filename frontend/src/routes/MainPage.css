@@ -39,18 +39,18 @@
 
 .swiper-button-next {
   /* background-image: url("C:\Users\SSAFY\Desktop\S07P22A202\frontend\public\favicon.ico"); */
-  background-size: contain;
+  /* background-size: contain;
   background-position: 50% 60%;
   background-repeat: no-repeat;
-  right: 69px;
+  right: 69px; */
 
 }
 .swiper-button-prev {
   /* background-image: url("C:\Users\SSAFY\Desktop\S07P22A202\frontend\public\favicon.ico"); */
-  background-size: contain;
+  /* background-size: contain;
   background-position: 50% 60%;
   background-repeat: no-repeat;
-  left: 69px;
+  left: 69px; */
   -ms-transform: rotate(180deg); /* IE 9 */
   -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
   transform: rotate(180deg);

@@ -33,7 +33,15 @@ import 'swiper/css/scrollbar';
 
 export function MainPage() {
   // script
+  
+  const [swiper, setSwiper] = useState(null);
+  const [mainImageIndex, setMainImageIndex] = useState(0);
+  
   SwiperCore.use([Navigation]);
+
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
+
 
   // 로그인
   useEffect(() => {
@@ -74,29 +82,38 @@ export function MainPage() {
       centeredSlides={true}
       speed= {2000}
       // import 
+      loop={true}
       mousewheel={true}
       navigation= {{
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       }}
+      pagination={{ // 페이징 설정
+        el: '.swiper-pagination',
+        clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
+      }}
       scrollbar={{ draggable: false }}
       onSwiper={(swiper) => console.log(swiper)}
       // onSlideChange={() => console.log('slide change')}
-      // pagination={{ clickable: true }}
       keyboard={{enabled: true, onlyInViewport: false, pageUpDown:true, }}
 
     >
       <SwiperSlide id="main-canvas">
         <MainContainer/>
         <RotatingBtn/>
-        
       </SwiperSlide>
                   
       <SwiperSlide id="main2">
         <MenuContainer num={0.83}/>
       </SwiperSlide>
-      <div className="swiper-button-prev swiper-button-disabled" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-b76727acd121080f" aria-disabled="true"><MainBtn/></div>
-      <div className="swiper-button-next" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-110bee5110a8d034d" aria-disabled="false"><MainBtn/></div>
+
+      <SwiperSlide id="main2">
+        <MenuContainer num={0.83}/>
+      </SwiperSlide>
+
+      <div className="swiper-button-prev swiper-button-disabled"><MainBtn/></div>
+      <div className="swiper-button-next"><MainBtn/></div>
+      <div className="swiper-pagination"></div>
     </Swiper>
     
   )
