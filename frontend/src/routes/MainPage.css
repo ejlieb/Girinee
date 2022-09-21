@@ -23,6 +23,8 @@
   height: 100vh;
   width: 100vw;
   background-color: black;
+  display: flex;
+  justify-content: center;
 }
 
 #main2-h1 {
@@ -59,4 +61,12 @@
 .swiper-button-next::after,
 .swiper-button-prev::after {
   display: none;
+}
+
+.menu-span {
+  position: absolute;
+  bottom: 70%;
+  font-size: 2400%;
+  color: white;
+
 }
