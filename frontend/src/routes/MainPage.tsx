@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import * as THREE from 'three'
 import { createRoot } from 'react-dom/client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, Suspense} from 'react'
 import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
 import { Box } from '../components/mainpage/three'
 import { Logo } from '../components/mainpage/Girinlogo'
@@ -14,6 +14,7 @@ import { MainBtn } from "../widgets/MainBtn";
 import { MenuContainer } from "../components/mainpage/menuContainer";
 import './MainPage.css';
 import { KakaoLogin } from "./KakaoLogin";
+import { Spinner } from "../widgets/Spinner";
 /* swiper */
 import 'swiper/css';
 import SwiperCore, { Keyboard, Mousewheel, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -96,13 +97,21 @@ export function MainPage() {
         <MainContainer/>
         <RotatingBtn/>
       </SwiperSlide>
-                  
-      <SwiperSlide id="main2">
-        <MenuContainer num={0.83}/>
+      
+      <SwiperSlide >
+        {({ isActive }) =>
+          <div id="main2">
+            {isActive ? <MenuContainer num={0.65}/> : null}
+          </div>
+          }
       </SwiperSlide>
 
-      <SwiperSlide id="main2">
-        <MenuContainer num={0.83}/>
+      <SwiperSlide >
+        {({ isActive }) =>
+          <div id="main2">
+            {isActive ? <MenuContainer num={0.83}/> : null}
+          </div>
+          }
       </SwiperSlide>
 
       <div className="swiper-button-prev swiper-button-disabled"><MainBtn/></div>
