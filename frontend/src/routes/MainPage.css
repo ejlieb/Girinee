@@ -31,6 +31,12 @@
   margin: 0;
 }
 
+#main3 {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(40, 40, 40);
+}
+
 .swiper-button-next {
   /* background-image: url("C:\Users\SSAFY\Desktop\S07P22A202\frontend\public\favicon.ico"); */
   background-size: contain;
