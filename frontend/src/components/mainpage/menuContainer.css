@@ -1,14 +1,18 @@
 #menu-container {
+  opacity: 0;
+  animation: menufade 5s
+}
+
+.canvas-container {
   width: 100vw;
   height: 100vh;
-  animation: menufade 2s
 }
 
 @keyframes menufade{
   from {
-    opacity:0;
+    opacity:1;
   }
   to {
-    opacity:1;
+    opacity:0;
   }
 }
