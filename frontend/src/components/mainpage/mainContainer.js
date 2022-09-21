@@ -9,28 +9,29 @@ import { Gtwo } from './G-2'
 import { PerspectiveCamera, Center, Backdrop, Float, Bounds, MeshReflectorMaterial, Reflector } from '@react-three/drei'
 import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
 import { useEffect } from 'react'
+import useInterval from '../../utils/timer'
 
 // Timer Interval
-function useInterval(callback, delay) {
-    const savedCallback = useRef(); // 최근에 들어온 callback을 저장할 ref를 하나 만든다.
+// function useInterval(callback, delay) {
+//     const savedCallback = useRef(); // 최근에 들어온 callback을 저장할 ref를 하나 만든다.
   
-    useEffect(() => {
-      savedCallback.current = callback; // callback이 바뀔 때마다 ref를 업데이트 해준다.
-    }, [callback]);
+//     useEffect(() => {
+//       savedCallback.current = callback; // callback이 바뀔 때마다 ref를 업데이트 해준다.
+//     }, [callback]);
   
-    useEffect(() => {
-      function tick() {
-        savedCallback.current(); // tick이 실행되면 callback 함수를 실행시킨다.
-      }
-      if (delay !== null) {
-        setTimeout(() => {
-          clearInterval(id)
-        }, 6240) // 만약 delay가 null이 아니라면 
-        let id = setInterval(tick, delay); // delay에 맞추어 interval을 새로 실행시킨다.
-        return () => clearInterval(id); // unmount될 때 clearInterval을 해준다.
-      }
-    }, [delay]); // delay가 바뀔 때마다 새로 실행된다.
-  }
+//     useEffect(() => {
+//       function tick() {
+//         savedCallback.current(); // tick이 실행되면 callback 함수를 실행시킨다.
+//       }
+//       if (delay !== null) {
+//         setTimeout(() => {
+//           clearInterval(id)
+//         }, 6240) // 만약 delay가 null이 아니라면 
+//         let id = setInterval(tick, delay); // delay에 맞추어 interval을 새로 실행시킨다.
+//         return () => clearInterval(id); // unmount될 때 clearInterval을 해준다.
+//       }
+//     }, [delay]); // delay가 바뀔 때마다 새로 실행된다.
+//   }
 
 
 export function MainContainer() {
@@ -38,8 +39,8 @@ export function MainContainer() {
     let [whiteIntensity, setWhite] = useState(0)
     // max 2.5
     let [pointIntensity, setPoint] = useState(0)
-    let timer = useInterval(() => {setWhite(whiteIntensity + 0.015)
-        setPoint(pointIntensity + 0.025)}, 60)
+    let timer = useInterval(() => {setWhite(whiteIntensity + 0.015, 6240)
+        setPoint(pointIntensity + 0.025)}, 60, 6240)
     return (
     <Canvas shadows camera={{ position: [0, 1, 10], fov: 60 }} dpr={window.devicePixelRatio}>
       
