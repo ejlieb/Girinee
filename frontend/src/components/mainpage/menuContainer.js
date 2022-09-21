@@ -18,7 +18,7 @@ export function MenuContainer(props) {
   }
 
   return (
-    <div id="menu-container">
+    <div id={flag === false ? "menu-container" : null} className='canvas-container'>
       {flag === false ? <Spinner/> : 
       <Canvas dpr={window.decivePixelRatio} shadows  gl={{ alpha: false }}>
       <fog attach="fog" args={['#17171b', 30, 40]} />
@@ -41,7 +41,7 @@ export function MenuContainer(props) {
             mixStrength={15}
             depthScale={1}
             minDepthThreshold={0.85}
-            color="rgb(30,30,30)"
+            color="rgb(25,25,25)"
             metalness={0.6}
             roughness={1}
           />

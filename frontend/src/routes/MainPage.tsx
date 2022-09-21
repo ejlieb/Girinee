@@ -102,6 +102,7 @@ export function MainPage() {
         {({ isActive }) =>
           <div id="main2">
             {isActive ? <MenuContainer num={0.65}/> : null}
+            <span className="menu-span">Chord Game</span>
           </div>
           }
       </SwiperSlide>
@@ -110,6 +111,7 @@ export function MainPage() {
         {({ isActive }) =>
           <div id="main2">
             {isActive ? <MenuContainer num={0.83}/> : null}
+            <span className="menu-span">Chord Table</span>
           </div>
           }
       </SwiperSlide>
