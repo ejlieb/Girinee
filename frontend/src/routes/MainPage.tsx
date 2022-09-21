@@ -12,6 +12,7 @@ import { Secondamp } from '../components/mainpage/Secondamp';
 import { PerspectiveCamera, Center, Backdrop, Float, Bounds } from '@react-three/drei';
 import { MainContainer } from '../components/mainpage/mainContainer'
 import { MainBtn } from "../widgets/MainBtn";
+import { MenuContainer } from "../components/mainpage/menuContainer";
 import './MainPage.css';
 import { KakaoLogin } from "./KakaoLogin";
 /* swiper */
@@ -92,7 +93,7 @@ export function MainPage() {
       </SwiperSlide>
                   
       <SwiperSlide id="main2">
-        <h1 id="main2-h1">엠프 두개</h1>
+        <MenuContainer num={0.83}/>
       </SwiperSlide>
       <div className="swiper-button-prev swiper-button-disabled" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-b76727acd121080f" aria-disabled="true"><MainBtn/></div>
       <div className="swiper-button-next" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-110bee5110a8d034d" aria-disabled="false"><MainBtn/></div>

@@ -6,7 +6,7 @@ import { Logo } from './Girinlogo'
 import { Firstamp } from './Firstamp'
 import { Secondamp } from './Secondamp'
 import { Gtwo } from './G-2'
-import { PerspectiveCamera, Center, Backdrop, Float, Bounds, MeshReflectorMaterial } from '@react-three/drei'
+import { PerspectiveCamera, Center, Backdrop, Float, Bounds, MeshReflectorMaterial, Reflector } from '@react-three/drei'
 import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
 import { useEffect } from 'react'
 
@@ -42,6 +42,7 @@ export function MainContainer() {
         setPoint(pointIntensity + 0.025)}, 60)
     return (
     <Canvas shadows camera={{ position: [0, 1, 10], fov: 60 }} dpr={window.devicePixelRatio}>
+      
       {/* <fog attach="fog" args={["white", 0, 40]} /> */}
       {/* <ambientLight intensity={0.4} /> */}
       {/* <directionalLight
