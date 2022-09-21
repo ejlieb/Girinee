@@ -1,9 +1,11 @@
 // Systems
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { AnimatePresence } from 'framer-motion'
+import { render } from "react-dom"
 
 // Other Component 
+import useRecorder from "./useRecorder"
 import C_chord from '../../assets/images/chords/C_chord.png'
 import Cm_chord from '../../assets/images/chords/Cm_chord.png'
 import D_chord from '../../assets/images/chords/D_chord.png'
@@ -28,9 +30,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select'
 
 // -----------------------------------------------------------------------------------------------------
 
-
 export function LowLevel() {
-
     // script
     const guitarChords = ['C', 'Cm', 'D', 'Dm', 'E', 'Em', 'F', 'Fm', 'G', 'Gm', 'A', 'Am', 'B', 'Bm']
     
@@ -39,8 +39,16 @@ export function LowLevel() {
     const showChord = (event: SelectChangeEvent) => {
     setCntChord(event.target.value as string)
     }
-      
-  
+
+    // 녹음에 필요한 것
+    // 금단의 any를 사용하고 말았음
+    const recordArr:any[] = useRecorder()
+    let audioURL : string = recordArr[0]
+    let isRecording : boolean = recordArr[1]
+    let startRecording = recordArr[2]
+    let stopRecording = recordArr[3]
+
+    // [audioURL, isRecording, startRecording, stopRecording]:[string,boolean,()=>void,()=>void] = useRecorder()
 
     // JSX
     return (
@@ -55,7 +63,7 @@ export function LowLevel() {
               value={cntChord}
               label="Chord"
               onChange={showChord}
-              style={{ color:"white"}}
+              style={{ color:"white" }}
             >
               {guitarChords.map((chord, idx) => (
                 <MenuItem key={idx} value={chord}>{chord}</MenuItem>
@@ -66,12 +74,12 @@ export function LowLevel() {
 
         <div id="chord-box">
           <h1 id="chord-name" className='white-text'>{cntChord ==='C' ? 'C' : cntChord ==='Cm' ? 'Cm' :
-                               cntChord ==='D' ? 'D' : cntChord ==='Dm' ? 'Dm' :
-                               cntChord ==='E' ? 'E' : cntChord ==='Em' ? 'Em' :
-                               cntChord ==='F' ? 'F' : cntChord ==='Fm' ? 'Fm' :
-                               cntChord ==='G' ? 'G' : cntChord ==='Gm' ? 'Gm' :
-                               cntChord ==='A' ? 'A' : cntChord ==='Am' ? 'Am' :
-                               cntChord ==='B' ? 'B' : 'Bm'}
+                                                      cntChord ==='D' ? 'D' : cntChord ==='Dm' ? 'Dm' :
+                                                      cntChord ==='E' ? 'E' : cntChord ==='Em' ? 'Em' :
+                                                      cntChord ==='F' ? 'F' : cntChord ==='Fm' ? 'Fm' :
+                                                      cntChord ==='G' ? 'G' : cntChord ==='Gm' ? 'Gm' :
+                                                      cntChord ==='A' ? 'A' : cntChord ==='Am' ? 'Am' :
+                                                      cntChord ==='B' ? 'B' : 'Bm'}
           </h1>
           <img src={cntChord ==='C' ? C_chord : cntChord ==='Cm' ? Cm_chord :
                     cntChord ==='D' ? D_chord : cntChord ==='Dm' ? Dm_chord :
@@ -80,6 +88,17 @@ export function LowLevel() {
                     cntChord ==='G' ? G_chord : cntChord ==='Gm' ? Gm_chord :
                     cntChord ==='A' ? A_chord : cntChord ==='Am' ? Am_chord :
                     cntChord ==='B' ? B_chord : Bm_chord} id="chord-img" alt="..." />
+
+          {/* 녹화버튼 */}
+          <div>
+            <audio src={audioURL} controls />
+            <button onClick={startRecording} disabled={isRecording}>
+              start recording
+            </button>
+            <button onClick={stopRecording} disabled={!isRecording}>
+              stop recording
+            </button>
+          </div>
         </div>
       </div>
     )
