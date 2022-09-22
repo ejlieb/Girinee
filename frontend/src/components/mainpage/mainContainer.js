@@ -43,7 +43,6 @@ export function MainContainer() {
         setPoint(pointIntensity + 0.025)}, 60, 6240)
     return (
     <Canvas shadows camera={{ position: [0, 1, 10], fov: 60 }} dpr={window.devicePixelRatio}>
-      
       {/* <fog attach="fog" args={["white", 0, 40]} /> */}
       {/* <ambientLight intensity={0.4} /> */}
       {/* <directionalLight

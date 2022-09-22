@@ -7,6 +7,7 @@ import useInterval from '../../utils/timer'
 import { Spinner } from '../../widgets/Spinner'
 import { dividerClasses } from '@mui/material'
 import "./menuContainer.css"
+import { ContactlessOutlined } from '@mui/icons-material'
 
 export function MenuContainer(props) {
   let [flag, setFlag] = useState(false)

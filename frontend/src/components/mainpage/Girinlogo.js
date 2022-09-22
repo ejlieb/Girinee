@@ -18,7 +18,6 @@ export function Logo(props) {
       clearInterval(timer)
       console.log('hi' + intensity)}
     else {
-      console.log('로그인 x')
     }
     }
   , 60, 6240)
