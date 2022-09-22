@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { Typography } from '@mui/material'
 import { useState, useEffect } from 'react'
-
+import Navbar from '../widgets/Navbar'
 import { GameReport } from '../components/myRecord/GameReport';
 import { PracticeReport } from '../components/myRecord/PracticeReport';
 
@@ -32,20 +32,6 @@ export function MyRecord() {
       <div>
         <Box component="div" id="my-record-body" sx={{ display: 'flex', flexDirection: 'column' }}>
 
-          {/* Navbar */}
-          <Box component="div" id="my-record-menu-bar" sx={{ mt: 4, px: 8, display: 'flex', justifyContent: 'space-between'}}>
-            {/* 텍스트로고 */}
-            <img id="girinee-img" src={GIRINEE} alt="GIRINEE.png" />
-            <Stack spacing={2} direction="row">
-              <Button variant="text">
-                <Typography className="menu-text">MY PAGE</Typography>
-              </Button>
-              <Button variant="text">
-                <Typography className="menu-text" onClick={logout}>LOGOUT</Typography>
-              </Button>
-            </Stack>
-          </Box>
-          
           {/* 그래프 선택 */}
           <Box component="div" sx={{ my: 5, display: 'flex', justifyContent: 'center'}}>
             <Stack spacing={2} direction="row">
@@ -64,10 +50,10 @@ export function MyRecord() {
             </Box>
 
         </Box>
+        <Navbar/>
       </div>
     )
   }
-
 
   
   // Three Function
