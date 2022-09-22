@@ -7,15 +7,13 @@ import useInterval from '../../utils/timer'
 import { Spinner } from '../../widgets/Spinner'
 import { dividerClasses } from '@mui/material'
 import "./menuContainer.css"
+import { useHover } from '@use-gesture/react'
 
 export function MenuContainer(props) {
   let [flag, setFlag] = useState(false)
   setTimeout(() => setFlag(true), 3000)
 
-  let style = {
-    width: "100vw",
-    height: "100vh"
-  }
+  const bind = useHover((state) => console.log(state.target))
 
   return (
     <div id={flag === false ? "menu-container" : null} className='canvas-container'>
@@ -29,7 +27,7 @@ export function MenuContainer(props) {
       </directionalLight> */}
       <Suspense fallback={null}>
           <Center onCentered={({ container, height }) => container.scale.setScalar(3)}>
-            {props.num === 0.65 ? <Firstamp position={[-1.8,1.36,0]} /> : props.num === 0.83 ? <Secondamp position={[1.4,1.5,0.3]}/> : null}
+            {props.num === 0.65 ? <Firstamp position={[-1.8,1.36,0]} {...bind()} onClick={() => console.log('hi')} /> : props.num === 0.83 ? <Secondamp position={[1.4,1.5,0.3]}/> : null}
             
           </Center>
         <mesh position={[0, -props.num, 0]} rotation={[-Math.PI / 2, 0, 0]}>

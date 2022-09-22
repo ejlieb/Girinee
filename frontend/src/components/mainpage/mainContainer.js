@@ -6,7 +6,7 @@ import { Logo } from './Girinlogo'
 import { Firstamp } from './Firstamp'
 import { Secondamp } from './Secondamp'
 import { Gtwo } from './G-2'
-import { PerspectiveCamera, Center, Backdrop, Float, Bounds, MeshReflectorMaterial, Reflector } from '@react-three/drei'
+import { PerspectiveCamera, Center, Backdrop, Float, Bounds, MeshReflectorMaterial, Reflector, Sparkles } from '@react-three/drei'
 import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
 import { useEffect } from 'react'
 import useInterval from '../../utils/timer'
@@ -43,6 +43,7 @@ export function MainContainer() {
         setPoint(pointIntensity + 0.025)}, 60, 6240)
     return (
     <Canvas shadows camera={{ position: [0, 1, 10], fov: 60 }} dpr={window.devicePixelRatio}>
+      {/* <Sparkles count={10} scale={10 } size={4} speed={1} /> */}
       
       {/* <fog attach="fog" args={["white", 0, 40]} /> */}
       {/* <ambientLight intensity={0.4} /> */}
@@ -66,8 +67,8 @@ export function MainContainer() {
           <boxBufferGeometry attach="geometry" args={[4, 1, 1]} />
           <meshStandardMaterial attach="material" />
         </mesh> */}
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0, 0]} receiveShadow>
-          <planeGeometry attach="geometry" args={[100, 100]} />
+        {/* <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0,30, 0]} receiveShadow>
+          <planeGeometry attach="geometry" args={[500, 500]} />
           <MeshReflectorMaterial
             blur={[400, 100]}
             resolution={1024}
@@ -80,7 +81,7 @@ export function MainContainer() {
             roughness={1}
           />
           <shadowMaterial attach="material" transparent opacity={0.4}   />
-        </mesh>
+        </mesh> */}
         <Logo position={[-1.1, 2.2, 1.8]} />
         {/* <Firstamp position={[-1.5,0.95,0]} rotation={[0,0.4,0]}/>
         <Secondamp position={[1.5,1.0,0]} rotation={[0,-0.5,0]}/> */}
