@@ -49,7 +49,18 @@
 
 /* 레벨 값 */
 #level-value{
+	font-family: 'YUniverse-L';
+	font-weight: 300;
+	font-size: 2.5rem;
 	margin: 0;
+	color: white;
+}
+
+/* 레벨 설명 */
+#level-discription{
+	font-family: 'MICEGothic-Regular';
+	font-weight: 400;
+	color: white;
 }
 
 /* 운지법 이미지 */
@@ -77,6 +88,15 @@
 	font-size: 2rem;
   color: rgb(242, 241, 241);
 }
+
+.new-font {
+	font-family: 'YUniverse-L';
+	font-weight: 300;
+	font-size: 1.1rem;
+	color: white;
+	margin: 0;
+}
+/* 난이도 */
 
 /* 컨트롤 상태 따라서 회전 */
 .degree0 {

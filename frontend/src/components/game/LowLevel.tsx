@@ -42,11 +42,7 @@ export function LowLevel() {
 
     // 녹음에 필요한 것
     // 금단의 any를 사용하고 말았음
-    const recordArr:any[] = useRecorder()
-    let audioURL : string = recordArr[0]
-    let isRecording : boolean = recordArr[1]
-    let startRecording = recordArr[2]
-    let stopRecording = recordArr[3]
+    const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
 
     // [audioURL, isRecording, startRecording, stopRecording]:[string,boolean,()=>void,()=>void] = useRecorder()
 
@@ -92,7 +88,7 @@ export function LowLevel() {
           {/* 녹화버튼 */}
           <div>
             <audio src={audioURL} controls />
-            <button onClick={startRecording} disabled={isRecording}>
+            <button onClick={()=>startRecording()} disabled={isRecording}>
               start recording
             </button>
             <button onClick={stopRecording} disabled={!isRecording}>

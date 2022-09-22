@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { AnimatePresence } from 'framer-motion'
 
 // Other Component 
+import useRecorder from "./useRecorder"
 import C_chord from '../../assets/images/chords/C_chord.png'
 import Cm_chord from '../../assets/images/chords/Cm_chord.png'
 import D_chord from '../../assets/images/chords/D_chord.png'
@@ -27,11 +28,13 @@ import Button from '@mui/material/Button'
 export function IntermediateLevel() {
     // script
     const guitarChordSets = [['A', 'B', 'C', 'D'], ['B', 'C', 'D', 'E'], ['C', 'D', 'E', 'F'],['D', 'E', 'F', 'G'],['E', 'F', 'G', 'A']]
-    
-    // 버튼 눌렀을 때 해당 코드 연습 화면으로 변경
+
+    const useRecorderArr:any[] = useRecorder()
+    const startRecording = useRecorderArr[2]
+    const stopRecording = useRecorderArr[3]
 
     const [cntChord, setCntChord] = useState('')
-
+    // 버튼 눌렀을 때 해당 코드 연습 화면으로 변경
     const startGame = () => {
       const randomIdx = Math.floor(Math.random() * 5)
       const cntChordset = guitarChordSets[randomIdx]
@@ -45,11 +48,16 @@ export function IntermediateLevel() {
           // console.log(cntIdx)
           cntIdx++
           setCntChord((prev) => cntChordset[cntIdx])
-        }
-      }, 3000);
+        } else {
+          stopRecording
+          // clearInterval(startGame)
+        } 
+      }, 3000)
+
+      setTimeout(startRecording, 3000)
       // console.log(cntChordset[cntIdx]);      
     }
-    
+
       
     // JSX
     return (
@@ -75,6 +83,7 @@ export function IntermediateLevel() {
                     cntChord ==='G' ? G_chord : cntChord ==='Gm' ? Gm_chord :
                     cntChord ==='A' ? A_chord : cntChord ==='Am' ? Am_chord :
                     cntChord ==='B' ? B_chord : Bm_chord} id="chord-img" alt="..." />
+          <button>sjadfkl;jasdl;k</button>
         </div>
       </div>
     )
