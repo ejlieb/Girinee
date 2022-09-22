@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import * as THREE from 'three'
 import { createRoot } from 'react-dom/client'
+import Button from '@mui/material/Button';
 import React, { useEffect, useRef, useState, Suspense} from 'react'
 import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
 import { Box } from '../components/mainpage/three'
@@ -13,9 +14,10 @@ import { MainContainer } from '../components/mainpage/mainContainer'
 import { MainBtn } from "../widgets/MainBtn";
 import { MenuContainer } from "../components/mainpage/menuContainer";
 import './MainPage.css';
+import { Navbar } from "../widgets/Navbar";
 import { KakaoLogin } from "./KakaoLogin";
-import { Spinner } from "../widgets/Spinner";
 /* swiper */
+import { Spinner } from "../widgets/Spinner";
 import 'swiper/css';
 import SwiperCore, { Keyboard, Mousewheel, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 // import { Swiper, SwiperSlide } from 'swiper/react';
@@ -52,15 +54,7 @@ export function MainPage() {
       console.log(accessToken)
     }
   },[])
-  const logout = () => {
-    const logoutConfirm = window.confirm('로그아웃 하시겠습니까?')
-    if (logoutConfirm) {
-      localStorage.removeItem('accessToken')
-      console.log('로그아웃 되었습니다.')
-      // window.location.replace('https://j7a202.p.ssafy.io')
-    }
-  }
-  
+
   // JSX
   return (
     <Swiper id="main-swiper"
@@ -91,25 +85,28 @@ export function MainPage() {
       onSwiper={(swiper) => console.log(swiper)}
       // onSlideChange={() => console.log('slide change')}
       keyboard={{enabled: true, onlyInViewport: false, pageUpDown:true, }}
-
     >
+      
       <SwiperSlide id="main-canvas">
-        <MainContainer/>
-        <RotatingBtn/>
+        <Navbar />
+        <MainContainer />
+        <RotatingBtn />
       </SwiperSlide>
       
-      <SwiperSlide >
+      <SwiperSlide>
         {({ isActive }) =>
           <div id="main2">
+            <Navbar />
             {isActive ? <MenuContainer num={0.65}/> : null}
             <span className="menu-span">Chord Game</span>
           </div>
           }
       </SwiperSlide>
 
-      <SwiperSlide >
+      <SwiperSlide>
         {({ isActive }) =>
           <div id="main2">
+            <Navbar />
             {isActive ? <MenuContainer num={0.83}/> : null}
             <span className="menu-span">Chord Table</span>
           </div>
@@ -118,7 +115,7 @@ export function MainPage() {
 
       <div className="swiper-button-prev swiper-button-disabled"><MainBtn/></div>
       <div className="swiper-button-next"><MainBtn/></div>
+
     </Swiper>
-    
   )
 }
