@@ -24,7 +24,6 @@ import Bm_chord from '../../assets/images/chords/Bm_chord.png'
 // Material UI
 import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
-import NativeSelect from '@mui/material/NativeSelect'
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 
@@ -88,7 +87,7 @@ export function LowLevel() {
           {/* 녹화버튼 */}
           <div>
             <audio src={audioURL} controls />
-            <button onClick={()=>startRecording()} disabled={isRecording}>
+            <button onClick={startRecording} disabled={isRecording}>
               start recording
             </button>
             <button onClick={stopRecording} disabled={!isRecording}>
