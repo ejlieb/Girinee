@@ -28,10 +28,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import "swiper/swiper.css";
 // import "swiper/components/navigation/navigation.css";
-
+import { MyRecord } from './MyRecord';
+import { useNavigate } from "react-router-dom";
 
 export function MainPage() {
   // script
@@ -55,6 +56,10 @@ export function MainPage() {
     }
   },[])
 
+  const profile = () => {
+    alert('나의 기록을 보시겠습니까?')
+  }
+  const navigate = useNavigate()
   // JSX
   return (
     <Swiper id="main-swiper"
@@ -100,7 +105,7 @@ export function MainPage() {
             {isActive ? <MenuContainer num={0.65}/> : null}
             <span className="menu-span">Chord Game</span>
           </div>
-          }
+        }
       </SwiperSlide>
 
       <SwiperSlide>
@@ -109,8 +114,16 @@ export function MainPage() {
             <Navbar />
             {isActive ? <MenuContainer num={0.83}/> : null}
             <span className="menu-span">Chord Table</span>
+            <span className="my-record" 
+              onClick={() => {
+                setTimeout(() => {
+                navigate('/:userId')
+                }, 1000);
+              }}>
+              기록보기
+            </span>
           </div>
-          }
+        }
       </SwiperSlide>
 
       <div className="swiper-button-prev swiper-button-disabled"><MainBtn/></div>

@@ -10,7 +10,8 @@ import { useState, useEffect } from 'react'
 import Navbar from '../widgets/Navbar'
 import { GameReport } from '../components/myRecord/GameReport';
 import { PracticeReport } from '../components/myRecord/PracticeReport';
-
+import { useNavigate } from "react-router-dom";
+import { MenuContainer } from "../components/mainpage/menuContainer";
 
 export function MyRecord() {
     // script
@@ -26,6 +27,7 @@ export function MyRecord() {
     const [Graph, setGraph] = useState(0)
     const codeAccuracyClick = () => setGraph((prev) => 0)
     const GameClick = () => setGraph((prev) => 1)
+    const navigate = useNavigate()
 
     // JSX
     return (
@@ -33,7 +35,7 @@ export function MyRecord() {
         <Box component="div" id="my-record-body" sx={{ display: 'flex', flexDirection: 'column' }}>
 
           {/* 그래프 선택 */}
-          <Box component="div" sx={{ my: 5, display: 'flex', justifyContent: 'center'}}>
+          <Box component="div" sx={{ my: 7, display: 'flex', justifyContent: 'center'}}>
             <Stack spacing={2} direction="row">
             <Button variant="text" onClick={codeAccuracyClick}>
               <Typography id="graph-text" >Code Accuracy</Typography>
@@ -51,6 +53,29 @@ export function MyRecord() {
 
         </Box>
         <Navbar/>
+        <span className="my-record" 
+              onClick={() => {
+                setTimeout(() => {
+                  navigate('/')
+                //   {({ isActive }) =>
+                //   <div id="main2">
+                //     <Navbar />
+                //     {isActive ? <MenuContainer num={0.83}/> : null}
+                //     <span className="menu-span">Chord Table</span>
+                //     <span className="my-record" 
+                //       onClick={() => {
+                //         setTimeout(() => {
+                //         navigate('/:userId')
+                //         }, 1000);
+                //       }}>
+                //       기록보기
+                //     </span>
+                //   </div>
+                // }
+                }, 1000);
+              }}>
+              뒤로가기
+            </span>
       </div>
     )
   }
