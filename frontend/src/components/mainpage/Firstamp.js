@@ -6,16 +6,23 @@ import React, { useRef } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
 import { useLoader } from '@react-three/fiber'
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader'
+// aluminum
+import aluMap from '../../assets/images/materials/maps/alu-color.jpg'
+import aluMetalMap from '../../assets/images/materials/metalnessmaps/alu-metalness.jpg'
+import aluNormalMap from '../../assets/images/materials/normalmaps/alu-normal.jpg'
 
 export function Firstamp(props) {
   const { nodes, materials } = useGLTF('/firstamp.glb')
-  // const loader = useLoader(MTLLoader, )
+  // loader 
   const test = useTexture('/alu-color.jpg')
   const alu = useTexture({
-    map: '/alu-color.jpg',
-    metalnessMap: '/alu-metalness.jpg',
-    normalMap: 'alu-normal.jpg'
+    map: aluMap,
+    metalnessMap: aluMetalMap,
+    normalMap: aluNormalMap
   })
+
+
+  // return JSX
   return (
     <group {...props} dispose={null} >
       <mesh geometry={nodes.mesh_2.geometry} material={nodes.mesh_2.material} receiveShadow castShadow/>
