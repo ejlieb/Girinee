@@ -28,6 +28,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { useNavigate } from "react-router-dom";
 
 // import "swiper/swiper.css";
 // import "swiper/components/navigation/navigation.css";
@@ -55,6 +56,8 @@ export function MainPage() {
     }
   },[])
 
+  const navigate = useNavigate()
+  
   // JSX
   return (
     <Swiper id="main-swiper"
@@ -109,6 +112,15 @@ export function MainPage() {
             <Navbar />
             {isActive ? <MenuContainer num={0.83}/> : null}
             <span className="menu-span">Chord Table</span>
+            <span className="my-record" 
+              onClick={() => {
+                setTimeout(() => {
+                navigate('/:userId')
+                }, 1000);
+              }}>
+              기록보기
+            </span>
+
           </div>
           }
       </SwiperSlide>
