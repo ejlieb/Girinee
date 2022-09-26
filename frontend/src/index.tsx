@@ -27,7 +27,7 @@ root.render(
       <Route path="/backing" element={<BackingTrack />}></Route>
       <Route path="/game" element={<ChordGame />}></Route>
       <Route path="/login" element={<KakaoLogin />}></Route>
-      <Route path="/:userId" element={<MyRecord />}></Route>
+      <Route path="/profile" element={<MyRecord />}></Route>
       </Routes>
       </BrowserRouter>
     </Provider>
