@@ -18,6 +18,7 @@ import { Box } from '@mui/system'
 import { Typography } from '@mui/material'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
+import Grid from '@mui/material/Grid'
 // import Switch from '@mui/material/Switch';  
 // import { PowerSettingsNew } from '@mui/icons-material'
 
@@ -41,16 +42,16 @@ export function ChordGame() {
     const clickMid = () => setDegree((prev) => 1)
     const clickHigh = () => setDegree((prev) => 2)
     
-    let levelValue = "초급 난이도"
+    let levelValue = "E A S Y - L E V E L"
     let levelExplanation = "쉬워요"
     if (controllerDegree === 0) {
-      levelValue = 'EASY LEVEL'
-      levelExplanation = "쉬워요"  
+      levelValue = 'E A S Y - L E V E L'
+      levelExplanation = "연습하기 원하는 코드를 직접 선택하여 진행하세요."  
     } else if (controllerDegree === 1) {
-      levelValue = '중급 난이도'
-      levelExplanation = "괜찮아요"
+      levelValue = 'N O R M A L - L E V E L'
+      levelExplanation = "'N O R M A L - L E V E L'에서는 실제 음악에서 자주 사용되는 코드 진행을 랜덤으로"
     } else {
-      levelValue = '상급 난이도'
+      levelValue = 'H A R D - L E V E L'
       levelExplanation = "어려워요"
     }
 
@@ -78,8 +79,8 @@ export function ChordGame() {
         </Box>
       
         {/* 컨트롤패널 */}
-        <Box component="div" id="control-panel" sx={{ mt: 5, px: 10, display: 'flex', justifyContent: 'space-between'}}>
-          <Box component="div" sx={{ display: 'flex'}}>
+        <Grid container component="div" id="control-panel" sx={{ mt: 5, px: 10, display: 'flex', justifyContent: 'space-between'}}>
+          <Grid item xs={2} component="div" sx={{ display: 'flex'}}>
             {/* 컨트롤러 */}
             <div id="level-controller" className={`degree${ controllerDegree } metal radial`}>
               <div id="level-index"></div>
@@ -88,34 +89,38 @@ export function ChordGame() {
             {/* 레벨버튼 누르면 해당하는 부분으로 위의 컨트롤러가 회전 */}
             <Box component="div" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
               <Button id="low-level-btn" variant="text" onClick={clickLow}>
-                <Typography className="white-text">LOW</Typography>
+                <p className="white-text new-font">LOW</p>
               </Button>
               <Button id="mid-level-btn" variant="text" onClick={clickMid}>
-                <Typography className="white-text">MID</Typography>
+                <p className="white-text new-font">MID</p>
               </Button>
               <Button id="high-level-btn" variant="text" onClick={clickHigh}>
-                <Typography className="white-text">HIGH</Typography>
+                <p className="white-text new-font">HIGH</p>
               </Button>
             </Box>
-          </Box>
+          </Grid>
 
           {/* 현재 난이도 표시 */}
-          <Stack>
-            <h1 id="level-value" key={levelValue} className='level-text line-up'> {levelValue} </h1>
-            <h3 className='white-text'> {levelExplanation} </h3>
-          </Stack>
+          <Grid item xs={8} sx={{ display: 'flex', justifyContent: 'center'}}>
+            <Stack sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
+              <h1 id="level-value" key={levelValue} className='line-up'> {levelValue} </h1>
+              <h3 id="level-discription" className='white-text'> {levelExplanation} </h3>
+            </Stack>
+          </Grid>
 
           {/* 메인화면으로 돌아가기 */}
-          <form id="quitLever" onClick={() => {
-            setTimeout(() => {navigate('/')}, 600)}}>
-          	<input type="checkbox" name="lever" className="lever pristine" id="lever" value="lever value" role="switch" aria-label="lever" aria-checked="false" />
-          	<label htmlFor="lever"><span>On</span></label>
-          	<label htmlFor="lever"><span>Off</span></label>
-          </form>
-        </Box>
+          <Grid item xs={2}>
+            <form id="quitLever" onClick={() => {
+              setTimeout(() => {navigate('/')}, 600)}}>
+              <input type="checkbox" name="lever" className="lever pristine" id="lever" value="lever value" role="switch" aria-label="lever" aria-checked="false" />
+              <label htmlFor="lever"><span>On</span></label>
+              <label htmlFor="lever"><span>Off</span></label>
+            </form>
+          </Grid>
+        </Grid>
 
         {/* 선택한 난이도 따라서 나타나는 내용 */}
-        <Box component="div">
+        <Box component="div" sx={{ display:'flex', justifyContent:'center'}}>
           {controllerDegree === 0 ? <LowLevel/> : controllerDegree === 1 ? <IntermediateLevel/> : <HighLevel/>}
         </Box>
       </Box>
