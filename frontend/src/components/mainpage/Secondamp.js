@@ -92,8 +92,8 @@ export function Secondamp(props) {
       {/* knobs */}
       <mesh geometry={nodes.mesh_4.geometry} material={nodes.mesh_4.material}>
       <meshStandardMaterial {...blackPlastic} />
-      {/* knobs */}
       </mesh>
+      {/* knobs */}
       <mesh geometry={nodes.mesh_5.geometry} material={nodes.mesh_5.material}>
       <meshStandardMaterial {...blackPlastic} />
       </mesh>
@@ -113,7 +113,7 @@ export function Secondamp(props) {
       <meshStandardMaterial {...alu} />
       </mesh>
       <mesh geometry={nodes.mesh_10.geometry} material={nodes.mesh_10.material}>
-      {/* <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={1000000} color="lightblue" roughness={1} metalness={0.3} /> */}
+      <meshStandardMaterial {...blackPlastic} />
       </mesh>
       <mesh geometry={nodes.mesh_11.geometry} material={nodes.mesh_11.material}>
       <meshStandardMaterial {...blackPlastic} />

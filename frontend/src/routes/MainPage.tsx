@@ -71,7 +71,8 @@ export function MainPage() {
       speed= {2000}
       // import 
       // loop={true}
-      mousewheel={true}
+      // mousewheel={true}
+      touchRatio={0}
       navigation= {{
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
