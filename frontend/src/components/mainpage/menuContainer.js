@@ -50,9 +50,9 @@ export function MenuContainer(props) {
         </mesh>
         {envFlag === false ? <Environment preset="dawn" /> : null}
       </Suspense>
-      {/* <EffectComposer>
-        <Bloom luminanceThreshold={0.25} luminanceSmoothing={0.9} height={300} />
-      </EffectComposer> */}
+      <EffectComposer>
+        <Bloom luminanceThreshold={0.35} luminanceSmoothing={0.9} height={300} />
+      </EffectComposer>
     </Canvas>}
     
     </div>
