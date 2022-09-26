@@ -102,7 +102,14 @@ export function MainPage() {
             <Navbar />
             {isActive ? <MenuContainer num={0.65}/> : null }
             <span className="menu-span">Chord Game</span>
-
+            <h2 className="my-record" 
+              onClick={() => {
+                setTimeout(() => {
+                navigate('/profile')
+                }, 1000);
+              }}>
+              기록보기
+            </h2>
           </div>
           }
       </SwiperSlide>
@@ -113,14 +120,14 @@ export function MainPage() {
             <Navbar />
             {isActive ? <MenuContainer num={0.83}/> : null}
             <span className="menu-span">Chord Table</span>
-            <span className="my-record" 
+            <h2 className="my-record" 
               onClick={() => {
                 setTimeout(() => {
                 navigate('/profile')
                 }, 1000);
               }}>
               기록보기
-            </span>
+            </h2>
 
           </div>
           }
