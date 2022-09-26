@@ -13,6 +13,9 @@ import { MyRecord } from './routes/MyRecord';
 import { KakaoLogin } from './routes/KakaoLogin';
 import { ChordGame } from './routes/ChordGame';
 import { BackingTrack } from './routes/BackingTrack';
+import { Firstamp } from './components/mainpage/Firstamp';
+import { MenuContainer } from './components/mainpage/menuContainer';
+import { MainContainer } from './components/mainpage/mainContainer';
 
 // CODEgit 
 const container = document.getElementById('root')!;
@@ -27,7 +30,10 @@ root.render(
       <Route path="/backing" element={<BackingTrack />}></Route>
       <Route path="/game" element={<ChordGame />}></Route>
       <Route path="/login" element={<KakaoLogin />}></Route>
-      <Route path="/profile" element={<MyRecord />}></Route>
+      <Route path="/:userId" element={<MyRecord />}></Route>
+      <Route path="/dddd" element= {<Firstamp/>}></Route>
+      <Route path="*" element= {<MenuContainer/>}></Route>
+      <Route path="*" element= {<MainContainer/>}></Route>
       </Routes>
       </BrowserRouter>
     </Provider>
