@@ -8,26 +8,27 @@ import { Spinner } from '../../widgets/Spinner'
 import { dividerClasses } from '@mui/material'
 import "./menuContainer.css"
 import { ContactlessOutlined } from '@mui/icons-material'
+import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
+import { useNavigate } from 'react-router-dom'
 
 export function MenuContainer(props) {
   let [flag, setFlag] = useState(false)
   setTimeout(() => setFlag(true), 3000)
+  let [envFlag, setenvFlag] = useState(false)
+  const navigate = useNavigate()
 
-  let style = {
-    width: "100vw",
-    height: "100vh"
-  }
+
 
   return (
     <div id={flag === false ? "menu-container" : null} className='canvas-container'>
       {flag === false ? <Spinner/> : 
-      <Canvas dpr={window.decivePixelRatio} shadows  gl={{ alpha: false }}>
-      <fog attach="fog" args={['#17171b', 30, 40]} />
-      <color attach="background" args={['#17171b']} />
-      <ambientLight intensity={0.25} />
-      {/* <directionalLight castShadow intensity={2} position={[10, 6, 6]} shadow-mapSize={[1024, 1024]}>
-        <orthographicCamera attach="shadow-camera" left={-20} right={20} top={20} bottom={-20} />
-      </directionalLight> */}
+      <Canvas dpr={window.decivePixelRatio} shadows camera={{ position: [0,0,5], fov: 35 }} gl={{ alpha: false }}>
+      {/* <fog attach="fog" args={['#17171b', 30, 40]} />
+      <color attach="background" args={['#17171b']} /> */}
+      {/* <ambientLight intensity={0.25} /> */}
+        <directionalLight castShadow intensity={2} position={[10, 6, 6]} shadow-mapSize={[1024, 1024]}>
+          {/* <orthographicCamera attach="shadow-camera" left={-20} right={20} top={20} bottom={-20} /> */}
+        </directionalLight>
       <Suspense fallback={null}>
           <Center onCentered={({ container, height }) => container.scale.setScalar(3)}>
             {props.num === 0.65 ? <Firstamp position={[-1.8,1.36,0]} /> : props.num === 0.83 ? <Secondamp position={[1.4,1.5,0.3]}/> : null}
@@ -47,8 +48,11 @@ export function MenuContainer(props) {
             roughness={1}
           />
         </mesh>
-        <Environment preset="dawn" />
+        {envFlag === false ? <Environment preset="dawn" /> : null}
       </Suspense>
+      {/* <EffectComposer>
+        <Bloom luminanceThreshold={0.25} luminanceSmoothing={0.9} height={300} />
+      </EffectComposer> */}
     </Canvas>}
     
     </div>
