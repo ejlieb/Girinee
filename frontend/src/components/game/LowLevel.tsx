@@ -26,6 +26,8 @@ import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select'
+import StopIcon from '@mui/icons-material/Stop';
+import MicIcon from '@mui/icons-material/Mic';
 
 // -----------------------------------------------------------------------------------------------------
 
@@ -87,11 +89,11 @@ export function LowLevel() {
           {/* 녹화버튼 */}
           <div>
             <audio src={audioURL} controls />
-            <button onClick={startRecording} disabled={isRecording}>
-              start recording
+            <button id="record-btn" onClick={startRecording} disabled={isRecording}>
+              <MicIcon id="record-icon" fontSize="large"/>
             </button>
-            <button onClick={stopRecording} disabled={!isRecording}>
-              stop recording
+            <button id="stop-btn" onClick={stopRecording} disabled={!isRecording}>
+              <StopIcon id="stop-icon" fontSize="large"/>
             </button>
           </div>
         </div>
