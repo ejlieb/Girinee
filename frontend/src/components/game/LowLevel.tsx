@@ -24,9 +24,10 @@ import Bm_chord from '../../assets/images/chords/Bm_chord.png'
 // Material UI
 import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
-import NativeSelect from '@mui/material/NativeSelect'
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select'
+import StopIcon from '@mui/icons-material/Stop';
+import MicIcon from '@mui/icons-material/Mic';
 
 // -----------------------------------------------------------------------------------------------------
 
@@ -42,11 +43,7 @@ export function LowLevel() {
 
     // 녹음에 필요한 것
     // 금단의 any를 사용하고 말았음
-    const recordArr:any[] = useRecorder()
-    let audioURL : string = recordArr[0]
-    let isRecording : boolean = recordArr[1]
-    let startRecording = recordArr[2]
-    let stopRecording = recordArr[3]
+    const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
 
     // [audioURL, isRecording, startRecording, stopRecording]:[string,boolean,()=>void,()=>void] = useRecorder()
 
@@ -92,11 +89,11 @@ export function LowLevel() {
           {/* 녹화버튼 */}
           <div>
             <audio src={audioURL} controls />
-            <button onClick={startRecording} disabled={isRecording}>
-              start recording
+            <button id="record-btn" onClick={startRecording} disabled={isRecording}>
+              <MicIcon id="record-icon" fontSize="large"/>
             </button>
-            <button onClick={stopRecording} disabled={!isRecording}>
-              stop recording
+            <button id="stop-btn" onClick={stopRecording} disabled={!isRecording}>
+              <StopIcon id="stop-icon" fontSize="large"/>
             </button>
           </div>
         </div>

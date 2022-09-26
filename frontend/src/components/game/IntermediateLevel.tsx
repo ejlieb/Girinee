@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { AnimatePresence } from 'framer-motion'
 
 // Other Component 
+import useRecorder from "./useRecorder"
 import C_chord from '../../assets/images/chords/C_chord.png'
 import Cm_chord from '../../assets/images/chords/Cm_chord.png'
 import D_chord from '../../assets/images/chords/D_chord.png'
@@ -27,36 +28,36 @@ import Button from '@mui/material/Button'
 export function IntermediateLevel() {
     // script
     const guitarChordSets = [['A', 'B', 'C', 'D'], ['B', 'C', 'D', 'E'], ['C', 'D', 'E', 'F'],['D', 'E', 'F', 'G'],['E', 'F', 'G', 'A']]
-    
-    // 버튼 눌렀을 때 해당 코드 연습 화면으로 변경
+
+    const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
 
     const [cntChord, setCntChord] = useState('')
-
+    // 버튼 눌렀을 때 해당 코드 연습 화면으로 변경
     const startGame = () => {
       const randomIdx = Math.floor(Math.random() * 5)
       const cntChordset = guitarChordSets[randomIdx]
       console.log(cntChordset);
 
+      setTimeout(startRecording(),3000)
+
       let cntIdx = -1      
-      // setCntChord((prev) => cntChordset[cntIdx])
       setInterval(function() {
-        // console.log(cntIdx)
-        if (cntIdx !== 4) {
-          // console.log(cntIdx)
+        if (cntIdx !== 3) {
           cntIdx++
           setCntChord((prev) => cntChordset[cntIdx])
-        }
-      }, 3000);
-      // console.log(cntChordset[cntIdx]);      
+        } else {
+          setTimeout(stopRecording())
+        } 
+      }, 3000)      
     }
-    
+
       
     // JSX
     return (
       <div>
         <h1 className="white-text">게임모드</h1>
 
-        <Button className="white-text" onClick={startGame}>시작!</Button>
+        <Button className="white-text" disabled={isRecording} onClick={startGame}>시작!</Button>
 
         <div id="chord-box">
           <h1 id="chord-name" className='white-text'>{cntChord ==='C' ? 'C' : cntChord ==='Cm' ? 'Cm' :
@@ -75,6 +76,7 @@ export function IntermediateLevel() {
                     cntChord ==='G' ? G_chord : cntChord ==='Gm' ? Gm_chord :
                     cntChord ==='A' ? A_chord : cntChord ==='Am' ? Am_chord :
                     cntChord ==='B' ? B_chord : Bm_chord} id="chord-img" alt="..." />
+            <audio src={audioURL} controls />
         </div>
       </div>
     )
