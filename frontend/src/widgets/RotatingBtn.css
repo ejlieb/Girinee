@@ -29,7 +29,7 @@
 #rotating-circle-fade {
     stroke-dasharray: 564.573;
     stroke: rgb(230, 134, 88);
-    animation: fade 4s;
+    animation: fade 10s;
     opacity:0
 }
 
@@ -49,6 +49,7 @@
     border: 0;
     outline: none;
     cursor: pointer;
+    z-index:2;
 }
 .ro-button-start {
     /* opacity: 0;
@@ -130,7 +131,7 @@
     letter-spacing: .4em;
     color: #f69f33;
     text-transform: uppercase;
-    animation: text-fade 4s;
+    animation: text-fade 10s;
     opacity: 0;
 }
 
