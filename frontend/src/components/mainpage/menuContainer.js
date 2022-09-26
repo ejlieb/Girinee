@@ -1,6 +1,6 @@
 import { Suspense, useMemo, useRef, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { useGLTF, useScroll, ScrollControls, Environment, Merged, Text, MeshReflectorMaterial, Center } from '@react-three/drei'
+import { useGLTF, useScroll, ScrollControls, Environment, Merged, Text, MeshReflectorMaterial, Center, OrbitControls } from '@react-three/drei'
 import { Firstamp } from './Firstamp'
 import { Secondamp } from './Secondamp'
 import { Spinner } from '../../widgets/Spinner'
@@ -30,7 +30,7 @@ export function MenuContainer(props) {
     setTimeout(() => {
       setDirectIntensity(0.15)
       setThreshold(0.001)
-      setenvFlag(true)},100)
+      setenvFlag(true)},300)
     
     setTimeout(() => {
       dispatch(setRoBtnState(0))
@@ -42,9 +42,11 @@ export function MenuContainer(props) {
 
   return (
     <div id={flag === false ? "menu-container" : null} className='canvas-container'>
+      <h1 id ="menu-h1" onClick={() => {OnClickRoute()}}>Enter</h1>
       {envFlag === true ? <Spinner/> : null}
       {flag === false ? <Spinner/> : 
-      <Canvas dpr={window.decivePixelRatio} shadows camera={{ position: [0,0,5], fov: 35 }} gl={{ alpha: false }} onClick={() => {OnClickRoute()}} id={'menu-canvas'}>
+      <Canvas dpr={window.decivePixelRatio} shadows camera={{ position: [0,0,5], fov: 35 }} gl={{ alpha: false }}  id={'menu-canvas'}>
+        <OrbitControls enable/>
       {/* <fog attach="fog" args={['#17171b', 30, 40]} />
       <color attach="background" args={['#17171b']} /> */}
       {/* <ambientLight intensity={0.25} /> */}
