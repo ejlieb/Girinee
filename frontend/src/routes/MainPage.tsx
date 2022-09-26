@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as THREE from 'three'
 import { createRoot } from 'react-dom/client'
 import Button from '@mui/material/Button';
@@ -16,6 +16,7 @@ import { MenuContainer } from "../components/mainpage/menuContainer";
 import './MainPage.css';
 import { Navbar } from "../widgets/Navbar";
 import { KakaoLogin } from "./KakaoLogin";
+import { Switch } from "@mui/material";
 /* swiper */
 import { Spinner } from "../widgets/Spinner";
 import 'swiper/css';
@@ -35,6 +36,7 @@ import 'swiper/css/scrollbar';
 
 export function MainPage() {
   // script
+  const navigate = useNavigate()
 
 
   // 로그인
@@ -97,8 +99,9 @@ export function MainPage() {
         {({ isActive }) =>
           <div id="main2">
             <Navbar />
-            {isActive ? <MenuContainer num={0.65}/> : null}
+            {isActive ? <MenuContainer num={0.65}/> : null }
             <span className="menu-span">Chord Game</span>
+
           </div>
           }
       </SwiperSlide>
