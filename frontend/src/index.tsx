@@ -30,7 +30,7 @@ root.render(
       <Route path="/backing" element={<BackingTrack />}></Route>
       <Route path="/game" element={<ChordGame />}></Route>
       <Route path="/login" element={<KakaoLogin />}></Route>
-      <Route path="/:userId" element={<MyRecord />}></Route>
+      <Route path="/profile" element={<MyRecord />}></Route>
       <Route path="/dddd" element= {<Firstamp/>}></Route>
       <Route path="*" element= {<MenuContainer/>}></Route>
       <Route path="*" element= {<MainContainer/>}></Route>

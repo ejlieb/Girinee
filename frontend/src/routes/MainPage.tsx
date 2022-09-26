@@ -29,7 +29,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { useNavigate } from "react-router-dom";
 
 // import "swiper/swiper.css";
 // import "swiper/components/navigation/navigation.css";
@@ -57,8 +56,6 @@ export function MainPage() {
       console.log(accessToken)
     }
   },[])
-
-  const navigate = useNavigate()
   
   // JSX
   return (
