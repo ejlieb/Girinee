@@ -1,7 +1,9 @@
 import React from 'react';
+import './PracticeReport.css';
 import { Box } from '@mui/system'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from "recharts";
-
+import axios from 'axios';
+import Typography from '@mui/material/Typography';
 
 const data = [
   {
@@ -37,7 +39,9 @@ const data = [
 export function PracticeReport() {
   
     return (
+
       <Box component="div">
+        <Typography sx={{ display: 'flex', justifyContent: 'center', mb:3}} id="text-color-practice">코드별 정확도를 확인할 수 있습니다.</Typography>
         <BarChart
           width={900}
           height={600}
