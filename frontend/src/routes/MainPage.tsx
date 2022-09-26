@@ -118,7 +118,7 @@ export function MainPage() {
             <span className="my-record" 
               onClick={() => {
                 setTimeout(() => {
-                navigate('/:userId')
+                navigate('/profile')
                 }, 1000);
               }}>
               기록보기

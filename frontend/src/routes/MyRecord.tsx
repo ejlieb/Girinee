@@ -34,10 +34,10 @@ export function MyRecord() {
         <Box component="div" id="my-record-body" sx={{ display: 'flex', flexDirection: 'column' }}>
 
           {/* 그래프 선택 */}
-          <Box component="div" sx={{ my: 5, display: 'flex', justifyContent: 'center'}}>
+          <Box component="div" sx={{ mb: 0, mt:4, display: 'flex', justifyContent: 'center'}}>
             <Stack spacing={2} direction="row">
-            <Button variant="text" onClick={codeAccuracyClick}>
-              <Typography id="graph-text" >Code Accuracy</Typography>
+            <Button variant="text" onClick={codeAccuracyClick} sx={{ width: 50}}>
+              <Typography id="graph-text">Practice</Typography>
             </Button>
             <Button variant="text" onClick={GameClick}>
               <Typography id="graph-text">Game</Typography>
@@ -46,9 +46,10 @@ export function MyRecord() {
           </Box>
 
           {/* 그래프 */}
-            <Box component="div" sx={{ display: 'flex', justifyContent: 'center'}}>
-              {Graph === 0 ? <PracticeReport/> : <GameReport/>}
-            </Box>
+          <Box component="div" sx={{ display: 'flex', justifyContent: 'center', mt:5 }}>
+            {Graph === 0 ? <PracticeReport/> : <GameReport/>}
+          </Box>
+
 
         </Box>
         <Navbar/>
