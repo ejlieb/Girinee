@@ -3,14 +3,14 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 // type지정
 
 export interface mainData {
-    onRoute: boolean
+    directIntensity: number
 }
 
 
 // Initial State
 
 const initialState = {
-    onRoute: false
+    directIntensity: 2
 }
 
 const mainSlice = createSlice({
@@ -18,13 +18,12 @@ const mainSlice = createSlice({
   initialState,
   reducers: {
     // Reducer 작성
-    setOnRoute: (state:mainData) => {
-      console.log('gks')
-      state.onRoute = true
+    setDirectIntensity: (state:mainData, action) => {
+      state.directIntensity = action.payload
     },
   }
 })
 
 const { reducer, actions } = mainSlice
-export const {setOnRoute} = actions
+export const {setDirectIntensity} = actions
 export default mainSlice.reducer

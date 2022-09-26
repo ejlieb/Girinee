@@ -157,7 +157,7 @@ export function Firstamp(props) {
       </mesh>
       {/* tube-light */}
       <mesh geometry={nodes.mesh_25.geometry} material={nodes.mesh_25.material} receiveShadow castShadow>
-      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={10} color="lightblue" roughness={0} metalness={0.3} />
+      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={1.4} color="lightblue" roughness={0} metalness={0.3} />
       </mesh>
       {/* tube-bracket */}
       <mesh geometry={nodes.mesh_27.geometry} material={nodes.mesh_27.material} receiveShadow castShadow>
@@ -173,7 +173,7 @@ export function Firstamp(props) {
       </mesh>
       {/* tube-light */}
       <mesh geometry={nodes.mesh_30.geometry} material={nodes.mesh_30.material} receiveShadow castShadow>
-      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={10} color="lightblue" roughness={0} metalness={0.3} />
+      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={1.4} color="lightblue" roughness={0} metalness={0.3} />
       </mesh>
       {/* tube-bracket */}
       <mesh geometry={nodes.mesh_32.geometry} material={nodes.mesh_32.material} receiveShadow castShadow>
@@ -187,7 +187,7 @@ export function Firstamp(props) {
       <meshPhysicalMaterial {...Glass}/>
       </mesh>
       <mesh geometry={nodes.mesh_35.geometry} material={nodes.mesh_35.material} receiveShadow castShadow>
-      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={10} color="lightblue" roughness={0} metalness={0.3} />
+      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={1.4} color="lightblue" roughness={0} metalness={0.3} />
       </mesh>
       <mesh geometry={nodes.mesh_37.geometry} material={nodes.mesh_37.material} receiveShadow castShadow>
       <meshStandardMaterial {...blackPlastic}/>
@@ -200,7 +200,7 @@ export function Firstamp(props) {
       <meshPhysicalMaterial {...Glass}/>
       </mesh>
       <mesh geometry={nodes.mesh_40.geometry} material={nodes.mesh_40.material} receiveShadow castShadow>
-      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={10} color="lightblue" roughness={0} metalness={0.3} />
+      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={1.4} color="lightblue" roughness={0} metalness={0.3} />
       </mesh>
       <mesh geometry={nodes.mesh_42.geometry} material={nodes.mesh_42.material} receiveShadow castShadow>
       <meshStandardMaterial {...blackPlastic}/>
@@ -213,7 +213,7 @@ export function Firstamp(props) {
       <meshPhysicalMaterial {...Glass}/>
       </mesh>
       <mesh geometry={nodes.mesh_45.geometry} material={nodes.mesh_45.material} receiveShadow castShadow>
-      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={10} color="lightblue" roughness={0} metalness={0.3} />
+      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={1.4} color="lightblue" roughness={0} metalness={0.3} />
       </mesh>
       <mesh geometry={nodes.mesh_47.geometry} material={nodes.mesh_47.material} receiveShadow castShadow>
       <meshStandardMaterial {...blackPlastic}/>
@@ -226,7 +226,7 @@ export function Firstamp(props) {
       <meshPhysicalMaterial {...Glass}/>
       </mesh>
       <mesh geometry={nodes.mesh_50.geometry} material={nodes.mesh_45.material} receiveShadow castShadow>
-      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={10} color="lightblue" roughness={0} metalness={0.3} />
+      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={1.4} color="lightblue" roughness={0} metalness={0.3} />
       </mesh>
       <mesh geometry={nodes.mesh_52.geometry} material={nodes.mesh_47.material} receiveShadow castShadow>
       <meshStandardMaterial {...blackPlastic}/>
@@ -239,7 +239,7 @@ export function Firstamp(props) {
       <meshPhysicalMaterial {...Glass}/>
       </mesh>
       <mesh geometry={nodes.mesh_55.geometry} material={nodes.mesh_45.material} receiveShadow castShadow>
-      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={10} color="lightblue" roughness={0} metalness={0.3} />
+      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={1.4} color="lightblue" roughness={0} metalness={0.3} />
       </mesh>
       <mesh geometry={nodes.mesh_57.geometry} material={nodes.mesh_47.material} receiveShadow castShadow>
       <meshStandardMaterial {...blackPlastic}/>
@@ -252,7 +252,7 @@ export function Firstamp(props) {
       <meshPhysicalMaterial {...Glass}/>
       </mesh>
       <mesh geometry={nodes.mesh_60.geometry} material={nodes.mesh_45.material} receiveShadow castShadow>
-      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={10} color="lightblue" roughness={0} metalness={0.3} />
+      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={1.4} color="lightblue" roughness={0} metalness={0.3} />
       </mesh>
       <mesh geometry={nodes.mesh_62.geometry} material={nodes.mesh_47.material} receiveShadow castShadow>
       <meshStandardMaterial {...blackPlastic}/>
@@ -266,7 +266,7 @@ export function Firstamp(props) {
       <meshPhysicalMaterial {...Glass}/>
       </mesh>
       <mesh geometry={nodes.mesh_65.geometry} material={nodes.mesh_45.material} receiveShadow castShadow>
-      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={10} color="lightblue" roughness={0} metalness={0.3} />
+      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={1.4} color="lightblue" roughness={0} metalness={0.3} />
       </mesh>
       <mesh geometry={nodes.mesh_67.geometry} material={nodes.mesh_47.material} receiveShadow castShadow>
       <meshStandardMaterial {...blackPlastic}/>
@@ -277,7 +277,7 @@ export function Firstamp(props) {
       {/* start-power-light */}
       </mesh>
       <mesh geometry={nodes.mesh_69.geometry} material={nodes.mesh_69.material} receiveShadow castShadow>
-      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={10} color="lightblue" roughness={0} metalness={0.3} />
+      <meshStandardMaterial attach="material" emissive={'lightblue'} emissiveIntensity={1.4} color="lightblue" roughness={0} metalness={0.3} />
       </mesh>
       {/* Glass */}
       <mesh geometry={nodes.mesh_70.geometry} material={nodes.mesh_70.material} receiveShadow castShadow >
