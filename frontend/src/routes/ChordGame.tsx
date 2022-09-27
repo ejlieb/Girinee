@@ -82,7 +82,7 @@ export function ChordGame() {
         <Grid container component="div" id="control-panel" sx={{ mt: 5, px: 10, display: 'flex', justifyContent: 'space-between'}}>
           <Grid item xs={2} component="div" sx={{ display: 'flex'}}>
             {/* 컨트롤러 */}
-            <div id="level-controller" className={`degree${ controllerDegree } metal radial`}>
+            <div id="level-controller" className={`degree${ controllerDegree }`}>
               <div id="level-index"></div>
             </div>
 

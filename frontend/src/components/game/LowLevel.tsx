@@ -28,6 +28,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import StopIcon from '@mui/icons-material/Stop';
 import MicIcon from '@mui/icons-material/Mic';
+import { createTextSpanFromBounds } from 'typescript'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { withTheme } from '@emotion/react'
 
 // -----------------------------------------------------------------------------------------------------
 
@@ -45,28 +48,35 @@ export function LowLevel() {
     // 금단의 any를 사용하고 말았음
     const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
 
-    // [audioURL, isRecording, startRecording, stopRecording]:[string,boolean,()=>void,()=>void] = useRecorder()
+    // MUI select 테마 변경
+    const theme = createTheme({
+      palette: {
+        primary: {
+          main: '#000',          
+        },
+      },
+    })
 
     // JSX
     return (
       <div>
-        <h1 className="white-text">연습모드</h1>
-        <div>
-          <FormControl variant="filled" sx={{ minWidth: 120 }}>
-            <InputLabel id="chord-select-label">CHORD</InputLabel>
-            <Select
-              labelId="chord-select-label"
-              id="chord-select"
-              value={cntChord}
-              label="Chord"
-              onChange={showChord}
-              style={{ color:"white" }}
-            >
-              {guitarChords.map((chord, idx) => (
-                <MenuItem key={idx} value={chord}>{chord}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+        <div className="selectBox">
+          <ThemeProvider theme={theme}>
+            <FormControl variant="filled" sx={{ minWidth: 200 }}>
+              <InputLabel id="chord-select-label">CHORD</InputLabel>
+              <Select
+                labelId="chord-select-label"
+                id="chord-select"
+                value={cntChord}
+                label="Chord"
+                onChange={showChord}            
+              >
+                {guitarChords.map((chord, idx) => (
+                  <MenuItem key={idx} value={chord}>{chord}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </ThemeProvider>
         </div>
 
         <div id="chord-box">
