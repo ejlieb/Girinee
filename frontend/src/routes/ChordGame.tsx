@@ -35,12 +35,12 @@ export function ChordGame() {
         window.location.replace('http://localhost:3000')
       }
     };
-  
-    // 난이도 따라서 하단 컴포넌트 변경하기
+
     const [controllerDegree, setDegree] = useState(0)
     const clickLow = () => setDegree((prev) => 0)
     const clickMid = () => setDegree((prev) => 1)
     const clickHigh = () => setDegree((prev) => 2)
+    
     
     let levelValue = "E A S Y - L E V E L"
     let levelExplanation = "쉬워요"
