@@ -7,6 +7,7 @@ import axios from 'axios';
 import './PracticeReport.css';
 
 
+// main
 export function PracticeReport() {
 
   // axios 상태 관리
@@ -60,8 +61,7 @@ export function PracticeReport() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        // 요청이 시작 할 때에는 error 와 users 를 초기화하고
-        // loading 상태를 true 로 바꿉니다.
+        // 요청이 시작 할 때에는 error 와 users 를 초기화하고 loading 상태를 true 로 바꿉니다.
         // setError(null);
         // setLoading(true);
         // setUsers(null);
