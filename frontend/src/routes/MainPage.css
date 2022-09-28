@@ -88,3 +88,8 @@
   height: 50px;
   z-index: 2;
 }
+
+.my-record:hover {
+  cursor:pointer;
+  opacity: 70%;
+}
