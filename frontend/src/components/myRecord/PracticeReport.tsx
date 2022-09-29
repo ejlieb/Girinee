@@ -17,10 +17,10 @@ export function PracticeReport() {
   const accessToken = window.localStorage.getItem('accessToken')
 
   const graphdata = [
-    {
-      name: "A",
-      CodeAccuracy: 0,
-    },
+    // {
+    //   name: "A",
+    //   CodeAccuracy: 0,
+    // },
     {
       name: "B",
       CodeAccuracy: 0,
@@ -71,7 +71,7 @@ export function PracticeReport() {
         );
         setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
         console.log('data = ', response.data)
-        console.log(response.data['A'])
+        console.log(response.data['B'])
       } catch (e: any) {
         console.log('errer=', e)
         // setError(e);
@@ -88,11 +88,11 @@ export function PracticeReport() {
   // 그래프 데이터 관리
   if(users) {
     const graphdata = [
-      {
-        name: "A",
-        // CodeAccuracy: 80,
-        CodeAccuracy: ( parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']["failure"])) * 100).toFixed(0),
-      },
+      // {
+      //   name: "A",
+      //   // CodeAccuracy: 80,
+      //   CodeAccuracy: ( parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']["failure"])) * 100).toFixed(0),
+      // },
       {
         name: "B",
         // CodeAccuracy: 40,
