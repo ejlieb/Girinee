@@ -36,6 +36,14 @@ import { Cookies } from 'react-cookie';
 
 
 export function MainPage() {
+
+  // 로그인
+  const code = window.location.search
+  let param = new URLSearchParams(code);
+  const accessToken = param.get('accessToken');
+  console.log('code = ', code)
+  console.log('accessToken = ', accessToken)
+
   // script
   const navigate = useNavigate()
   

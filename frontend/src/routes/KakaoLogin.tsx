@@ -45,7 +45,7 @@ export function KakaoLogin() {
           navigate('/')
         }, 1000);
       }
-    })
+    }, [])
   
     // JSX
     return (
