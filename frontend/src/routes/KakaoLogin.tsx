@@ -30,10 +30,11 @@ export function KakaoLogin() {
     let timer = setTimeout(() => setKakaoBtnState(true), 5000)
 
     useEffect(() => {
-      const code = new URL(window.location.href)
-      const accessToken = code.searchParams.get('accessToken')
-      console.log('kakaologin', window.location.href)
-      console.log('kakaplogin', accessToken)
+      const code = window.location.search
+      let param = new URLSearchParams(code);
+      const accessToken = param.get('accessToken');
+      console.log('code = ', code)
+      console.log('accessToken = ', accessToken)
       
       if(accessToken) {
         console.log("현재 login됨")
