@@ -9,10 +9,12 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 import GIRINEE from '../assets/images/GIRINEE.png'
 import './ChordGame.css'
 import '../assets/fonts/font.css'
-
-import { LowLevel } from '../components/game/LowLevel'
-import { IntermediateLevel } from '../components/game/IntermediateLevel'
-import { HighLevel } from '../components/game/HighLevel'
+import { LowLevelInfo } from '../components/game/LowLevelInfo'
+import { LowLevelController } from '../components/game/LowLevelController'
+import { NormalLevelInfo } from '../components/game/NormalLevelInfo'
+import { NormalLevelController } from '../components/game/NormalLevelController'
+import { HighLevelInfo } from '../components/game/HighLevelInfo'
+import { HighLevelController } from '../components/game/HighLevelController'
 import { setDegree } from '../features/chordgame/GameSlice'
 
 // Material UI
@@ -82,19 +84,25 @@ export function ChordGame() {
           </Stack>
         </Box>
       
+        {/* Main Contents */}
         <Grid component="div" container>
-          <Grid item xs={4}>
-                    {/* 선택한 난이도 따라서 나타나는 내용 */}
-        <Box component="div" sx={{ display:'flex', justifyContent:'center'}}>
-          {controllerDegree === 0 ? <LowLevel/> : controllerDegree === 1 ? <IntermediateLevel/> : <HighLevel/>}
-        </Box>
-          </Grid>
-          <Grid item xs={4}>
 
-          </Grid>
-
-          {/* 컨트롤러 */}
+          {/* Level Info */}
           <Grid item xs={4} p={4}>
+            {/* 선택한 난이도 따라서 나타나는 내용 */}
+            {/* <Box component="div" sx={{ display:'flex', justifyContent:'center'}}> */}
+            {controllerDegree === 0 ? <LowLevelInfo/> : controllerDegree === 1 ? <NormalLevelInfo/> : <HighLevelInfo/>}
+            {/* </Box> */}
+          </Grid>
+
+          {/* Three js를 위한 공간~ */}
+          <Grid item xs={4}>
+
+          </Grid>
+
+          {/* 메인 컨트롤러 + Level별 컨트롤러 */}
+          <Grid item xs={4} p={4}>
+            {/* 메인 컨트롤러 */}
             <Stack>
               {/* 메인화면으로 돌아가기 */}
               <Box component="div" sx={{ display: 'flex', justifyContent: 'end'}}>
@@ -126,16 +134,11 @@ export function ChordGame() {
                   </Button>
                 </Box>
               </Stack>
+              
+              {/* 메인 컨트롤러 */}
+              {controllerDegree === 0 ? <LowLevelController/> : controllerDegree === 1 ? <NormalLevelController /> : <HighLevelController/>}
             </Stack>
           </Grid>
-        </Grid>
-        
-        {/* 현재 난이도 표시 */}
-        <Grid item xs={8} sx={{ display: 'flex', justifyContent: 'center'}}>
-          <Stack sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
-            <h1 id="level-value" key={levelValue} className='line-up'> {levelValue} </h1>
-            <h3 id="level-discription" className='white-text'> {levelExplanation} </h3>
-          </Stack>
         </Grid>
       </Box>
     )
