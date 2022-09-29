@@ -90,8 +90,9 @@ export function GameReport() {
 
   console.log("데이터 들어오는지 확인1 =", users, value)
   console.log("데이터 들어오는지 확인2 =", users[0])
-  console.log("데이터 들어오는지 확인3 =",users[0]['chord1'] )
-  console.log("데이터 들어오는지 확인4 =",users[0]['score2'] )
+  console.log("데이터 들어오는지 확인2 =", users[1])
+  // console.log("데이터 들어오는지 확인3 =", users[0]['chord1'] )
+  // console.log("데이터 들어오는지 확인4 =", users[0]['score2'] )
 
   // 그래프 데이터 관리
   const graphdata = [
