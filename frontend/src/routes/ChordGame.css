@@ -30,9 +30,9 @@
 #level-controller{
   width: 120px;
   height: 120px;
-  /* background-color: transparent; */
-  /* border: 3px double white; */
-  /* border-radius: 50%; */
+  background-color: transparent;
+  border: 3px double white;
+  border-radius: 50%;
   transition: 0.5s;
   /* background: radial-gradient(#7c7d7f, #dbdbdb); */
 }
@@ -43,7 +43,7 @@
   height: 8px;
   margin-top: 25px;
   margin-left: 90px;
-  background-color: maroon;
+  background-color: white;
   border-radius: 50%;
 }
 
@@ -131,60 +131,6 @@
   }
 }
 
-/* 노브 */
-.metal {
-  position: relative;
-  outline: none;
-  color: hsla(0,0%,20%,1);
-  background-color: hsl(0,0%,90%);
-  box-shadow: 
-    inset hsla(0,0%,15%, 1) 0  0px 0px 1px, /* border */
-    inset hsla(0,0%,15%, .8) 0 -1px 5px 1px, /* soft SD */
-    inset hsla(0,0%,0%, .25) 0 -1px 0px 3px, /* bottom SD */
-    inset hsla(0,0%,100%,.7) 0  2px 1px 3px, /* top HL */
-
-    hsla(0,0%, 0%,.2) 0 -2px 1px 1px, /* outer SD */
-    hsla(0,0%,100%,.8) 0 0px 0px 0px; /* outer HL */ 
-}
-
-/* Radial */
-.radial.metal {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-image: 
-    -webkit-radial-gradient(  50%   0%,  8% 50%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),
-    -webkit-radial-gradient(  50% 100%, 12% 50%, hsla(0,0%,100%,.6) 0%, hsla(0,0%,100%,0) 100%),
-    -webkit-radial-gradient(   0%  50%, 50%  7%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),
-    -webkit-radial-gradient( 100%  50%, 50%  5%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),
-    
-    -webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   3%, hsla(0,0%,  0%,.1) 3.5%),
-    -webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%,.1) 7.5%),
-    -webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.2) 2.2%),
-    
-    -webkit-radial-gradient( 50% 50%, 200% 50%, hsla(0,0%,90%,1) 5%, hsla(0,0%,85%,1) 30%, hsla(0,0%,60%,1) 100%);
-}
-
-
-.metal.radial:before, .metal.radial:after {
-  content: "";
-  top: 0;
-  left: 0;
-  position: absolute;
-  width: inherit;
-  height: inherit;
-  border-radius: inherit;
-  
-  /* fake conical gradients */
-  background-image: 
-    -webkit-radial-gradient(  50%   0%, 10% 50%, hsla(0,0%,0%,.3) 0%, hsla(0,0%,0%,0) 100%),
-    -webkit-radial-gradient(  50% 100%, 10% 50%, hsla(0,0%,0%,.3) 0%, hsla(0,0%,0%,0) 100%),
-    -webkit-radial-gradient(   0%  50%, 50% 10%, hsla(0,0%,0%,.2) 0%, hsla(0,0%,0%,0) 100%),
-    -webkit-radial-gradient( 100%  50%, 50% 10%, hsla(0,0%,0%,.2) 0%, hsla(0,0%,0%,0) 100%);
-}
-.metal.radial:before { transform: rotate( 45deg); }
-.metal.radial:after { transform: rotate(10deg); }
-
 
 
 
@@ -192,7 +138,7 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
-   width: 12em;
+   width: 10em;
 }
 #quitLever label {
   background-color: #0d0;
@@ -221,22 +167,11 @@ label span {
 
 /* Lever */
 #lever {
-   background-image:
-      radial-gradient(1em 1.5em at 50% 50%, rgb(204,204,204) 25%, rgb(170,170,170) 49%, rgba(170,170,170,0) 50%),
-      radial-gradient(0.65em 1em at 50% 53%, rgb(68,68,68), rgba(68,68,68,0)),
-      radial-gradient(0.75em 0.75em at 55% 45%, rgb(255,255,255), rgba(255,255,255,0)),
-      radial-gradient(0.5em 0.4em at 43% 56%, rgba(255,255,255,0.5), rgba(255,255,255,0)),
-      radial-gradient(0.5em 0.4em at 55% 57%, rgba(255,255,255,0.6), rgba(255,255,255,0)),
-      radial-gradient(0.5em 0.4em at 50% 60%, rgba(165, 162, 162, 0.6), rgba(255,255,255,0)),
-      radial-gradient(100% 100% at 50% 50%, rgb(238,238,238), rgb(170,170,170) 10%, rgb(0,0,0) 18%, rgb(0,0,0) 21%, rgb(153,153,153) 21.5%, rgb(153,153,153) 24%, rgba(153,153,153,0) 24.5%, rgba(221,221,221,0) 30%, rgb(221,221,221) 30.5%, rgb(221,221,221) 33%, rgb(68,68,68) 33.5%, rgb(68,68,68) 35%, rgba(68,68,68,0) 35.5%, rgba(221,221,221,0) 41%, rgb(221,221,221) 41.5%, rgb(238,238,238) 45%, rgb(68,68,85) 45.5%, rgb(68,68,85) 49%, rgba(68,68,85,0) 50%),
-      radial-gradient(2em 2em at 35% 20%, rgb(255,255,255), rgba(255,255,255,0) 2em),
-      radial-gradient(2em 2em at 65% 80%, rgb(255,255,255), rgba(255,255,255,0) 2em),
-      radial-gradient(2em 2em at 80% 35%, rgb(255,255,255), rgba(255,255,255,0) 2em),
-      radial-gradient(2em 2em at 20% 65%, rgb(255,255,255), rgba(255,255,255,0) 2em),
-      radial-gradient(100% 100% at center, rgb(170,170,170) 49%, rgba(170,170,170,0) 50%);
-   background-position: 0.5em 0, 0.5em 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
-   border-radius: 50%;
-   box-shadow: 0 2em 2em rgba(0,0,0,0.3);
+   max-width: 150px;
+   max-height: 35px;
+   background-color: gray;
+   border-radius: 17.5px;
+   box-shadow:inset 0 0.5em 0.5em rgba(0,0,0,0.7);
    cursor: pointer;
    font-size: 1em;
    display: block;
@@ -258,35 +193,20 @@ label span {
 }
 #lever:before {
    animation: leverAOff 0.3s linear forwards;
-   background:
-      radial-gradient(35% 25% at 50% 25%, rgb(136,136,153) 20%, rgba(136,136,153,0)),
-      radial-gradient(1em 0.75em at 32% 75%, rgb(102,102,102), rgba(102,102,102,0)),
-      radial-gradient(1em 0.75em at 65% 78%, rgb(102,102,102), rgba(102,102,102,0)),
-      radial-gradient(100% 100% at center, rgb(68,68,68) 49.5%, rgba(68,68,68,0) 50%);
-   box-shadow:
-      -2em 4em 2em rgba(0,0,0,0.3),
-      -2em 5em 4em rgba(0,0,0,0.2),
-      -2em 7em 4em rgba(0,0,0,0.2),
-      -2em 9em 4em rgba(0,0,0,0.2),
-      -2em 11em 4em rgba(0,0,0,0.2);
    border-radius: 50%;
    width: 2em;
    height: 2em;
    transform: translate(100%,-50%);
    z-index: 1;
 }
-#lever:checked {
-   background-position: -0.5em 0, -0.5em 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
-}
 #lever:checked:before {
    animation: leverAOn 0.3s linear forwards;
 }
 #lever:after {
    animation: leverBOff 0.3s linear forwards;
-   background-color: #333;
+   background-color: white;
    border-radius: 15em;
-   box-shadow: 0 0 1em #667 inset;
-   width: 3.75em;
+   width: 2em;
    height: 2em;
    transform: translate(0.5em,-50%);
 }
@@ -308,76 +228,43 @@ label span {
 
 @keyframes leverAOn {
    from {
-      box-shadow:
-         -2em 4em 2em rgba(0,0,0,0.3),
-         -2em 5em 4em rgba(0,0,0,0.2),
-         -2em 7em 4em rgba(0,0,0,0.2),
-         -2em 9em 4em rgba(0,0,0,0.2),
-         -2em 11em 4em rgba(0,0,0,0.2);
       transform: translate(100%,-50%);
    }
    50% {
-      box-shadow:
-         0 6em 2em rgba(0,0,0,0.3),
-         0 5em 4em rgba(0,0,0,0.2),
-         0 7em 4em rgba(0,0,0,0.2),
-         0 9em 4em rgba(0,0,0,0.2),
-         0 11em 4em rgba(0,0,0,0.2);
    }
    to {
-      box-shadow:
-         2em 4em 2em rgba(0,0,0,0.3),
-         2em 5em 4em rgba(0,0,0,0.2),
-         2em 7em 4em rgba(0,0,0,0.2),
-         2em 9em 4em rgba(0,0,0,0.2),
-         2em 11em 4em rgba(0,0,0,0.2);
-      transform: translate(-200%,-50%);
+      transform: translate(-100%,-50%);
    }
 }
 @keyframes leverAOff {
    from {
-      box-shadow:
-         2em 4em 2em rgba(0,0,0,0.3),
-         2em 5em 4em rgba(0,0,0,0.2),
-         2em 7em 4em rgba(0,0,0,0.2),
-         2em 9em 4em rgba(0,0,0,0.2),
-         2em 11em 4em rgba(0,0,0,0.2);
-      transform: translate(-200%,-50%);
+      transform: translate(-100%,-50%);
    }
    50% {
-      box-shadow:
-         0 6em 2em rgba(0,0,0,0.3),
-         0 5em 4em rgba(0,0,0,0.2),
-         0 7em 4em rgba(0,0,0,0.2),
-         0 9em 4em rgba(0,0,0,0.2),
-         0 11em 4em rgba(0,0,0,0.2);
    }
    to {
-      box-shadow:
-         -2em 4em 2em rgba(0,0,0,0.3),
-         -2em 5em 4em rgba(0,0,0,0.2),
-         -2em 7em 4em rgba(0,0,0,0.2),
-         -2em 9em 4em rgba(0,0,0,0.2),
-         -2em 11em 4em rgba(0,0,0,0.2);
       transform: translate(100%,-50%);
    }
 }
 @keyframes leverBOn {
-   from { width: 3.75em; transform: translate(0.25em,-50%); }
+   from { width: 2em; transform: translate(1em,-50%); }
    50% { width: 2em; transform: translate(-50%,-50%); }
-   to { width: 3.75em; transform: translate(-4em,-50%); }
+   to { width: 2em; transform: translate(-3em,-50%); }
 }
 @keyframes leverBOff {
-   from { width: 3.75em; transform: translate(-4em,-50%); }
+   from { width: 2em; transform: translate(-1em,-50%); }
    50% { width: 2em; transform: translate(-50%,-50%); }
-   to { width: 3.75em; transform: translate(0.25em,-50%); }
+   to { width: 2em; transform: translate(1em,-50%); }
 }
 
 
 /* 오디오 태그 */
 audio::-webkit-media-controls-panel {
-   background-color: rgb(187, 216, 228);
-   border-radius: 0px;
+   background-color: transparent;
+}
+audio::-webkit-media-controls-enclosure {
+   background-color: white;
+   border-radius: 5px;
 }
 
 /* 녹음버튼 */
@@ -458,3 +345,10 @@ audio::-webkit-media-controls-panel {
 #stop-btn[disabled]:active {
    background: none;
 }
+
+.selectBox {
+   background-color: white;
+   border-radius: 5px;
+   width: 200px;
+}
+
