@@ -24,7 +24,7 @@
   width: 100vw;
   background-color: black;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 #main2-h1 {
@@ -64,11 +64,13 @@
 }
 
 .menu-span {
-  font-family: 'YUniverse-L';
-  font-weight: 300;
+  /* font-family: 'YUniverse-L'; */
+  /* font-weight: 300; */
+
   position: absolute;
-  bottom: 70%;
-  font-size: 2400%;
+  margin-left: 30px;
+  bottom: 77%;
+  font-size: 1000%;
   color: white;
 
 }
