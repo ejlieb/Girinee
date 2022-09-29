@@ -62,80 +62,15 @@ export function GameReport() {
   // axios 상태 관리
   const [users, setUsers] = React.useState([]);
   const [value, setValue] = React.useState(0);
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
 
   // 로컬 스토리지에 있는 토큰 값 저장
   const accessToken = window.localStorage.getItem('accessToken')
 
-  // 그래프 초기 데이터
-  // const initialdata = [
-  //   {
-  //     name: "A",
-  //     CodeAccuracy: 0,
-  //   },
-  //   {
-  //     name: "B",
-  //     // name: `{users[value].get('chord2')}`
-  //     CodeAccuracy: 40,
-  //     // CodeAccuracy: `{users[value].get('score2')}`
-  //   },
-  //   {
-  //     name: "C",
-  //     // name: `{users[value].get('chord3')}`
-  //     CodeAccuracy: 50,
-  //     // CodeAccuracy: `{users[value].get('score3')}`
-  //   },
-  //   {
-  //     name: "D",
-  //     // name: `{users[value].get('chord4')}`
-  //     CodeAccuracy: 28,
-  //     // CodeAccuracy: `{users[value].get('score4')}`
-  //   },
-  // ];
-  // 그래프 데이터 관리
-  const data = [
-    {
-      name: "A",
-      // name: users[value].get('chord1'),
-      CodeAccuracy: 70,
-      // CodeAccuracy: users[value].get('score1')
-    },
-    {
-      name: "B",
-      // name: `{users[value].get('chord2')}`
-      CodeAccuracy: 40,
-      // CodeAccuracy: `{users[value].get('score2')}`
-    },
-    {
-      name: "C",
-      // name: `{users[value].get('chord3')}`
-      CodeAccuracy: 50,
-      // CodeAccuracy: `{users[value].get('score3')}`
-    },
-    {
-      name: "D",
-      // name: `{users[value].get('chord4')}`
-      CodeAccuracy: 28,
-      // CodeAccuracy: `{users[value].get('score4')}`
-    },
-  ];
-
-  // 현재 클릭된 기록 value
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-    console.log(newValue)
-  };
-
+  
   // axios 요청
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        // 요청이 시작 할 때에는 error 와 users 를 초기화하고 loading 상태를 true 로 바꿉니다.
-        // setError(null);
-        // setLoading(true);
-        // setUsers(null);
-
         const response = await axios.get(
           'https://j7a202.p.ssafy.io/api/record/game', {
             headers: {
@@ -147,14 +82,43 @@ export function GameReport() {
         console.log('data = ', response.data)
       } catch (e: any) {
         console.log('errer=', e)
-        // setError(e);
       }
-      // setLoading(false);
-
     };
 
     fetchUsers();
   }, []);
+
+
+  // 그래프 데이터 관리
+  const data = [
+    {
+      name: users ? users[value]['chord1'] : 'code',
+      // CodeAccuracy: 70,
+      CodeAccuracy: users ? users[value]['score1'] : 0
+    },
+    {
+      name: users ? users[value]['chord2'] : 'code',
+      // CodeAccuracy: 70,
+      CodeAccuracy: users ? users[value]['score2'] : 0
+    },
+    {
+      name: users ? users[value]['chord3'] : 'code',
+      // CodeAccuracy: 70,
+      CodeAccuracy: users ? users[value]['score3'] : 0
+    },
+    {
+      name: users ? users[value]['chord4'] : 'code',
+      // CodeAccuracy: 70,
+      CodeAccuracy: users ? users[value]['score4'] : 0
+    },
+  ];
+
+  // 현재 클릭된 기록 value
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+    console.log(newValue)
+  };
+
   
   
   return (
@@ -175,17 +139,13 @@ export function GameReport() {
           visibleScrollbar={false}
           // sx={{ borderRight: 1, borderColor: 'divider' }}
         >
-          <Tab label="difficult" {...a11yProps(0)} id="text-color-game"/>
-          <Tab label="difficult" {...a11yProps(1)} id="text-color-game"/>
-          <Tab label="difficult" {...a11yProps(2)} id="text-color-game"/>
-          <Tab label="difficult" {...a11yProps(3)} id="text-color-game"/>
-          <Tab label="difficult" {...a11yProps(4)} id="text-color-game"/>
-          <Tab label="difficult" {...a11yProps(5)} id="text-color-game"/>
-          <Tab label="difficult" {...a11yProps(6)} id="text-color-game"/>
-          
-          {/* <Tab label="" disabled id="text-color"/>
-          <Tab label="" disabled id="text-color"/>
-          <Tab label="지난 7게임의 기록을 확인할 수 있습니다." disabled id="text-color"/> */}
+          <Tab label={users[0]['difficult']} {...a11yProps(0)} id="text-color-game"/>
+          <Tab label={users[1]['difficult']} {...a11yProps(1)} id="text-color-game"/>
+          <Tab label={users[2]['difficult']} {...a11yProps(2)} id="text-color-game"/>
+          {/* <Tab label={users[3]['difficult']} {...a11yProps(3)} id="text-color-game"/>
+          <Tab label={users[4]['difficult']} {...a11yProps(4)} id="text-color-game"/>
+          <Tab label={users[5]['difficult']} {...a11yProps(5)} id="text-color-game"/>
+          <Tab label={users[6]['difficult']} {...a11yProps(6)} id="text-color-game"/> */}
         </Tabs>
 
         <TabPanel value={value} index={value}>
