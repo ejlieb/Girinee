@@ -29,7 +29,7 @@ export function PracticeReport() {
         setUsers(null);
 
         const response = await axios.get(
-          'https://j7a202.p.ssafy.io//api/record/practice', {
+          'https://j7a202.p.ssafy.io/api/record/practice', {
             headers: {
               Authorization: `Bearer ${accessToken}`
             }
