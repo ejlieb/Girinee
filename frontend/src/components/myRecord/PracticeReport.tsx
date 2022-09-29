@@ -11,11 +11,7 @@ import './PracticeReport.css';
 export function PracticeReport() {
 
   // axios 상태 관리
-  const [users, setUsers] = React.useState(null);
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
-  
-
+  const [users, setUsers] = React.useState({});
   
   // 로컬 스토리지에 있는 토큰 값 저장
   const accessToken = window.localStorage.getItem('accessToken')
@@ -48,7 +44,8 @@ export function PracticeReport() {
 
     fetchUsers();
   }, []);
-  console.log("데이터 들어왔는지 확인=",users)
+
+  console.log("데이터 들어왔는지 확인=", users)
 
   // 그래프 데이터 관리
   const graphdata = [
