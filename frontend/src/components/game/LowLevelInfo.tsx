@@ -44,21 +44,14 @@ export function LowLevelInfo() {
     // script
     // 코드 정보 받아오기
     const cntChord = useAppSelector((state)=>state.game.cntChord)
-
+    
     // JSX
     return (
       <div>
-        {/* 코드 관련 */}
+        <h3 id="level-value" className='line-up'>L O W - L E V E L</h3>
+        <h3 id="level-discription" className='white-text'>연습하기 원하는 코드를 직접 선택하여 진행하세요.</h3>
+        
         <div id="chord-box">
-          {/* 코드 이름 */}
-          <h1 id="chord-name" className='white-text'>{cntChord ==='C' ? 'C' : cntChord ==='Cm' ? 'Cm' :
-                                                      cntChord ==='D' ? 'D' : cntChord ==='Dm' ? 'Dm' :
-                                                      cntChord ==='E' ? 'E' : cntChord ==='Em' ? 'Em' :
-                                                      cntChord ==='F' ? 'F' : cntChord ==='Fm' ? 'Fm' :
-                                                      cntChord ==='G' ? 'G' : cntChord ==='Gm' ? 'Gm' :
-                                                      cntChord ==='A' ? 'A' : cntChord ==='Am' ? 'Am' :
-                                                      cntChord ==='B' ? 'B' : 'Bm'}
-          </h1>
           {/* 코드 운지표 */}
           <img src={cntChord ==='C' ? C_chord : cntChord ==='Cm' ? Cm_chord :
                     cntChord ==='D' ? D_chord : cntChord ==='Dm' ? Dm_chord :
@@ -76,8 +69,6 @@ export function LowLevelInfo() {
                       cntChord ==='A' ? A_sound : cntChord ==='Am' ? Am_sound :
                       cntChord ==='B' ? B_sound : Bm_sound} controls></audio>
 
-          <h1 id="level-value" className='line-up'>E A S Y - L E V E L</h1>
-          <h3 id="level-discription" className='white-text'>연습하기 원하는 코드를 직접 선택하여 진행하세요.</h3>
         </div>
       </div>
     )
