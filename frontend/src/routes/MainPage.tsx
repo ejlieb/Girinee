@@ -29,6 +29,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { Cookies } from 'react-cookie';
 
 // import "swiper/swiper.css";
 // import "swiper/components/navigation/navigation.css";
@@ -37,26 +38,15 @@ import 'swiper/css/scrollbar';
 export function MainPage() {
   // script
   const navigate = useNavigate()
-
-
-  // 로그인
-  useEffect(() => {
-    const code = new URL(window.location.href)
-    const accessToken = code.searchParams.get('accessToken')
-    
-    if(accessToken) {
-      window.location.replace('http://localhost:3000') 
-      console.log("현재 login됨")
-      console.log(accessToken)
-      
-      localStorage.setItem("accessToken", accessToken); // 토큰을 로컬 스토리지에 저장 === 로그인 함.
-      console.log("localStorage = ", window.localStorage)
-    } else {
-      console.log("현재 login안되어 있으니까 로그인 해주세여")
-      console.log(accessToken)
-    }
-  },[])
   
+  // cookie 값 사용하기
+  const cookies = new Cookies()
+  const getCookie = (refresh:string) => {
+    return cookies.get(refresh)
+  }
+  console.log(cookies)
+
+
   // JSX
   return (
     <Swiper id="main-swiper"
@@ -85,7 +75,7 @@ export function MainPage() {
       //   clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
       // }}
       scrollbar={{ draggable: false }}
-      onSwiper={(swiper) => console.log(swiper)}
+      onSwiper={(swiper) => console.log('swiper', swiper)}
       // onSlideChange={() => console.log('slide change')}
       keyboard={{enabled: true, onlyInViewport: false, pageUpDown:true, }}
     >
@@ -125,7 +115,7 @@ export function MainPage() {
                 setTimeout(() => {
                 navigate('/profile')
                 }, 1000);
-              }}>
+              }} >
               기록보기
             </h2>
 
