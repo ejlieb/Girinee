@@ -111,7 +111,10 @@ export function MainPage() {
           <div id="main2">
             <Navbar />
             {isActive ? <MenuContainer num={0.65}/> : null }
-            <span className="menu-span">Chord Game</span>
+            <div id="menu-span-container">
+              <span className="menu-span">Chord Game</span>
+              <span className="information">코드 게임을 진행할 수 있습니다.</span>
+            </div>
             <h2 className="my-record" 
               onClick={() => {
                 setTimeout(() => {
@@ -129,7 +132,10 @@ export function MainPage() {
           <div id="main2">
             <Navbar />
             {isActive ? <MenuContainer num={0.83}/> : null}
-            <span className="menu-span">Chord Table</span>
+            <div id="menu-span-container">
+              <span className="menu-span">Chord Table</span>
+              <span className="information">코드에 대한 설명을 확인할 수 있습니다.</span>
+            </div>
             <h2 className="my-record" 
               onClick={() => {
                 setTimeout(() => {
