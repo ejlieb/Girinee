@@ -12,16 +12,15 @@ export function Navbar() {
     if (logoutConfirm) {
       localStorage.removeItem('accessToken')
       console.log('로그아웃 되었습니다.')
-      setTimeout(() => {
-        navigate('/')
-        }, 0);
-      // window.location.replace('https://j7a202.p.ssafy.io')
+      // setTimeout(() => {
+      //   navigate('/')
+      //   }, 1000);
+      window.location.replace('https://j7a202.p.ssafy.io')
     }
   }
-  let [opacity , setOpacity] = useState(1)
-  
+
   return (
-    <h1 className="logout-btn" onClick={logout} onMouseOver={() => setOpacity(0)} onMouseOut={() => setOpacity(1)}>logout</h1>
+    <h1 className="logout-btn" onClick={logout}>logout</h1>
   )
 }
 
