@@ -61,15 +61,15 @@ public class RecordService {
     public boolean postPracticeRecord(Long id, MultipartFile file, String chord) {
         char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
         StringBuilder fileName = new StringBuilder();
-        for(int i = 0; i < 20; i++){
-            fileName.append(chars[(int)(Math.random() * chars.length)]);
+        for (int i = 0; i < 20; i++) {
+            fileName.append(chars[(int) (Math.random() * chars.length)]);
         }
-        String uploadPath = File.separator + "Sound" +File.separator + fileName +"." + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+        String uploadPath = File.separator + "Sound" + File.separator + fileName + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 
-        try{
+        try {
             Path path = Paths.get(uploadPath);
             file.transferTo(path);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
