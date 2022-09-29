@@ -5,14 +5,16 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 export interface gameData {
   cntChord: string,
   controllerDegree: number,
+  chordSecond: number,
 }
 
 
 // Initial State
 
 const initialState = {
-    cntChord: 'C_chord',
-    controllerDegree: 0
+    cntChord: 'C',
+    controllerDegree: 0,
+    chordSecond: 3,
 }
 
 const gameSlice = createSlice({
@@ -25,10 +27,14 @@ const gameSlice = createSlice({
     },
     setDegree: (state:gameData, action) => {
       state.controllerDegree = action.payload
-    }
+    },
+    setSecond: (state:gameData, action) => {
+      state.chordSecond = action.payload
+    },
   }
 })
 const { reducer, actions } =gameSlice
 export const {setCntChord} = actions
 export const {setDegree} = actions
+export const {setSecond} = actions
 export default gameSlice.reducer

@@ -8,11 +8,14 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 // Other Component 
 import GIRINEE from '../assets/images/GIRINEE.png'
 import './ChordGame.css'
+import './Display.css'
 import '../assets/fonts/font.css'
-
-import { LowLevel } from '../components/game/LowLevel'
-import { IntermediateLevel } from '../components/game/IntermediateLevel'
-import { HighLevel } from '../components/game/HighLevel'
+import { LowLevelInfo } from '../components/game/LowLevelInfo'
+import { LowLevelController } from '../components/game/LowLevelController'
+import { NormalLevelInfo } from '../components/game/NormalLevelInfo'
+import { NormalLevelController } from '../components/game/NormalLevelController'
+import { HighLevelInfo } from '../components/game/HighLevelInfo'
+import { HighLevelController } from '../components/game/HighLevelController'
 import { setDegree } from '../features/chordgame/GameSlice'
 
 // Material UI
@@ -65,52 +68,57 @@ export function ChordGame() {
     return (
       <Box component="div" id="game-body" sx={{ display: 'flex', flexDirection: 'column' }}>
         {/* Navbar */}
-        <Box component="div" id="menu-bar" sx={{ mt: 4, px: 8, display: 'flex', justifyContent: 'space-between'}}>
+        <Box component="div" id="menu-bar" sx={{ mt: 4, px: 8, py:0, display: 'flex', justifyContent: 'space-between'}}>
           {/* 텍스트로고 */}
           <img id="girinee-img" src={GIRINEE} alt="GIRINEE.png" />
           <Stack spacing={2} direction="row">
-
             {/* 마이페이지 */}
-            <Button variant="text">
+            <Button variant="text" className="menu-btn">
               <Typography className="menu-text"><Link to="/:userId" className="none-deco menu-text">MY PAGE</Link></Typography>
             </Button>
 
             {/* 로그아웃 */}
-            <Button variant="text">
+            <Button variant="text" className="menu-btn">
               <Typography className="menu-text" onClick={logout}>LOGOUT</Typography>
             </Button>
           </Stack>
         </Box>
       
+        {/* Main Contents */}
         <Grid component="div" container>
-          <Grid item xs={4}>
-                    {/* 선택한 난이도 따라서 나타나는 내용 */}
-        <Box component="div" sx={{ display:'flex', justifyContent:'center'}}>
-          {controllerDegree === 0 ? <LowLevel/> : controllerDegree === 1 ? <IntermediateLevel/> : <HighLevel/>}
-        </Box>
-          </Grid>
-          <Grid item xs={4}>
 
+          {/* Level Info */}
+          <Grid item xs={4} p={4} pt={15} id="info-box">
+            {/* 선택한 난이도 따라서 나타나는 내용 */}
+            {controllerDegree === 0 ? <LowLevelInfo/> : controllerDegree === 1 ? <NormalLevelInfo/> : <HighLevelInfo/>}
+            {/* </Box> */}
           </Grid>
 
-          {/* 컨트롤러 */}
-          <Grid item xs={4} p={4}>
+          {/* Three js를 위한 공간~ */}
+          <Grid item xs={5}>
+          </Grid>
+
+          {/* 메인 컨트롤러 + Level별 컨트롤러 */}
+          <Grid item xs={3} p={5} pt={15} id="controller-box">
+            {/* 메인 컨트롤러 */}
             <Stack>
               {/* 메인화면으로 돌아가기 */}
-              <Box component="div" sx={{ display: 'flex', justifyContent: 'end'}}>
+              <Box component="div" my={2} sx={{ display: 'flex', justifyContent: 'center'}}>
                 <form id="quitLever" onClick={() => {
                   setTimeout(() => {navigate('/')}, 600)}}>
+                  <label htmlFor="lever"><span className="white-text">Off</span></label>
                   <input type="checkbox" name="lever" className="lever pristine" id="lever" value="lever value" role="switch" aria-label="lever" aria-checked="false" />
-                  <label htmlFor="lever"><span>On</span></label>
-                  <label htmlFor="lever"><span>Off</span></label>
+                  <label htmlFor="lever"><span className='white-text'>On</span></label>
                 </form>
               </Box>
 
               {/* 컨트롤러 */}
-              <Stack direction="row">
+              <Stack direction="row" mt={3}>
                 {/* 노브 */}
-                <div id="level-controller" className={`degree${ controllerDegree }`}>
-                  <div id="level-index"></div>
+                <div id="level-controller-outline" className={`degree${ controllerDegree } d-flex justify-content-center`}>
+                  <div id="level-controller">
+                    <div id="level-index"></div>
+                  </div>
                 </div>
 
                 {/* 레벨버튼 누르면 해당하는 부분으로 위의 노브가 회전 */}
@@ -126,16 +134,11 @@ export function ChordGame() {
                   </Button>
                 </Box>
               </Stack>
+              
+              {/* 레벨 컨트롤러 */}
+              {controllerDegree === 0 ? <LowLevelController/> : controllerDegree === 1 ? <NormalLevelController /> : <HighLevelController/>}
             </Stack>
           </Grid>
-        </Grid>
-        
-        {/* 현재 난이도 표시 */}
-        <Grid item xs={8} sx={{ display: 'flex', justifyContent: 'center'}}>
-          <Stack sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
-            <h1 id="level-value" key={levelValue} className='line-up'> {levelValue} </h1>
-            <h3 id="level-discription" className='white-text'> {levelExplanation} </h3>
-          </Stack>
         </Grid>
       </Box>
     )
