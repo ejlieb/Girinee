@@ -29,23 +29,23 @@ export function KakaoLogin() {
     let [kakaoBtnState, setKakaoBtnState] = useState(false)
     let timer = setTimeout(() => setKakaoBtnState(true), 5000)
 
-    useEffect(() => {
-      const code = window.location.search
-      let param = new URLSearchParams(code);
-      const accessToken = param.get('accessToken');
-      console.log('code = ', code)
-      console.log('accessToken = ', accessToken)
+    // useEffect(() => {
+    //   const code = window.location.search
+    //   let param = new URLSearchParams(code);
+    //   const accessToken = param.get('accessToken');
+    //   console.log('code = ', code)
+    //   console.log('accessToken = ', accessToken)
       
-      if(accessToken) {
-        console.log("현재 login됨")
-        console.log(accessToken)
-        localStorage.setItem("accessToken", accessToken); // 토큰을 로컬 스토리지에 저장 === 로그인 함.
-        console.log("localStorage = ", window.localStorage)
-        setTimeout(() => {
-          navigate('/')
-        }, 1000);
-      }
-    }, [])
+    //   if(accessToken) {
+    //     console.log("현재 login됨")
+    //     console.log(accessToken)
+    //     localStorage.setItem("accessToken", accessToken); // 토큰을 로컬 스토리지에 저장 === 로그인 함.
+    //     console.log("localStorage = ", window.localStorage)
+    //     setTimeout(() => {
+    //       navigate('/')
+    //     }, 1000);
+    //   }
+    // }, [])
   
     // JSX
     return (
