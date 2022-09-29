@@ -56,27 +56,27 @@ export function PracticeReport() {
     },
     {
       name: "C",
-      CodeAccuracy: users ? ( parseInt(users['C']['success'])/( parseInt(users['C']['success']) +  parseInt(users['c']['failure'])) * 100).toFixed(0) : 0
+      CodeAccuracy: users ? users['C']['success'] : 0
       // CodeAccuracy: ( parseInt(users['C']['success'])/( parseInt(users['C']['success']) +  parseInt(users['c']['failure'])) * 100).toFixed(0),
     },
     {
       name: "D",
-      CodeAccuracy: users ? ( parseInt(users['D']['success'])/( parseInt(users['D']['success']) +  parseInt(users['D']['failure'])) * 100).toFixed(0) : 0
+      CodeAccuracy: users ? users['D']['success'] : 0
       // CodeAccuracy: ( parseInt(users['D']['success'])/( parseInt(users['D']['success']) +  parseInt(users['D']['failure'])) * 100).toFixed(0),
     },
     {
       name: "E",
-      CodeAccuracy: users ? ( parseInt(users['E']['success'])/( parseInt(users['E']['success']) +  parseInt(users['E']['failure'])) * 100).toFixed(0) : 0
+      CodeAccuracy: users ? users['E']['success'] : 0
       // CodeAccuracy: ( parseInt(users['E']['success'])/( parseInt(users['E']['success']) +  parseInt(users['E']['failure'])) * 100).toFixed(0),
     },
     {
       name: "F",
-      CodeAccuracy: users ? ( parseInt(users['F']['success'])/( parseInt(users['F']['success']) +  parseInt(users['F']['failure'])) * 100).toFixed(0) : 0
+      CodeAccuracy: users ? users['F']['success'] : 0
       // CodeAccuracy: ( parseInt(users['F']['success'])/( parseInt(users['F']['success']) +  parseInt(users['F']['failure'])) * 100).toFixed(0),
     },
     {
       name: "G",
-      CodeAccuracy: users ? ( parseInt(users['G']['success'])/( parseInt(users['G']['success']) +  parseInt(users['G']['failure'])) * 100).toFixed(0) : 0
+      CodeAccuracy: users ? users['G']['success'] : 0
       // CodeAccuracy: ( parseInt(users['G']['success'])/( parseInt(users['G']['success']) +  parseInt(users['G']['failure'])) * 100).toFixed(0),
     }
   ];
