@@ -7,10 +7,10 @@ import com.a202.girinee.service.RecordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -23,13 +23,19 @@ public class RecordController {
 
     @GetMapping("/practice")
     @PreAuthorize("hasRole('USER')")
-    public Map<String, PracticeRecordResponseDto> getPracticeRecord(@AuthenticationPrincipal CustomUserDetails user){
+    public Map<String, PracticeRecordResponseDto> getPracticeRecord(@AuthenticationPrincipal CustomUserDetails user) {
         return recordService.getPracticeRecord(user.getId());
     }
 
     @GetMapping("/game")
     @PreAuthorize("hasRole('USER')")
-    public List<GameRecordResponseDto> getGameRecord(@AuthenticationPrincipal CustomUserDetails user){
+    public List<GameRecordResponseDto> getGameRecord(@AuthenticationPrincipal CustomUserDetails user) {
         return recordService.getGameRecord(user.getId());
+    }
+
+    @PostMapping("/practice")
+    @PreAuthorize("hasRole('USER')")
+    public Boolean postPracticeRecord(@AuthenticationPrincipal CustomUserDetails user, @RequestParam("file") MultipartFile file, @RequestParam("chord") String chord) throws IOException {
+        return recordService.postPracticeRecord(user.getId(), file, chord);
     }
 }

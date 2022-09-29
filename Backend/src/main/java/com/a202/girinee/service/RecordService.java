@@ -8,7 +8,11 @@ import com.a202.girinee.repository.GameRecordRepository;
 import com.a202.girinee.repository.PracticeRecordRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,5 +56,39 @@ public class RecordService {
                         .score4(m.getScore4())
                         .build()
         ).collect(Collectors.toList());
+    }
+
+    public boolean postPracticeRecord(Long id, MultipartFile file, String chord) {
+        char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
+        StringBuilder fileName = new StringBuilder();
+        for(int i = 0; i < 20; i++){
+            fileName.append(chars[(int)(Math.random() * chars.length)]);
+        }
+        String uploadPath = File.separator + "Sound" +File.separator + fileName +"." + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+
+        try{
+            Path path = Paths.get(uploadPath);
+            file.transferTo(path);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        /* AI 서버 채점
+         *
+         *
+         *
+         *
+         *
+         *
+         * AI 서버 채점 끝 */
+
+        /* 파일 삭제
+         *
+         * File deleteFile = new File(uploadPath);
+         * deleteFile.delete();
+         *
+         * 파일 삭제 끝*/
+
+        return true;
     }
 }
