@@ -9,6 +9,8 @@ import { useTimeout } from 'usehooks-ts';
 // import MainPage from './MainPage';
 // import Auth from "../Auth";
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 export function KakaoLogin() {
   
@@ -22,7 +24,7 @@ export function KakaoLogin() {
     //   isLogin: false,
     // }
 
-
+    const navigate = useNavigate()
     const REDIRECT_URI = "https://j7a202.p.ssafy.io/oauth2/authorize/kakao";
     let [kakaoBtnState, setKakaoBtnState] = useState(false)
     let timer = setTimeout(() => setKakaoBtnState(true), 5000)
@@ -37,6 +39,9 @@ export function KakaoLogin() {
         console.log(accessToken)
         localStorage.setItem("accessToken", accessToken); // 토큰을 로컬 스토리지에 저장 === 로그인 함.
         console.log("localStorage = ", window.localStorage)
+        setTimeout(() => {
+          navigate('/')
+        }, 1000);
       }
     })
   
