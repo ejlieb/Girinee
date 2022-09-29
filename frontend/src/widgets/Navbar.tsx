@@ -13,7 +13,7 @@ export function Navbar() {
       localStorage.removeItem('accessToken')
       console.log('로그아웃 되었습니다.')
       setTimeout(() => {
-        navigate('/profile')
+        navigate('/')
         }, 0);
       // window.location.replace('https://j7a202.p.ssafy.io')
     }
