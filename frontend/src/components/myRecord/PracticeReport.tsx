@@ -29,7 +29,7 @@ export function PracticeReport() {
         setUsers(null);
 
         const response = await axios.get(
-          'https://j7a202.p.ssafy.io/api/record/practice', {
+          'https://localhost:8080/api/record/practice', {
             headers: {
               Authorization: `Bearer ${accessToken}`
             }
@@ -38,7 +38,7 @@ export function PracticeReport() {
         setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
         console.log('data = ', response.data)
       } catch (e: any) {
-        console.log('errer=',e)
+        console.log('errer=', e)
         // setError(e);
       }
       // setLoading(false);
