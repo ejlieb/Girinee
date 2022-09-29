@@ -85,10 +85,13 @@ export function PracticeReport() {
     fetchUsers();
   }, []);
 
-  console.log("데이터 들어왔는지 확인=", users)
 
   // 그래프 데이터 관리
-  if(users) {
+  if(users != null) {
+    console.log("if문 안에서", users)
+    console.log("if문 안에서", users['B'])
+    console.log("if문 안에서", users['B']['success'])
+    console.log("if문 안에서", users['B']['failure'])
     const graphdata = [
       // {
       //   name: "A",
