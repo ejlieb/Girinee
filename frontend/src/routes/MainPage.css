@@ -64,6 +64,8 @@
 }
 
 .menu-span {
+  font-family: 'YUniverse-L';
+  font-weight: 300;
   position: absolute;
   bottom: 70%;
   font-size: 2400%;
