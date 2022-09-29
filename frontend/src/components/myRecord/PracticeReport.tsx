@@ -92,35 +92,45 @@ export function PracticeReport() {
     console.log("if문 안에서", users['B'])
     console.log("if문 안에서", users['B']['success'])
     console.log("if문 안에서", users['B']['failure'])
+    console.log("if문 안에서", typeof(users['B']['failure']))
+    const Bs = users['B']['success']
+    const Bf = users['B']['failure']
+    
     const graphdata = [
       // {
       //   name: "A",
       //   // CodeAccuracy: 80,
-      //   CodeAccuracy: ( parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']["failure"])) * 100).toFixed(0),
+      //   CodeAccuracy: ( parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']['failure'])) * 100).toFixed(0),
       // },
       {
         name: "B",
-        CodeAccuracy: ( parseInt(users['B']['success'])/( parseInt(users['B']['success']) +  parseInt(users['B']['failure'])) * 100).toFixed(0),
+        CodeAccuracy: parseInt(users['B']['success'])
+        // CodeAccuracy: ( parseInt(users['B']['success'])/( parseInt(users['B']['success']) +  parseInt(users['B']['failure'])) * 100).toFixed(0),
       },
       {
         name: "C",
-        CodeAccuracy: ( parseInt(users['C']['success'])/( parseInt(users['C']['success']) +  parseInt(users['c']['failure'])) * 100).toFixed(0),
+        CodeAccuracy: parseInt(users['C']['success'])
+        // CodeAccuracy: ( parseInt(users['C']['success'])/( parseInt(users['C']['success']) +  parseInt(users['c']['failure'])) * 100).toFixed(0),
       },
       {
         name: "D",
-        CodeAccuracy: ( parseInt(users['D']['success'])/( parseInt(users['D']['success']) +  parseInt(users['D']['failure'])) * 100).toFixed(0),
+        CodeAccuracy: parseInt(users['D']['success'])
+        // CodeAccuracy: ( parseInt(users['D']['success'])/( parseInt(users['D']['success']) +  parseInt(users['D']['failure'])) * 100).toFixed(0),
       },
       {
         name: "E",
-        CodeAccuracy: ( parseInt(users['E']['success'])/( parseInt(users['E']['success']) +  parseInt(users['E']['failure'])) * 100).toFixed(0),
+        CodeAccuracy: parseInt(users['E']['success'])
+        // CodeAccuracy: ( parseInt(users['E']['success'])/( parseInt(users['E']['success']) +  parseInt(users['E']['failure'])) * 100).toFixed(0),
       },
       {
         name: "F",
-        CodeAccuracy: ( parseInt(users['F']['success'])/( parseInt(users['F']['success']) +  parseInt(users['F']['failure'])) * 100).toFixed(0),
+        CodeAccuracy: parseInt(users['F']['success'])
+        // CodeAccuracy: ( parseInt(users['F']['success'])/( parseInt(users['F']['success']) +  parseInt(users['F']['failure'])) * 100).toFixed(0),
       },
       {
         name: "G",
-        CodeAccuracy: ( parseInt(users['G']['success'])/( parseInt(users['G']['success']) +  parseInt(users['G']['failure'])) * 100).toFixed(0),
+        CodeAccuracy: parseInt(users['B']['success'])
+        // CodeAccuracy: ( parseInt(users['G']['success'])/( parseInt(users['G']['success']) +  parseInt(users['G']['failure'])) * 100).toFixed(0),
       }
     ];
   }
