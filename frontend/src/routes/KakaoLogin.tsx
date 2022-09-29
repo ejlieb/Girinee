@@ -32,7 +32,8 @@ export function KakaoLogin() {
     useEffect(() => {
       const code = new URL(window.location.href)
       const accessToken = code.searchParams.get('accessToken')
-      // console.log('kakaologin', window.location.href)  
+      console.log('kakaologin', window.location.href)
+      console.log('kakaplogin', accessToken)
       
       if(accessToken) {
         console.log("현재 login됨")

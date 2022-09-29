@@ -57,21 +57,6 @@ export function MyRecord() {
           onClick={() => {
             setTimeout(() => {
               navigate('/')
-            //   {({ isActive }) =>
-            //   <div id="main2">
-            //     <Navbar />
-            //     {isActive ? <MenuContainer num={0.83}/> : null}
-            //     <span className="menu-span">Chord Table</span>
-            //     <span className="my-record" 
-            //       onClick={() => {
-            //         setTimeout(() => {
-            //         navigate('/:userId')
-            //         }, 1000);
-            //       }}>
-            //       기록보기
-            //     </span>
-            //   </div>
-            // }
             }, 1000);
           }}>
           뒤로가기
