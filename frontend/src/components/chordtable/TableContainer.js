@@ -10,7 +10,6 @@ import useInterval from '../../utils/timer'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { setRoBtnState } from '../../features/rotatingbtn/RotateSlice'
 import { C } from './C'
-import { GameFrame } from './GameFrame'
 import { Firstamp } from '../mainpage/Firstamp'
 
 
@@ -26,17 +25,13 @@ export function TableContainer(props) {
       <Suspense fallback={null}>
           
         <Center onCentered={({ container, height }) => container.scale.setScalar(1)}>
-
-        <group>
             <C position={[-0.6,-0.16,0]}/>
-            <GameFrame position={[-0.7,-0.32,0]}/>
-        </group>
-
-        <mesh position={[0, -0.3, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        </Center>
+        <mesh position={[0, -0.77, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[500000, 500000]} />
           <MeshReflectorMaterial
-            blur={[400, 100]}
-            resolution={2024}
+            blur={[200, 100]}
+            resolution={2024}c
             mixBlur={1}
             mixStrength={15}
             depthScale={1}
@@ -46,7 +41,7 @@ export function TableContainer(props) {
             roughness={1}
           />
         </mesh>
-        </Center>
+
       </Suspense>
       {/* <Environment preset ="dawn" /> */}
       <EffectComposer>
