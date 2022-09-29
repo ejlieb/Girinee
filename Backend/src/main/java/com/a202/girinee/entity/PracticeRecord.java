@@ -1,9 +1,6 @@
 package com.a202.girinee.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,15 +8,16 @@ import javax.persistence.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
-@Table(name = "RECORDA")
-public class RecordA extends BaseEntity {
+@Table(name = "PRACTICE_RECORD")
+public class PracticeRecord extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "kakaoId")
+    @JoinColumn(name = "userId")
     private User user;
 
     private String chord;
