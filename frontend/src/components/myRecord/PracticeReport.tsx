@@ -15,6 +15,35 @@ export function PracticeReport() {
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(null);
 
+  // axios 요청
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        // 요청이 시작 할 때에는 error 와 users 를 초기화하고 loading 상태를 true 로 바꿉니다.
+        // setError(null);
+        // setLoading(true);
+        setUsers(null);
+
+        const response = await axios.get(
+          'https://j7a202.p.ssafy.io//api/record/practice', {
+            headers: {
+              Authorization: `Bearer ${accessToken}`
+            }
+          }
+        );
+        setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
+        console.log('data = ', response.data)
+      } catch (e: any) {
+        console.log('errer=',e)
+        // setError(e);
+      }
+      // setLoading(false);
+
+    };
+
+    fetchUsers();
+  }, []);
+
   // 로컬 스토리지에 있는 토큰 값 저장
   const accessToken = window.localStorage.getItem('accessToken')
 
@@ -57,33 +86,7 @@ export function PracticeReport() {
     }
   ];
 
-  // axios 요청
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        // 요청이 시작 할 때에는 error 와 users 를 초기화하고 loading 상태를 true 로 바꿉니다.
-        // setError(null);
-        // setLoading(true);
-        setUsers(null);
 
-        const response = await axios.get(
-          'https://localhost:8080/api/record/practice', {
-            headers: {
-              Authorization: `Bearer ${accessToken}`
-            }
-          }
-        );
-        setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
-      } catch (e: any) {
-        console.log(e)
-        // setError(e);
-      }
-      // setLoading(false);
-
-    };
-
-    fetchUsers();
-  }, []);
 
   // if (loading) return <div>로딩중..</div>;
   // if (error) return <div>에러가 발생했습니다</div>;
