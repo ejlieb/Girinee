@@ -46,43 +46,44 @@ export function PracticeReport() {
   const graphdata = [
     // {
     //   name: "A",
-    //   // CodeAccuracy: users ? ( parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']['failure'])) * 100).toFixed(0) : 0,
-    //   CodeAccuracy: ( parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']['failure'])) * 100).toFixed(0),
+    //   Success: users ? users['A']['success'] : 0,
+    //   Failure: users ? users['A']['failure'] : 0,
+    //   parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']['failure'])) * 100).toFixed(0)
     // },
     {
       name: "B",
-      CodeAccuracy: users ? users['B']['success'] : 0,
-      Codefailure: users ? users['B']['failure'] : 0,
+      Success: users ? users['B']['success'] : 0,
+      Failure: users ? users['B']['failure'] : 0,
       // CodeAccuracy: ( parseInt(users['B']['success'])/( parseInt(users['B']['success']) +  parseInt(users['B']['failure'])) * 100).toFixed(0),
     },
     {
       name: "C",
-      CodeAccuracy: users ? users['C']['success'] : 0,
-      Codefailure: users ? users['C']['failure'] : 0,
+      Success: users ? users['C']['success'] : 0,
+      Failure: users ? users['C']['failure'] : 0,
       // CodeAccuracy: ( parseInt(users['C']['success'])/( parseInt(users['C']['success']) +  parseInt(users['c']['failure'])) * 100).toFixed(0),
     },
     {
       name: "D",
-      CodeAccuracy: users ? users['D']['success'] : 0,
-      Codefailure: users ? users['D']['failure'] : 0,
+      Success: users ? users['D']['success'] : 0,
+      Failure: users ? users['D']['failure'] : 0,
       // CodeAccuracy: ( parseInt(users['D']['success'])/( parseInt(users['D']['success']) +  parseInt(users['D']['failure'])) * 100).toFixed(0),
     },
     {
       name: "E",
-      CodeAccuracy: users ? users['E']['success'] : 0,
-      Codefailure: users ? users['E']['failure'] : 0,
+      Success: users ? users['E']['success'] : 0,
+      Failure: users ? users['E']['failure'] : 0,
       // CodeAccuracy: ( parseInt(users['E']['success'])/( parseInt(users['E']['success']) +  parseInt(users['E']['failure'])) * 100).toFixed(0),
     },
     {
       name: "F",
-      CodeAccuracy: users ? users['F']['success'] : 0,
-      Codefailure: users ? users['F']['failure'] : 0,
+      Success: users ? users['F']['success'] : 0,
+      Failure: users ? users['F']['failure'] : 0,
       // CodeAccuracy: ( parseInt(users['F']['success'])/( parseInt(users['F']['success']) +  parseInt(users['F']['failure'])) * 100).toFixed(0),
     },
     {
       name: "G",
-      CodeAccuracy: users ? users['G']['success'] : 0,
-      Codefailure: users ? users['G']['failure'] : 0,
+      Success: users ? users['G']['success'] : 0,
+      Failure: users ? users['G']['failure'] : 0,
       // CodeAccuracy: ( parseInt(users['G']['success'])/( parseInt(users['G']['success']) +  parseInt(users['G']['failure'])) * 100).toFixed(0),
     }
   ];
@@ -110,8 +111,8 @@ export function PracticeReport() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="CodeAccuracy" fill="#e0ffff" barSize={20} />
-        <Bar dataKey="Codefailure" fill="#ffcdd2" barSize={20}/>
+        <Bar dataKey="Success" fill="#e0ffff" barSize={20} />
+        <Bar dataKey="Failure" fill="#ffcdd2" barSize={20}/>
       </BarChart>
     </Box>
   )
