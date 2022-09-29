@@ -51,38 +51,38 @@ export function PracticeReport() {
   const graphdata = [
     {
       name: "A",
-      // CodeAccuracy: 80,
-      CodeAccuracy: (users['A'].get("success")/(users['A'].get("success") + users['A'].get("failure")) * 100).toFixed(0),
+      CodeAccuracy: 80,
+      // CodeAccuracy: (users['A'].get("success")/(users['A'].get("success") + users['A'].get("failure")) * 100).toFixed(0),
     },
     {
       name: "B",
-      // CodeAccuracy: 40,
-      CodeAccuracy: (users['B'].get("success")/(users['B'].get("success") + users['B'].get("failure")) * 100).toFixed(0),
+      CodeAccuracy: 40,
+      // CodeAccuracy: (users['B'].get("success")/(users['B'].get("success") + users['B'].get("failure")) * 100).toFixed(0),
     },
     {
       name: "C",
-      // CodeAccuracy: 30,
-      CodeAccuracy: (users['C'].get("success")/(users['C'].get("success") + users['c'].get("failure")) * 100).toFixed(0),
+      CodeAccuracy: 30,
+      // CodeAccuracy: (users['C'].get("success")/(users['C'].get("success") + users['c'].get("failure")) * 100).toFixed(0),
     },
     {
       name: "D",
-      // CodeAccuracy: 90,
-      CodeAccuracy: (users['D'].get("success")/(users['D'].get("success") + users['D'].get("failure")) * 100).toFixed(0),
+      CodeAccuracy: 90,
+      // CodeAccuracy: (users['D'].get("success")/(users['D'].get("success") + users['D'].get("failure")) * 100).toFixed(0),
     },
     {
       name: "E",
-      // CodeAccuracy: 60,
-      CodeAccuracy: (users['E'].get("success")/(users['E'].get("success") + users['E'].get("failure")) * 100).toFixed(0),
+      CodeAccuracy: 60,
+      // CodeAccuracy: (users['E'].get("success")/(users['E'].get("success") + users['E'].get("failure")) * 100).toFixed(0),
     },
     {
       name: "F",
-      // CodeAccuracy: 50,
-      CodeAccuracy: (users['F'].get("success")/(users['F'].get("success") + users['F'].get("failure")) * 100).toFixed(0),
+      CodeAccuracy: 50,
+      // CodeAccuracy: (users['F'].get("success")/(users['F'].get("success") + users['F'].get("failure")) * 100).toFixed(0),
     },
     {
       name: "G",
-      // CodeAccuracy: 85,
-      CodeAccuracy: (users['G'].get("success")/(users['G'].get("success") + users['G'].get("failure")) * 100).toFixed(0),
+      CodeAccuracy: 85,
+      // CodeAccuracy: (users['G'].get("success")/(users['G'].get("success") + users['G'].get("failure")) * 100).toFixed(0),
     }
   ];
 
