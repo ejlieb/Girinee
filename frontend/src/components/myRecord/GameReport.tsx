@@ -56,7 +56,6 @@ function a11yProps(index: number) {
   };
 }
 
-
 // main
 export function GameReport() {
   
