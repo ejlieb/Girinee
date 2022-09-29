@@ -15,6 +15,10 @@ export function PracticeReport() {
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(null);
 
+  
+  // 로컬 스토리지에 있는 토큰 값 저장
+  const accessToken = window.localStorage.getItem('accessToken')
+
   // axios 요청
   useEffect(() => {
     const fetchUsers = async () => {
@@ -44,8 +48,6 @@ export function PracticeReport() {
     fetchUsers();
   }, []);
 
-  // 로컬 스토리지에 있는 토큰 값 저장
-  const accessToken = window.localStorage.getItem('accessToken')
 
   // 그래프 데이터 관리
   const graphdata = [
