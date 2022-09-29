@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { AnimatePresence } from 'framer-motion'
 import { render } from "react-dom"
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 
 // Other Component 
 import useRecorder from "./useRecorder"
@@ -34,6 +35,7 @@ import B_chord from '../../assets/images/chords/B_chord.png'
 import B_sound from '../../assets/chord_sounds/B_sound.wav'
 import Bm_chord from '../../assets/images/chords/Bm_chord.png'
 import Bm_sound from '../../assets/chord_sounds/Bm_sound.wav'
+import { setCntChord } from '../../features/chordgame/GameSlice'
 
 // Material UI
 import InputLabel from '@mui/material/InputLabel'
@@ -53,9 +55,11 @@ export function LowLevel() {
     const guitarChords = ['C', 'Cm', 'D', 'Dm', 'E', 'Em', 'F', 'Fm', 'G', 'Gm', 'A', 'Am', 'B', 'Bm']
     
     // 버튼 눌렀을 때 해당 코드 연습 화면으로 변경
-    const [cntChord, setCntChord] = useState('C_chord')
+    // const [cntChord, setCntChord] = useState('C_chord')
+    const cntChord = useAppSelector((state)=>state.game.cntChord)
+    const dispatch = useAppDispatch()
     const showChord = (event: SelectChangeEvent) => {
-    setCntChord(event.target.value as string)
+    dispatch(setCntChord(event.target.value as string))
     }
 
     // 녹음에 필요한 것
