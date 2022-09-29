@@ -11,7 +11,7 @@ import './PracticeReport.css';
 export function PracticeReport() {
 
   // axios 상태 관리
-  const [users, setUsers] = useState(null);
+  const [users, setUsers] = React.useState(null);
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(null);
 
