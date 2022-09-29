@@ -97,37 +97,30 @@ export function PracticeReport() {
       // },
       {
         name: "B",
-        // CodeAccuracy: 40,
-        CodeAccuracy: ( parseInt(users['B']["success"])/( parseInt(users['B']["success"]) +  parseInt(users['B']["failure"])) * 100).toFixed(0),
+        CodeAccuracy: ( parseInt(users['B']['success'])/( parseInt(users['B']['success']) +  parseInt(users['B']['failure'])) * 100).toFixed(0),
       },
       {
         name: "C",
-        // CodeAccuracy: 30,
-        CodeAccuracy: ( parseInt(users['C']["success"])/( parseInt(users['C']["success"]) +  parseInt(users['c']["failure"])) * 100).toFixed(0),
+        CodeAccuracy: ( parseInt(users['C']['success'])/( parseInt(users['C']['success']) +  parseInt(users['c']['failure'])) * 100).toFixed(0),
       },
       {
         name: "D",
-        // CodeAccuracy: 90,
-        CodeAccuracy: ( parseInt(users['D']["success"])/( parseInt(users['D']["success"]) +  parseInt(users['D']["failure"])) * 100).toFixed(0),
+        CodeAccuracy: ( parseInt(users['D']['success'])/( parseInt(users['D']['success']) +  parseInt(users['D']['failure'])) * 100).toFixed(0),
       },
       {
         name: "E",
-        // CodeAccuracy: 60,
-        CodeAccuracy: ( parseInt(users['E']["success"])/( parseInt(users['E']["success"]) +  parseInt(users['E']["failure"])) * 100).toFixed(0),
+        CodeAccuracy: ( parseInt(users['E']['success'])/( parseInt(users['E']['success']) +  parseInt(users['E']['failure'])) * 100).toFixed(0),
       },
       {
         name: "F",
-        // CodeAccuracy: 50,
-        CodeAccuracy: ( parseInt(users['F']["success"])/( parseInt(users['F']["success"]) +  parseInt(users['F']["failure"])) * 100).toFixed(0),
+        CodeAccuracy: ( parseInt(users['F']['success'])/( parseInt(users['F']['success']) +  parseInt(users['F']['failure'])) * 100).toFixed(0),
       },
       {
         name: "G",
-        // CodeAccuracy: 85,
-        CodeAccuracy: ( parseInt(users['G']["success"])/( parseInt(users['G']["success"]) +  parseInt(users['G']["failure"])) * 100).toFixed(0),
+        CodeAccuracy: ( parseInt(users['G']['success'])/( parseInt(users['G']['success']) +  parseInt(users['G']['failure'])) * 100).toFixed(0),
       }
     ];
   }
-
 
 
   // if (loading) return <div>로딩중..</div>;
