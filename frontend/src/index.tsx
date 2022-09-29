@@ -16,6 +16,7 @@ import { BackingTrack } from './routes/BackingTrack';
 import { Firstamp } from './components/mainpage/Firstamp';
 import { MenuContainer } from './components/mainpage/menuContainer';
 import { MainContainer } from './components/mainpage/mainContainer';
+import { ChordTable } from './routes/ChordTable';
 
 // CODEgit 
 const container = document.getElementById('root')!;
@@ -34,6 +35,7 @@ root.render(
       <Route path="/dddd" element= {<Firstamp/>}></Route>
       <Route path="*" element= {<MenuContainer/>}></Route>
       <Route path="*" element= {<MainContainer/>}></Route>
+      <Route path="/table" element= {<ChordTable/>}></Route>
       </Routes>
       </BrowserRouter>
     </Provider>
