@@ -38,21 +38,33 @@ import { Cookies } from 'react-cookie';
 export function MainPage() {
 
   // 로그인
-  const code = window.location.search
-  let param = new URLSearchParams(code);
-  const accessToken = param.get('accessToken');
-  console.log('code = ', code)
-  console.log('accessToken = ', accessToken)
+  useEffect(() => {
+    const code = window.location.search
+    let param = new URLSearchParams(code);
+    const accessToken = param.get('accessToken');
+    console.log('code = ', code)
+    console.log('accessToken = ', accessToken)
+    
+    if(accessToken) {
+      console.log("현재 login됨")
+      console.log(accessToken)
+      localStorage.setItem("accessToken", accessToken); // 토큰을 로컬 스토리지에 저장 === 로그인 함.
+      console.log("localStorage = ", window.localStorage)
+      setTimeout(() => {
+        navigate('/')
+      }, 1000);
+    }
+  }, [])
 
   // script
   const navigate = useNavigate()
   
   // cookie 값 사용하기
-  const cookies = new Cookies()
-  const getCookie = (refresh:string) => {
-    return cookies.get(refresh)
-  }
-  console.log(cookies)
+  // const cookies = new Cookies()
+  // const getCookie = (refresh:string) => {
+  //   return cookies.get(refresh)
+  // }
+  // console.log(cookies)
 
 
   // JSX
