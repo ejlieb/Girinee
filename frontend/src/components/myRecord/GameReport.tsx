@@ -112,13 +112,14 @@ export function GameReport() {
         // setUsers(null);
 
         const response = await axios.get(
-          'https://localhost:8080/api/record/game', {
+          'https://j7a202.p.ssafy.io/api/record/game', {
             headers: {
               Authorization: `Bearer ${accessToken}`
             }
           }
         );
         setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
+        console.log('data = ', response.data)
       } catch (e: any) {
         console.log(e)
         // setError(e);
