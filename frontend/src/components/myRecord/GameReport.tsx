@@ -121,7 +121,6 @@ export function GameReport() {
         setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
         console.log('data = ', response.data)
       } catch (e: any) {
-        console.log(e)
         console.log('errer=', e)
         // setError(e);
       }

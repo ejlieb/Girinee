@@ -26,10 +26,10 @@ export function PracticeReport() {
         // 요청이 시작 할 때에는 error 와 users 를 초기화하고 loading 상태를 true 로 바꿉니다.
         // setError(null);
         // setLoading(true);
-        setUsers(null);
+        // setUsers(null);
 
         const response = await axios.get(
-          'https://localhost:8080/api/record/practice', {
+          'https://j7a202.p.ssafy.io/api/record/practice', {
             headers: {
               Authorization: `Bearer ${accessToken}`
             }
