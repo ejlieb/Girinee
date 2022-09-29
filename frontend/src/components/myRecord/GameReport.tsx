@@ -60,7 +60,7 @@ function a11yProps(index: number) {
 export function GameReport() {
   
   // axios 상태 관리
-  const [users, setUsers] = React.useState(null);
+  const [users, setUsers] = React.useState([]);
   const [value, setValue] = React.useState(0);
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(null);
@@ -68,13 +68,38 @@ export function GameReport() {
   // 로컬 스토리지에 있는 토큰 값 저장
   const accessToken = window.localStorage.getItem('accessToken')
 
+  // 그래프 초기 데이터
+  // const initialdata = [
+  //   {
+  //     name: "A",
+  //     CodeAccuracy: 0,
+  //   },
+  //   {
+  //     name: "B",
+  //     // name: `{users[value].get('chord2')}`
+  //     CodeAccuracy: 40,
+  //     // CodeAccuracy: `{users[value].get('score2')}`
+  //   },
+  //   {
+  //     name: "C",
+  //     // name: `{users[value].get('chord3')}`
+  //     CodeAccuracy: 50,
+  //     // CodeAccuracy: `{users[value].get('score3')}`
+  //   },
+  //   {
+  //     name: "D",
+  //     // name: `{users[value].get('chord4')}`
+  //     CodeAccuracy: 28,
+  //     // CodeAccuracy: `{users[value].get('score4')}`
+  //   },
+  // ];
   // 그래프 데이터 관리
   const data = [
     {
       name: "A",
-      // name: `{users[value].get('chord1')}`
+      // name: users[value].get('chord1'),
       CodeAccuracy: 70,
-      // CodeAccuracy: `{users[value].get('score1')}`
+      // CodeAccuracy: users[value].get('score1')
     },
     {
       name: "B",

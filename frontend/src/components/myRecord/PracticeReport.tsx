@@ -12,10 +12,37 @@ export function PracticeReport() {
 
   // axios 상태 관리
   const [users, setUsers] = React.useState(null);
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
+  const graphdata = [
+        {
+          name: "A",
+          CodeAccuracy: 0,
+        },
+        {
+          name: "B",
+          CodeAccuracy: 0,
+        },
+        {
+          name: "C",
+          CodeAccuracy: 0,
+        },
+        {
+          name: "D",
+          CodeAccuracy: 0,
+        },
+        {
+          name: "E",
+          CodeAccuracy: 0,
+        },
+        {
+          name: "F",
+          CodeAccuracy: 0,
+        },
+        {
+          name: "G",
+          CodeAccuracy: 0,
+        }
+      ];
 
-  
   // 로컬 스토리지에 있는 토큰 값 저장
   const accessToken = window.localStorage.getItem('accessToken')
 
@@ -50,44 +77,76 @@ export function PracticeReport() {
 
 
   // 그래프 데이터 관리
-  const graphdata = [
-    {
-      name: "A",
-      CodeAccuracy: 80,
-      // CodeAccuracy: (users['A'].get("success")/(users['A'].get("success") + users['A'].get("failure")) * 100).toFixed(0),
-    },
-    {
-      name: "B",
-      CodeAccuracy: 40,
-      // CodeAccuracy: (users['B'].get("success")/(users['B'].get("success") + users['B'].get("failure")) * 100).toFixed(0),
-    },
-    {
-      name: "C",
-      CodeAccuracy: 30,
-      // CodeAccuracy: (users['C'].get("success")/(users['C'].get("success") + users['c'].get("failure")) * 100).toFixed(0),
-    },
-    {
-      name: "D",
-      CodeAccuracy: 90,
-      // CodeAccuracy: (users['D'].get("success")/(users['D'].get("success") + users['D'].get("failure")) * 100).toFixed(0),
-    },
-    {
-      name: "E",
-      CodeAccuracy: 60,
-      // CodeAccuracy: (users['E'].get("success")/(users['E'].get("success") + users['E'].get("failure")) * 100).toFixed(0),
-    },
-    {
-      name: "F",
-      CodeAccuracy: 50,
-      // CodeAccuracy: (users['F'].get("success")/(users['F'].get("success") + users['F'].get("failure")) * 100).toFixed(0),
-    },
-    {
-      name: "G",
-      CodeAccuracy: 85,
-      // CodeAccuracy: (users['G'].get("success")/(users['G'].get("success") + users['G'].get("failure")) * 100).toFixed(0),
-    }
-  ];
-
+  // if (users) {
+    // const graphdata = [
+    //   {
+    //     name: "A",
+    //     // CodeAccuracy: 80,
+    //     CodeAccuracy: (users['A']["success"]/(users['A']["success"] + users['A']["failure"]) * 100).toFixed(0),
+    //   },
+    //   {
+    //     name: "B",
+    //     // CodeAccuracy: 40,
+    //     CodeAccuracy: (users['B']["success"]/(users['B']["success"] + users['B']["failure"]) * 100).toFixed(0),
+    //   },
+    //   {
+    //     name: "C",
+    //     // CodeAccuracy: 30,
+    //     CodeAccuracy: (users['C']["success"]/(users['C']["success"] + users['c']["failure"]) * 100).toFixed(0),
+    //   },
+    //   {
+    //     name: "D",
+    //     // CodeAccuracy: 90,
+    //     CodeAccuracy: (users['D']["success"]/(users['D']["success"] + users['D']["failure"]) * 100).toFixed(0),
+    //   },
+    //   {
+    //     name: "E",
+    //     // CodeAccuracy: 60,
+    //     CodeAccuracy: (users['E']["success"]/(users['E']["success"] + users['E']["failure"]) * 100).toFixed(0),
+    //   },
+    //   {
+    //     name: "F",
+    //     // CodeAccuracy: 50,
+    //     CodeAccuracy: (users['F']["success"]/(users['F']["success"] + users['F']["failure"]) * 100).toFixed(0),
+    //   },
+    //   {
+    //     name: "G",
+    //     // CodeAccuracy: 85,
+    //     CodeAccuracy: (users['G']["success"]/(users['G']["success"] + users['G']["failure"]) * 100).toFixed(0),
+    //   }
+    // ];
+  // } else {
+  //   const graphdata = [
+  //     {
+  //       name: "A",
+  //       CodeAccuracy: 0,
+  //     },
+  //     {
+  //       name: "B",
+  //       CodeAccuracy: 0,
+  //     },
+  //     {
+  //       name: "C",
+  //       CodeAccuracy: 0,
+  //     },
+  //     {
+  //       name: "D",
+  //       CodeAccuracy: 0,
+  //     },
+  //     {
+  //       name: "E",
+  //       CodeAccuracy: 0,
+  //     },
+  //     {
+  //       name: "F",
+  //       CodeAccuracy: 0,
+  //     },
+  //     {
+  //       name: "G",
+  //       CodeAccuracy: 0,
+  //     }
+  //   ];
+  // }
 
 
   // if (loading) return <div>로딩중..</div>;
@@ -114,6 +173,7 @@ export function PracticeReport() {
         <Legend />
         <Bar dataKey="CodeAccuracy" fill="#e0ffff" barSize={30} />
       </BarChart>
+      {users}
     </Box>
   )
 }
