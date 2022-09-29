@@ -28,12 +28,12 @@ export function PracticeReport() {
     {
       name: "B",
       // CodeAccuracy: 40,
-      CodeAccuracy: (users['B'].get("success")/(users['B'].get("success") + users['B']get("failure")) * 100).toFixed(0),
+      CodeAccuracy: (users['B'].get("success")/(users['B'].get("success") + users['B'].get("failure")) * 100).toFixed(0),
     },
     {
       name: "C",
       // CodeAccuracy: 30,
-      CodeAccuracy: (users['C'].get("success")/(users['C'].get("success") + users['c']C.get("failure")) * 100).toFixed(0),
+      CodeAccuracy: (users['C'].get("success")/(users['C'].get("success") + users['c'].get("failure")) * 100).toFixed(0),
     },
     {
       name: "D",
@@ -53,7 +53,7 @@ export function PracticeReport() {
     {
       name: "G",
       // CodeAccuracy: 85,
-      CodeAccuracy: (users['G'].get("success")/(users['G'].get("success") + users.['G'].get("failure")) * 100).toFixed(0),
+      CodeAccuracy: (users['G'].get("success")/(users['G'].get("success") + users['G'].get("failure")) * 100).toFixed(0),
     }
   ];
 
