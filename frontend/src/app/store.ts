@@ -2,12 +2,14 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import dumpReducer from '../features/backingtrack/DumpSlice'
 import mainReducer from '../features/mainpage/MainSlice'
 import rotateReducer from '../features/rotatingbtn/RotateSlice'
+import gameReducer from '../features/chordgame/GameSlice'
 export const store = configureStore({
   // Reducer 등록
   reducer: {
     dump: dumpReducer,
     rotate: rotateReducer,
-    main: mainReducer
+    main: mainReducer,
+    game:gameReducer
   },
 });
 

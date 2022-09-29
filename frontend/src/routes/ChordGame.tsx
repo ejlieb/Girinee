@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../app/hooks'
 
 // Other Component 
 import GIRINEE from '../assets/images/GIRINEE.png'
@@ -12,6 +13,7 @@ import '../assets/fonts/font.css'
 import { LowLevel } from '../components/game/LowLevel'
 import { IntermediateLevel } from '../components/game/IntermediateLevel'
 import { HighLevel } from '../components/game/HighLevel'
+import { setDegree } from '../features/chordgame/GameSlice'
 
 // Material UI
 import { Box } from '@mui/system'
@@ -36,10 +38,12 @@ export function ChordGame() {
       }
     };
 
-    const [controllerDegree, setDegree] = useState(0)
-    const clickLow = () => setDegree((prev) => 0)
-    const clickMid = () => setDegree((prev) => 1)
-    const clickHigh = () => setDegree((prev) => 2)
+    // const [controllerDegree, setDegree] = useState(0)
+    const controllerDegree = useAppSelector((state) => state.game.controllerDegree)
+    const dispatch = useAppDispatch()
+    const clickLow = () => dispatch(setDegree(0))
+    const clickMid = () => dispatch(setDegree(1))
+    const clickHigh = () => dispatch(setDegree(2))
     
     
     let levelValue = "E A S Y - L E V E L"
