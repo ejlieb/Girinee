@@ -122,6 +122,7 @@ export function GameReport() {
         console.log('data = ', response.data)
       } catch (e: any) {
         console.log(e)
+        console.log('errer=', e)
         // setError(e);
       }
       // setLoading(false);
