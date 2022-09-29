@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from "react-router-dom"
 import { AnimatePresence } from 'framer-motion'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 
 // Other Component 
 import useRecorder from "./useRecorder"
@@ -25,40 +26,20 @@ import Button from '@mui/material/Button'
 
 // -----------------------------------------------------------------------------------------------------
 
-export function IntermediateLevel() {
+export function NormalLevelInfo() {
     // script
     const guitarChordSets = [['A', 'B', 'C', 'D'], ['B', 'C', 'D', 'E'], ['C', 'D', 'E', 'F'],['D', 'E', 'F', 'G'],['E', 'F', 'G', 'A']]
 
+    // 녹음에 필요한 정보
     const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
 
-    const [cntChord, setCntChord] = useState('')
-    // 버튼 눌렀을 때 해당 코드 연습 화면으로 변경
-    const startGame = () => {
-      const randomIdx = Math.floor(Math.random() * 5)
-      const cntChordset = guitarChordSets[randomIdx]
-      console.log(cntChordset);
+    // 사용자가 선택한 시간초 정보
+    const chordSecond:number = useAppSelector((state) => state.game.chordSecond)
 
-      setTimeout(startRecording(),3000)
-
-      let cntIdx = -1      
-      setInterval(function() {
-        if (cntIdx !== 3) {
-          cntIdx++
-          setCntChord((prev) => cntChordset[cntIdx])
-        } else {
-          setTimeout(stopRecording())
-        } 
-      }, 3000)      
-    }
-
-      
+    const cntChord:string = useAppSelector((state) => state.game.cntChord)
     // JSX
     return (
       <div>
-        <h1 className="white-text">게임모드</h1>
-
-        <Button className="white-text" disabled={isRecording} onClick={startGame}>시작!</Button>
-
         <div id="chord-box">
           <h1 id="chord-name" className='white-text'>{cntChord ==='C' ? 'C' : cntChord ==='Cm' ? 'Cm' :
                                                       cntChord ==='D' ? 'D' : cntChord ==='Dm' ? 'Dm' :
@@ -76,7 +57,9 @@ export function IntermediateLevel() {
                     cntChord ==='G' ? G_chord : cntChord ==='Gm' ? Gm_chord :
                     cntChord ==='A' ? A_chord : cntChord ==='Am' ? Am_chord :
                     cntChord ==='B' ? B_chord : Bm_chord} id="chord-img" alt="..." />
-            <audio src={audioURL} controls />
+
+          <h1 id="level-value" className='line-up'>N O R M A L - L E V E L</h1>
+          <h3 id="level-discription" className='white-text'>'N O R M A L - L E V E L'에서는 실제 음악에서 자주 사용되는 코드 진행을 랜덤으로</h3>
         </div>
       </div>
     )

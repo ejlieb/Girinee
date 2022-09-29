@@ -1,4 +1,4 @@
-export function HighLevel() {
+export function HighLevelInfo() {
     // script
   
     // JSX

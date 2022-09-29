@@ -35,81 +35,23 @@ import B_chord from '../../assets/images/chords/B_chord.png'
 import B_sound from '../../assets/chord_sounds/B_sound.wav'
 import Bm_chord from '../../assets/images/chords/Bm_chord.png'
 import Bm_sound from '../../assets/chord_sounds/Bm_sound.wav'
-import { setCntChord } from '../../features/chordgame/GameSlice'
 
 // Material UI
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
-import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select'
-import StopIcon from '@mui/icons-material/Stop';
-import MicIcon from '@mui/icons-material/Mic';
-import { createTextSpanFromBounds } from 'typescript'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { withTheme } from '@emotion/react'
 
 // -----------------------------------------------------------------------------------------------------
 
-export function LowLevel() {
+export function LowLevelInfo() {
     // script
-    const guitarChords = ['C', 'Cm', 'D', 'Dm', 'E', 'Em', 'F', 'Fm', 'G', 'Gm', 'A', 'Am', 'B', 'Bm']
-    
-    // 버튼 눌렀을 때 해당 코드 연습 화면으로 변경
-    // const [cntChord, setCntChord] = useState('C_chord')
+    // 코드 정보 받아오기
     const cntChord = useAppSelector((state)=>state.game.cntChord)
-    const dispatch = useAppDispatch()
-    const showChord = (event: SelectChangeEvent) => {
-    dispatch(setCntChord(event.target.value as string))
-    }
-
-    // 녹음에 필요한 것
-    // 금단의 any를 사용하고 말았음
-    const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
-
-    // MUI select 테마 변경
-    const theme = createTheme({
-      palette: {
-        primary: {
-          main: '#000',          
-        },
-      },
-    })
-
+    
     // JSX
     return (
       <div>
-        {/* 셀렉트 박스(코드 선택) */}
-        <div className="selectBox">
-          <ThemeProvider theme={theme}>
-            <FormControl variant="filled" sx={{ minWidth: 200 }}>
-              <InputLabel id="chord-select-label">CHORD</InputLabel>
-              <Select
-                placeholder='Select Chord'
-                labelId="chord-select-label"
-                id="chord-select"
-                value={cntChord}
-                label="Chord"
-                onChange={showChord}            
-              >
-                {guitarChords.map((chord, idx) => (
-                  <MenuItem key={idx} value={chord}>{chord}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </ThemeProvider>
-        </div>
+        <h3 id="level-value" className='line-up'>L O W - L E V E L</h3>
+        <h3 id="level-discription" className='white-text'>연습하기 원하는 코드를 직접 선택하여 진행하세요.</h3>
         
-        {/* 코드 관련 */}
         <div id="chord-box">
-          {/* 코드 이름 */}
-          <h1 id="chord-name" className='white-text'>{cntChord ==='C' ? 'C' : cntChord ==='Cm' ? 'Cm' :
-                                                      cntChord ==='D' ? 'D' : cntChord ==='Dm' ? 'Dm' :
-                                                      cntChord ==='E' ? 'E' : cntChord ==='Em' ? 'Em' :
-                                                      cntChord ==='F' ? 'F' : cntChord ==='Fm' ? 'Fm' :
-                                                      cntChord ==='G' ? 'G' : cntChord ==='Gm' ? 'Gm' :
-                                                      cntChord ==='A' ? 'A' : cntChord ==='Am' ? 'Am' :
-                                                      cntChord ==='B' ? 'B' : 'Bm'}
-          </h1>
           {/* 코드 운지표 */}
           <img src={cntChord ==='C' ? C_chord : cntChord ==='Cm' ? Cm_chord :
                     cntChord ==='D' ? D_chord : cntChord ==='Dm' ? Dm_chord :
@@ -127,19 +69,6 @@ export function LowLevel() {
                       cntChord ==='A' ? A_sound : cntChord ==='Am' ? Am_sound :
                       cntChord ==='B' ? B_sound : Bm_sound} controls></audio>
 
-          {/* 녹음버튼 */}
-          <div>
-            {/* 녹음한 소리 듣기 */}
-            <audio src={audioURL} controls />
-            {/* 녹음 시작 */}
-            <button id="record-btn" onClick={startRecording} disabled={isRecording}>
-              <MicIcon id="record-icon" fontSize="large"/>
-            </button>
-            {/* 녹음 정지 */}
-            <button id="stop-btn" onClick={stopRecording} disabled={!isRecording}>
-              <StopIcon id="stop-icon" fontSize="large"/>
-            </button>
-          </div>
         </div>
       </div>
     )
