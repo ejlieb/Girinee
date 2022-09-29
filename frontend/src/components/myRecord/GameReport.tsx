@@ -88,7 +88,7 @@ export function GameReport() {
     fetchUsers();
   }, []);
 
-
+  console.log("데이터 들어오는지 확인 =", users)
   // 그래프 데이터 관리
   const data = [
     {
@@ -143,9 +143,9 @@ export function GameReport() {
           visibleScrollbar={false}
           // sx={{ borderRight: 1, borderColor: 'divider' }}
         >
-          <Tab label={users[0]['difficult']} {...a11yProps(0)} id="text-color-game"/>
-          <Tab label={users[1]['difficult']} {...a11yProps(1)} id="text-color-game"/>
-          <Tab label={users[2]['difficult']} {...a11yProps(2)} id="text-color-game"/>
+          <Tab label='difficult' {...a11yProps(0)} id="text-color-game"/>
+          <Tab label='difficult' {...a11yProps(1)} id="text-color-game"/>
+          <Tab label='difficult' {...a11yProps(2)} id="text-color-game"/>
           {/* <Tab label={users[3]['difficult']} {...a11yProps(3)} id="text-color-game"/>
           <Tab label={users[4]['difficult']} {...a11yProps(4)} id="text-color-game"/>
           <Tab label={users[5]['difficult']} {...a11yProps(5)} id="text-color-game"/>
