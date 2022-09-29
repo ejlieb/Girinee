@@ -28,14 +28,13 @@ export function PracticeReport() {
           }
         );
         setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
-        console.log('data = ', response.data)
-        console.log(response.data['B'])
-        console.log(response.data['B']['success'])
-        console.log(response.data['B']['failure'])
+        // console.log('data = ', response.data)
+        // console.log(response.data['B'])
+        // console.log(response.data['B']['success'])
+        // console.log(response.data['B']['failure'])
       } catch (e: any) {
         console.log('errer=', e)
       }
-
     };
 
     fetchUsers();

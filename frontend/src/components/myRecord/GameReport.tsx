@@ -92,22 +92,26 @@ export function GameReport() {
   // 그래프 데이터 관리
   const data = [
     {
-      name: users ? users[value]['chord1'] : 'code',
+      name: 'A',
+      // name: users ? users[value]['chord1'] : 'code',
       // CodeAccuracy: 70,
       CodeAccuracy: users ? users[value]['score1'] : 0
     },
     {
-      name: users ? users[value]['chord2'] : 'code',
+      name: 'B',
+      // name: users ? users[value]['chord2'] : 'code',
       // CodeAccuracy: 70,
       CodeAccuracy: users ? users[value]['score2'] : 0
     },
     {
-      name: users ? users[value]['chord3'] : 'code',
+      name:'C',
+      // name: users ? users[value]['chord3'] : 'code',
       // CodeAccuracy: 70,
       CodeAccuracy: users ? users[value]['score3'] : 0
     },
     {
-      name: users ? users[value]['chord4'] : 'code',
+      name: 'D',
+      // name: users ? users[value]['chord4'] : 'code',
       // CodeAccuracy: 70,
       CodeAccuracy: users ? users[value]['score4'] : 0
     },
