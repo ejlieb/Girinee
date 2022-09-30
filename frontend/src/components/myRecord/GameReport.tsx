@@ -60,7 +60,7 @@ function a11yProps(index: number) {
 export function GameReport() {
   
   // axios 상태 관리
-  const [users, setUsers] = React.useState([]);
+  const [users, setUsers] = React.useState(null);
   const [value, setValue] = React.useState(0);
 
   // 로컬 스토리지에 있는 토큰 값 저장
@@ -89,8 +89,6 @@ export function GameReport() {
   }, []);
 
   console.log("데이터 들어오는지 확인1 =", users, value)
-  console.log("데이터 들어오는지 확인2 =", Object.keys(users[0]))
-  console.log("데이터 들어오는지 확인2 =", users[1])
   // console.log("데이터 들어오는지 확인3 =", users[0]['chord1'] )
   // console.log("데이터 들어오는지 확인4 =", users[0]['score2'] )
 
