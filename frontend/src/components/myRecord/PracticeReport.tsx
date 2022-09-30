@@ -82,10 +82,7 @@ export function PracticeReport() {
   ];
 
 
-  // if (loading) return <div>로딩중..</div>;
-  // if (error) return <div>에러가 발생했습니다</div>;
   return (
-
     <Box component="div">
       <Typography sx={{ display: 'flex', justifyContent: 'center', mb:3}} id="text-color-practice">코드별 정확도를 확인할 수 있습니다.</Typography>
       <BarChart
