@@ -149,14 +149,13 @@ export function GameReport() {
           visibleScrollbar={false}
           // sx={{ borderRight: 1, borderColor: 'divider' }}
         >
-          {/* {users ? users[0]['difficulty'] : 'level'} */}
           <Tab label={users ? (users[0]['difficulty'] ? users[0]['difficulty'] : 'x') : 'x'} {...a11yProps(0)} id="text-color-game"/>
           <Tab label={users ? (users[1]['difficulty'] ? users[1]['difficulty'] : 'x') : 'x'} {...a11yProps(1)} id="text-color-game"/>
           <Tab label={users ? (users[2]['difficulty'] ? users[2]['difficulty'] : 'x') : 'x'} {...a11yProps(2)} id="text-color-game"/>
-          {/* <Tab label={users[3]['difficulty']} {...a11yProps(3)} id="text-color-game"/>
-          <Tab label={users[4]['difficulty']} {...a11yProps(4)} id="text-color-game"/>
-          <Tab label={users[5]['difficulty']} {...a11yProps(5)} id="text-color-game"/>
-          <Tab label={users[6]['difficulty']} {...a11yProps(6)} id="text-color-game"/> */}
+          <Tab label={users ? (users[3]['difficulty'] ? users[3]['difficulty'] : 'x') : 'x'} {...a11yProps(3)} id="text-color-game"/>
+          <Tab label={users ? (users[4]['difficulty'] ? users[4]['difficulty'] : 'x') : 'x'} {...a11yProps(4)} id="text-color-game"/>
+          <Tab label={users ? (users[5]['difficulty'] ? users[5]['difficulty'] : 'x') : 'x'} {...a11yProps(5)} id="text-color-game"/>
+          <Tab label={users ? (users[6]['difficulty'] ? users[6]['difficulty'] : 'x') : 'x'} {...a11yProps(6)} id="text-color-game"/>
         </Tabs>
 
         <TabPanel value={value} index={value}>
