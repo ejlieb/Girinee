@@ -43,27 +43,27 @@ export function PracticeReport() {
 
   // 그래프 데이터 관리
   const graphdata = [
-    {
-      name: "A",
-      Success: () => {
-        if(users) {
-          if(users['A']) {
-            users['A']['success']
-          } else {
-            0
-          }
-        } else {
-          0
-        }
-      },
-      // Success: users ? users['A'] ? users['A']['success'] : 0 : 0,
-      Failure: users ? users['B'] ? users['B']['failure'] : 0 : 0,
-      // parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']['failure'])) * 100).toFixed(0)
-    },
+    // {
+    //   name: "A",
+    //   // Success: () => {
+    //   //   if(users) {
+    //   //     if(users['A']) {
+    //   //       users['A']['success']
+    //   //     } else {
+    //   //       0
+    //   //     }
+    //   //   } else {
+    //   //     0
+    //   //   }
+    //   // },
+    //   // Success: users ? users['A'] ? users['A']['success'] : 0 : 0,
+    //   Failure: users ? users['B'] ? users['B']['failure'] : 0 : 0,
+    //   // parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']['failure'])) * 100).toFixed(0)
+    // },
     {
       name: "B",
-      Success: users ? users['B'] ? users['B']['success'] : 0 : 0,
-      Failure: users ? users['B']['failure'] : 0,
+      Success: users ? (users['B'] ? users['B']['success'] : 0) : 0,
+      Failure: users ? (users['B'] ? users['B']['failure'] : 0) : 0,
     },
     {
       name: "C",
