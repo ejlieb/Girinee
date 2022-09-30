@@ -100,26 +100,26 @@ export function GameReport() {
     {
       // name: 'A',
       // CodeAccuracy: 70,
-      name: users ? (users[value]['chord1'] ? users[value]['chord1'] : ' ') : ' ',
-      CodeAccuracy: users ? (users[value]['chord1'] ? users[value]['score1'] : ' ') : 0
+      name: users ? (users[value] ? users[value]['chord1'] : ' ') : ' ',
+      CodeAccuracy: users ? (users[value] ? users[value]['score1'] : ' ') : 0
     },
     {
       // name: 'B',
       // CodeAccuracy: 70,
-      name: users ? (users[value]['chord2'] ? users[value]['chord2'] : ' ') : ' ',
-      CodeAccuracy: users ? (users[value]['chord2'] ? users[value]['score2'] : ' ') : 0
+      name: users ? (users[value] ? users[value]['chord2'] : ' ') : ' ',
+      CodeAccuracy: users ? (users[value] ? users[value]['score2'] : ' ') : 0
     },
     {
       // name:'C',
       // CodeAccuracy: 70,
-      name: users ? (users[value]['chord3'] ? users[value]['chord3'] : ' ') : ' ',
-      CodeAccuracy: users ? (users[value]['chord3'] ? users[value]['score3'] : ' ') : 0
+      name: users ? (users[value] ? users[value]['chord3'] : ' ') : ' ',
+      CodeAccuracy: users ? (users[value] ? users[value]['score3'] : ' ') : 0
     },
     {
       // name: 'D',
       // CodeAccuracy: 70,
-      name: users ? (users[value]['chord4'] ? users[value]['chord4'] : ' ') : ' ',
-      CodeAccuracy: users ? (users[value]['chord4'] ? users[value]['score4'] : ' ') : 0
+      name: users ? (users[value] ? users[value]['chord4'] : ' ') : ' ',
+      CodeAccuracy: users ? (users[value] ? users[value]['score4'] : ' ') : 0
     },
   ];
 
@@ -149,13 +149,13 @@ export function GameReport() {
           visibleScrollbar={false}
           // sx={{ borderRight: 1, borderColor: 'divider' }}
         >
-          <Tab label={users ? (users[0]['difficulty'] ? users[0]['difficulty'] : 'x') : 'x'} {...a11yProps(0)} id="text-color-game"/>
-          <Tab label={users ? (users[1]['difficulty'] ? users[1]['difficulty'] : 'x') : 'x'} {...a11yProps(1)} id="text-color-game"/>
-          <Tab label={users ? (users[2]['difficulty'] ? users[2]['difficulty'] : 'x') : 'x'} {...a11yProps(2)} id="text-color-game"/>
-          <Tab label={users ? (users[3]['difficulty'] ? users[3]['difficulty'] : 'x') : 'x'} {...a11yProps(3)} id="text-color-game"/>
-          <Tab label={users ? (users[4]['difficulty'] ? users[4]['difficulty'] : 'x') : 'x'} {...a11yProps(4)} id="text-color-game"/>
-          <Tab label={users ? (users[5]['difficulty'] ? users[5]['difficulty'] : 'x') : 'x'} {...a11yProps(5)} id="text-color-game"/>
-          <Tab label={users ? (users[6]['difficulty'] ? users[6]['difficulty'] : 'x') : 'x'} {...a11yProps(6)} id="text-color-game"/>
+          <Tab label={users ? (users[0] ? users[0]['difficulty'] : 'x') : 'x'} {...a11yProps(0)} id="text-color-game"/>
+          <Tab label={users ? (users[1] ? users[1]['difficulty'] : 'x') : 'x'} {...a11yProps(1)} id="text-color-game"/>
+          <Tab label={users ? (users[2] ? users[2]['difficulty'] : 'x') : 'x'} {...a11yProps(2)} id="text-color-game"/>
+          <Tab label={users ? (users[3] ? users[3]['difficulty'] : 'x') : 'x'} {...a11yProps(3)} id="text-color-game"/>
+          <Tab label={users ? (users[4] ? users[4]['difficulty'] : 'x') : 'x'} {...a11yProps(4)} id="text-color-game"/>
+          <Tab label={users ? (users[5] ? users[5]['difficulty'] : 'x') : 'x'} {...a11yProps(5)} id="text-color-game"/>
+          <Tab label={users ? (users[6] ? users[6]['difficulty'] : 'x') : 'x'} {...a11yProps(6)} id="text-color-game"/>
         </Tabs>
 
         <TabPanel value={value} index={value}>
