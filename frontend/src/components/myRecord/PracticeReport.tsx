@@ -43,23 +43,12 @@ export function PracticeReport() {
 
   // 그래프 데이터 관리
   const graphdata = [
-    // {
-    //   name: "A",
-    //   // Success: () => {
-    //   //   if(users) {
-    //   //     if(users['A']) {
-    //   //       users['A']['success']
-    //   //     } else {
-    //   //       0
-    //   //     }
-    //   //   } else {
-    //   //     0
-    //   //   }
-    //   // },
-    //   // Success: users ? users['A'] ? users['A']['success'] : 0 : 0,
-    //   Failure: users ? users['B'] ? users['B']['failure'] : 0 : 0,
-    //   // parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']['failure'])) * 100).toFixed(0)
-    // },
+    {
+      name: "A",
+      Success: users ? (users['A'] ? users['A']['success'] : 0) : 0,
+      Failure: users ? (users['A'] ? users['A']['failure'] : 0) : 0,
+      // parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']['failure'])) * 100).toFixed(0)
+    },
     {
       name: "B",
       Success: users ? (users['B'] ? users['B']['success'] : 0) : 0,
@@ -67,28 +56,28 @@ export function PracticeReport() {
     },
     {
       name: "C",
-      Success: users ? users['C']['success'] : 0,
-      Failure: users ? users['C']['failure'] : 0,
+      Success: users ? (users['C'] ? users['C']['success'] : 0) : 0,
+      Failure: users ? (users['C'] ? users['C']['failure'] : 0) : 0,
     },
     {
       name: "D",
-      Success: users ? users['D']['success'] : 0,
-      Failure: users ? users['D']['failure'] : 0,
+      Success: users ? (users['D'] ? users['D']['success'] : 0) : 0,
+      Failure: users ? (users['D'] ? users['D']['failure'] : 0) : 0,
     },
     {
       name: "E",
-      Success: users ? users['E']['success'] : 0,
-      Failure: users ? users['E']['failure'] : 0,
+      Success: users ? (users['E'] ? users['E']['success'] : 0) : 0,
+      Failure: users ? (users['E'] ? users['E']['failure'] : 0) : 0,
     },
     {
       name: "F",
-      Success: users ? users['F']['success'] : 0,
-      Failure: users ? users['F']['failure'] : 0,
+      Success: users ? (users['F'] ? users['F']['success'] : 0) : 0,
+      Failure: users ? (users['F'] ? users['F']['failure'] : 0) : 0,
     },
     {
       name: "G",
-      Success: users ? users['G']['success'] : 0,
-      Failure: users ? users['G']['failure'] : 0,
+      Success: users ? (users['G'] ? users['G']['success'] : 0): 0,
+      Failure: users ? (users['G'] ? users['G']['failure'] : 0): 0,
     }
   ];
 
