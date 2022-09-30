@@ -88,38 +88,38 @@ export function GameReport() {
     fetchUsers();
   }, []);
 
-  console.log("데이터 들어오는지 확인1 =", users, value)
-  console.log("데이터 들어오는지 확인2 =", users ? users[0] : 0, value)
-  console.log("데이터 들어오는지 확인2 =", users ? users[1] : 0, value)
-  console.log("데이터 들어오는지 확인3 =", users ? (users[1]['chord1'] ? users[1]['chord1'] : '없음') : 0, value)
+  console.log("데이터 들어오는지 확인 =", users)
+  // console.log("데이터 들어오는지 확인2 =", users ? users[0] : 0, value)
+  // console.log("데이터 들어오는지 확인2 =", users ? users[1] : 0, value)
+  // console.log("데이터 들어오는지 확인3 =", users ? (users[1]['chord1'] ? users[1]['chord1'] : '없음') : 0, value)
   // console.log("데이터 들어오는지 확인3 =", users[0]['chord1'] )
   // console.log("데이터 들어오는지 확인4 =", users[0]['score2'] )
 
   // 그래프 데이터 관리
   const graphdata = [
     {
-      name: 'A',
-      CodeAccuracy: 70,
-      // name: users ? users[value]['chord1'] : 'code',
-      // CodeAccuracy: users ? users[value]['score1'] : 0
+      // name: 'A',
+      // CodeAccuracy: 70,
+      name: users ? (users[value]['chord1'] ? users[value]['chord1'] : ' ') : ' ',
+      CodeAccuracy: users ? (users[value]['chord1'] ? users[value]['score1'] : ' ') : 0
     },
     {
-      name: 'B',
-      CodeAccuracy: 70,
-      // name: users ? users[value]['chord2'] : 'code',
-      // CodeAccuracy: users ? users[value]['score2'] : 0
+      // name: 'B',
+      // CodeAccuracy: 70,
+      name: users ? (users[value]['chord2'] ? users[value]['chord2'] : ' ') : ' ',
+      CodeAccuracy: users ? (users[value]['chord2'] ? users[value]['score2'] : ' ') : 0
     },
     {
-      name:'C',
-      CodeAccuracy: 70,
-      // name: users ? users[value]['chord3'] : 'code',
-      // CodeAccuracy: users ? users[value]['score3'] : 0
+      // name:'C',
+      // CodeAccuracy: 70,
+      name: users ? (users[value]['chord3'] ? users[value]['chord3'] : ' ') : ' ',
+      CodeAccuracy: users ? (users[value]['chord3'] ? users[value]['score3'] : ' ') : 0
     },
     {
-      name: 'D',
-      CodeAccuracy: 70,
-      // name: users ? users[value]['chord4'] : 'code',
-      // CodeAccuracy: users ? users[value]['score4'] : 0
+      // name: 'D',
+      // CodeAccuracy: 70,
+      name: users ? (users[value]['chord4'] ? users[value]['chord4'] : ' ') : ' ',
+      CodeAccuracy: users ? (users[value]['chord4'] ? users[value]['score4'] : ' ') : 0
     },
   ];
 
@@ -150,9 +150,9 @@ export function GameReport() {
           // sx={{ borderRight: 1, borderColor: 'divider' }}
         >
           {/* {users ? users[0]['difficulty'] : 'level'} */}
-          <Tab label='이이' {...a11yProps(0)} id="text-color-game"/>
-          <Tab label='이이' {...a11yProps(1)} id="text-color-game"/>
-          <Tab label='이이' {...a11yProps(2)} id="text-color-game"/>
+          <Tab label={users ? (users[0]['difficulty'] ? users[0]['difficulty'] : 'x') : 'x'} {...a11yProps(0)} id="text-color-game"/>
+          <Tab label={users ? (users[1]['difficulty'] ? users[1]['difficulty'] : 'x') : 'x'} {...a11yProps(1)} id="text-color-game"/>
+          <Tab label={users ? (users[2]['difficulty'] ? users[2]['difficulty'] : 'x') : 'x'} {...a11yProps(2)} id="text-color-game"/>
           {/* <Tab label={users[3]['difficulty']} {...a11yProps(3)} id="text-color-game"/>
           <Tab label={users[4]['difficulty']} {...a11yProps(4)} id="text-color-game"/>
           <Tab label={users[5]['difficulty']} {...a11yProps(5)} id="text-color-game"/>
