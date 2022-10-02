@@ -53,17 +53,6 @@ export function NormalLevelController() {
     // JSX
     return (
       <div>
-        <Slider
-          aria-label="Seconds"
-          defaultValue={3}
-          valueLabelDisplay="auto"
-          step={1}
-          marks
-          min={2}
-          max={6}
-          onChange={handleChange}
-          disabled={isRecording}
-          />
         <Button className="white-text" disabled={isRecording} onClick={startGame}>시작!</Button>
       </div>
     )

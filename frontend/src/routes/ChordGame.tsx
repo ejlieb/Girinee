@@ -16,7 +16,8 @@ import { NormalLevelInfo } from '../components/game/NormalLevelInfo'
 import { NormalLevelController } from '../components/game/NormalLevelController'
 import { HighLevelInfo } from '../components/game/HighLevelInfo'
 import { HighLevelController } from '../components/game/HighLevelController'
-import { setDegree } from '../features/chordgame/GameSlice'
+import { setDegree, setSecond } from '../features/chordgame/GameSlice'
+// import { setSecond } from '../features/chordgame/GameSlice'
 
 // Material UI
 import { Box } from '@mui/system'
@@ -35,15 +36,20 @@ export function ChordGame() {
         window.location.replace('http://localhost:3000')
       }
     };
+    
+    const dispatch = useAppDispatch()
 
     // const [controllerDegree, setDegree] = useState(0)
     const controllerDegree = useAppSelector((state) => state.game.controllerDegree)
-    const dispatch = useAppDispatch()
     const clickLow = () => dispatch(setDegree(0))
     const clickMid = () => dispatch(setDegree(1))
     const clickHigh = () => dispatch(setDegree(2))
     
-    
+    // 디스패치로 사용자가 슬라이더로 선택하는 시간 초 변경, 설정된 초 가져오기
+    const handleChange = (event: Event, newValue: number | number[]) => {
+      dispatch(setSecond(newValue as number));
+    }
+
     let levelValue = "E A S Y - L E V E L"
     let levelExplanation = "쉬워요"
     if (controllerDegree === 0) {
@@ -157,7 +163,7 @@ export function ChordGame() {
                 </Stack>
 
                 <div>
-                  <Slider aria-label="Seconds" defaultValue={3} orientation="vertical" valueLabelDisplay="auto" step={1} min={2} max={6}/>
+                  <Slider onChange={handleChange} aria-label="Seconds" defaultValue={3} orientation="vertical" valueLabelDisplay="auto" step={1} min={2} max={6} disabled={controllerDegree===0 ? true : false}/>
                 </div>
               </Stack>              
               {/* </Grid> */}
