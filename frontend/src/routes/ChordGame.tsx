@@ -20,12 +20,7 @@ import { setDegree } from '../features/chordgame/GameSlice'
 
 // Material UI
 import { Box } from '@mui/system'
-import { Typography } from '@mui/material'
-import Button from '@mui/material/Button'
-import Stack from '@mui/material/Stack'
-import Grid from '@mui/material/Grid'
-// import Switch from '@mui/material/Switch';  
-// import { PowerSettingsNew } from '@mui/icons-material'
+import { Button, Stack, Grid, Slider, Typography } from '@mui/material'
 
 // -----------------------------------------------------------------------------------------------------
 
@@ -88,14 +83,14 @@ export function ChordGame() {
         <Grid component="div" container>
 
           {/* Level Info */}
-          <Grid item xs={4} p={4} pt={15} id="info-box">
+          <Grid item xs={3} p={4} pt={15} id="info-box">
             {/* 선택한 난이도 따라서 나타나는 내용 */}
             {controllerDegree === 0 ? <LowLevelInfo/> : controllerDegree === 1 ? <NormalLevelInfo/> : <HighLevelInfo/>}
             {/* </Box> */}
           </Grid>
 
           {/* Three js를 위한 공간~ */}
-          <Grid item xs={5}>
+          <Grid item xs={6}>
           </Grid>
 
           {/* 메인 컨트롤러 + Level별 컨트롤러 */}
@@ -112,30 +107,60 @@ export function ChordGame() {
                 </form>
               </Box>
 
-              {/* 컨트롤러 */}
-              <Stack direction="row" mt={3}>
-                {/* 노브 */}
-                <div id="level-controller-outline" className={`degree${ controllerDegree } d-flex justify-content-center`}>
-                  <div id="level-controller">
-                    <div id="level-index"></div>
-                  </div>
-                </div>
+              <Grid container>
+                <Grid item xs={8}>
+                  {/* 레벨 컨트롤러 */}
+                  <Stack direction="row" mt={3}>
+                    {/* 노브 */}
+                    <div id="level-controller-outline" className={`degree${ controllerDegree } d-flex-row justify-content-center`}>
+                      <div id="level-controller">
+                        <div id="level-index"></div>
+                      </div>
+                    </div>
 
-                {/* 레벨버튼 누르면 해당하는 부분으로 위의 노브가 회전 */}
-                <Box component="div" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                  <Button id="low-level-btn" variant="text" onClick={clickLow}>
-                    <p className="white-text new-font">LOW</p>
-                  </Button>
-                  <Button id="mid-level-btn" variant="text" onClick={clickMid}>
-                    <p className="white-text new-font">MID</p>
-                  </Button>
-                  <Button id="high-level-btn" variant="text" onClick={clickHigh}>
-                    <p className="white-text new-font">HIGH</p>
-                  </Button>
-                </Box>
-              </Stack>
-              
-              {/* 레벨 컨트롤러 */}
+                    {/* 레벨버튼 누르면 해당하는 부분으로 위의 노브가 회전 */}
+                    <Box component="div" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                      <Button id="low-level-btn" variant="text" onClick={clickLow}>
+                        <p className="white-text new-font">LOW</p>
+                      </Button>
+                      <Button id="mid-level-btn" variant="text" onClick={clickMid}>
+                        <p className="white-text new-font">MID</p>
+                      </Button>
+                      <Button id="high-level-btn" variant="text" onClick={clickHigh}>
+                        <p className="white-text new-font">HIGH</p>
+                      </Button>
+                    </Box>
+                  </Stack>
+
+                  {/* 색상 컨트롤러 */}
+                  <Stack direction="row" mt={3}>
+                    {/* 노브 */}
+                    <div id="color-controller-outline" className='d-flex-row justify-content-center'>
+                      <div id="color-controller">
+                        <div id="color-index"></div>
+                      </div>
+                    </div>
+
+                    <Box component="div" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                      <Button variant="text">
+                        <p className="white-text new-font">BLUE</p>
+                      </Button>
+                      <Button variant="text">
+                        <p className="white-text new-font">YELLOW</p>
+                      </Button>
+                      <Button variant="text">
+                        <p className="white-text new-font">PINK</p>
+                      </Button>
+                    </Box>
+                  </Stack>
+                </Grid>
+
+                <Grid item xs={4} pt={4}>
+                  <Slider aria-label="Seconds" defaultValue={3} orientation="vertical" valueLabelDisplay="auto" step={1} min={2} max={6}/>
+                </Grid>
+              </Grid>
+  
+              {/* 레벨별 컨트롤러 */}
               {controllerDegree === 0 ? <LowLevelController/> : controllerDegree === 1 ? <NormalLevelController /> : <HighLevelController/>}
             </Stack>
           </Grid>

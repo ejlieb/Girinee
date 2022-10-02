@@ -6,6 +6,7 @@ import { render } from "react-dom"
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 
 // Other Component 
+import '../../routes/Display.css'
 import useRecorder from "./useRecorder"
 import C_chord from '../../assets/images/chords/C_chord.png'
 import C_sound from '../../assets/chord_sounds/C_sound.wav'
@@ -37,6 +38,7 @@ import Bm_chord from '../../assets/images/chords/Bm_chord.png'
 import Bm_sound from '../../assets/chord_sounds/Bm_sound.wav'
 
 // Material UI
+import Stack from '@mui/material/Stack'
 
 // -----------------------------------------------------------------------------------------------------
 
@@ -51,7 +53,7 @@ export function LowLevelInfo() {
         <h3 id="level-value" className='line-up'>L O W - L E V E L</h3>
         <h3 id="level-discription" className='white-text'>연습하기 원하는 코드를 직접 선택하여 진행하세요.</h3>
         
-        <div id="chord-box">
+        <Stack id="chord-box">
           {/* 코드 운지표 */}
           <img src={cntChord ==='C' ? C_chord : cntChord ==='Cm' ? Cm_chord :
                     cntChord ==='D' ? D_chord : cntChord ==='Dm' ? Dm_chord :
@@ -68,8 +70,7 @@ export function LowLevelInfo() {
                       cntChord ==='G' ? G_sound : cntChord ==='Gm' ? Gm_sound :
                       cntChord ==='A' ? A_sound : cntChord ==='Am' ? Am_sound :
                       cntChord ==='B' ? B_sound : Bm_sound} controls></audio>
-
-        </div>
+        </Stack>
       </div>
     )
   }
