@@ -29,6 +29,7 @@
 
 #chord-select-label {
     color: white;
+    background-color: transparent;
 }
 
 #chord-select {
@@ -43,3 +44,6 @@
     border-color: white;
     border-style:solid;
 } */
+#low-level-controller {
+    margin-top: 50px;
+}

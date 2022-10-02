@@ -11,8 +11,8 @@ import { setCntChord } from '../../features/chordgame/GameSlice'
 import { setSecond } from '../../features/chordgame/GameSlice'
 
 // MUI
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
+import { InputLabel, FormControl, Stack } from '@mui/material'
+// import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import StopIcon from '@mui/icons-material/Stop';
@@ -48,11 +48,11 @@ export function LowLevelController() {
 
     // JSX
     return (
-      <div>
+      <Stack my={5} spacing={4} alignItems="center">
         {/* 셀렉트 박스(코드 선택) */}
-        <div className="selectBox">
-          <ThemeProvider theme={theme}>
-            <FormControl variant="filled" sx={{ minWidth: 200 }}>
+        <div className="selectBox justify-content-center">
+          {/* <ThemeProvider theme={theme}> */}
+            <FormControl sx={{ minWidth: 200 }}>
               <InputLabel id="chord-select-label">CHORD</InputLabel>
               <Select
                 placeholder='Select Chord'
@@ -67,13 +67,13 @@ export function LowLevelController() {
                 ))}
               </Select>
             </FormControl>
-          </ThemeProvider>
+          {/* </ThemeProvider> */}
         </div>
         
         {/* 코드 관련 */}
         <div id="chord-box">
           {/* 녹음버튼 */}
-          <div>
+          <Stack direction="row" spacing={5}>
             {/* 녹음 시작 */}
             <button id="record-btn" onClick={startRecording} disabled={isRecording}>
               <MicIcon id="record-icon" fontSize="large"/>
@@ -82,8 +82,8 @@ export function LowLevelController() {
             <button id="stop-btn" onClick={stopRecording} disabled={!isRecording}>
               <StopIcon id="stop-icon" fontSize="large"/>
             </button>
-          </div>
+          </Stack>
         </div>
-      </div>
+      </Stack>
     )
 }

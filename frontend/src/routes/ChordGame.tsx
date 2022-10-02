@@ -107,10 +107,11 @@ export function ChordGame() {
                 </form>
               </Box>
 
-              <Grid container>
-                <Grid item xs={8}>
+              {/* <Grid container sx={{ display: 'flex', justifyContent: 'center'}}> */}
+              <Stack direction="row" mt={3} justifyContent="center" spacing={2}>
+                <Stack spacing={3}>
                   {/* 레벨 컨트롤러 */}
-                  <Stack direction="row" mt={3}>
+                  <Stack direction="row">
                     {/* 노브 */}
                     <div id="level-controller-outline" className={`degree${ controllerDegree } d-flex-row justify-content-center`}>
                       <div id="level-controller">
@@ -133,7 +134,7 @@ export function ChordGame() {
                   </Stack>
 
                   {/* 색상 컨트롤러 */}
-                  <Stack direction="row" mt={3}>
+                  <Stack direction="row">
                     {/* 노브 */}
                     <div id="color-controller-outline" className='d-flex-row justify-content-center'>
                       <div id="color-controller">
@@ -153,12 +154,13 @@ export function ChordGame() {
                       </Button>
                     </Box>
                   </Stack>
-                </Grid>
+                </Stack>
 
-                <Grid item xs={4} pt={4}>
+                <div>
                   <Slider aria-label="Seconds" defaultValue={3} orientation="vertical" valueLabelDisplay="auto" step={1} min={2} max={6}/>
-                </Grid>
-              </Grid>
+                </div>
+              </Stack>              
+              {/* </Grid> */}
   
               {/* 레벨별 컨트롤러 */}
               {controllerDegree === 0 ? <LowLevelController/> : controllerDegree === 1 ? <NormalLevelController /> : <HighLevelController/>}
