@@ -16,16 +16,15 @@ import { NormalLevelInfo } from '../components/game/NormalLevelInfo'
 import { NormalLevelController } from '../components/game/NormalLevelController'
 import { HighLevelInfo } from '../components/game/HighLevelInfo'
 import { HighLevelController } from '../components/game/HighLevelController'
-import { setDegree } from '../features/chordgame/GameSlice'
+import { setDegree, setSecond } from '../features/chordgame/GameSlice'
+// import { setSecond } from '../features/chordgame/GameSlice'
 
 // Material UI
 import { Box } from '@mui/system'
-import { Typography } from '@mui/material'
-import Button from '@mui/material/Button'
-import Stack from '@mui/material/Stack'
-import Grid from '@mui/material/Grid'
-// import Switch from '@mui/material/Switch';  
-// import { PowerSettingsNew } from '@mui/icons-material'
+import { Button, Stack, Grid, Slider, Typography } from '@mui/material'
+import AlarmIcon from '@mui/icons-material/Alarm';
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+
 
 // -----------------------------------------------------------------------------------------------------
 
@@ -40,15 +39,20 @@ export function ChordGame() {
         window.location.replace('http://localhost:3000')
       }
     };
+    
+    const dispatch = useAppDispatch()
 
     // const [controllerDegree, setDegree] = useState(0)
     const controllerDegree = useAppSelector((state) => state.game.controllerDegree)
-    const dispatch = useAppDispatch()
     const clickLow = () => dispatch(setDegree(0))
     const clickMid = () => dispatch(setDegree(1))
     const clickHigh = () => dispatch(setDegree(2))
     
-    
+    // 디스패치로 사용자가 슬라이더로 선택하는 시간 초 변경, 설정된 초 가져오기
+    const handleChange = (event: Event, newValue: number | number[]) => {
+      dispatch(setSecond(newValue as number));
+    }
+
     let levelValue = "E A S Y - L E V E L"
     let levelExplanation = "쉬워요"
     if (controllerDegree === 0) {
@@ -63,6 +67,14 @@ export function ChordGame() {
     }
 
     const navigate = useNavigate()
+
+    const theme = createTheme({
+      palette: {
+        primary: {
+          main: '#fff',          
+        },
+      },
+    })   
 
     // JSX
     return (
@@ -88,20 +100,20 @@ export function ChordGame() {
         <Grid component="div" container>
 
           {/* Level Info */}
-          <Grid item xs={4} p={4} pt={15} id="info-box">
+          <Grid item xs={3} p={4} pt={15} id="info-box">
             {/* 선택한 난이도 따라서 나타나는 내용 */}
             {controllerDegree === 0 ? <LowLevelInfo/> : controllerDegree === 1 ? <NormalLevelInfo/> : <HighLevelInfo/>}
             {/* </Box> */}
           </Grid>
 
           {/* Three js를 위한 공간~ */}
-          <Grid item xs={5}>
+          <Grid item xs={6}>
           </Grid>
 
           {/* 메인 컨트롤러 + Level별 컨트롤러 */}
           <Grid item xs={3} p={5} pt={15} id="controller-box">
             {/* 메인 컨트롤러 */}
-            <Stack>
+            <Stack spacing={12}>
               {/* 메인화면으로 돌아가기 */}
               <Box component="div" my={2} sx={{ display: 'flex', justifyContent: 'center'}}>
                 <form id="quitLever" onClick={() => {
@@ -112,30 +124,68 @@ export function ChordGame() {
                 </form>
               </Box>
 
-              {/* 컨트롤러 */}
-              <Stack direction="row" mt={3}>
-                {/* 노브 */}
-                <div id="level-controller-outline" className={`degree${ controllerDegree } d-flex justify-content-center`}>
-                  <div id="level-controller">
-                    <div id="level-index"></div>
+              {/* <Grid container sx={{ display: 'flex', justifyContent: 'center'}}> */}
+              <Stack direction="row" justifyContent="center" spacing={2}>
+                <Stack spacing={3}>
+                  {/* 레벨 컨트롤러 */}
+                  <Stack direction="row">
+                    {/* 노브 */}
+                    <div id="level-controller-outline" className={`degree${ controllerDegree } d-flex-row justify-content-center`}>
+                      <div id="level-controller">
+                        <div id="level-index"></div>
+                      </div>
+                    </div>
+
+                    {/* 레벨버튼 누르면 해당하는 부분으로 위의 노브가 회전 */}
+                    <Box component="div" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                      <Button id="low-level-btn" variant="text" onClick={clickLow}>
+                        <p className="white-text new-font">LOW</p>
+                      </Button>
+                      <Button id="mid-level-btn" variant="text" onClick={clickMid}>
+                        <p className="white-text new-font">MID</p>
+                      </Button>
+                      <Button id="high-level-btn" variant="text" onClick={clickHigh}>
+                        <p className="white-text new-font">HIGH</p>
+                      </Button>
+                    </Box>
+                  </Stack>
+
+                  {/* 색상 컨트롤러 */}
+                  <Stack direction="row">
+                    {/* 노브 */}
+                    <div id="color-controller-outline" className='d-flex-row justify-content-center'>
+                      <div id="color-controller">
+                        <div id="color-index"></div>
+                      </div>
+                    </div>
+
+                    <Box component="div" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                      <Button variant="text">
+                        <p className="white-text new-font">BLUE</p>
+                      </Button>
+                      <Button variant="text">
+                        <p className="white-text new-font">YELLOW</p>
+                      </Button>
+                      <Button variant="text">
+                        <p className="white-text new-font">PINK</p>
+                      </Button>
+                    </Box>
+                  </Stack>
+                </Stack>
+
+                <div className='d-flex-row'>
+                  <ThemeProvider theme={theme}>
+                    <Slider marks onChange={handleChange} aria-label="Seconds" defaultValue={3} orientation="vertical" valueLabelDisplay="auto" step={1} min={2} max={6} disabled={controllerDegree===0 ? true : false}/>
+                  </ThemeProvider>
+                  <div>
+                    <AlarmIcon sx={{ color: "white" }} />
+                    <p className="white-text" style={{margin: 0}}>sec</p>
                   </div>
                 </div>
-
-                {/* 레벨버튼 누르면 해당하는 부분으로 위의 노브가 회전 */}
-                <Box component="div" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                  <Button id="low-level-btn" variant="text" onClick={clickLow}>
-                    <p className="white-text new-font">LOW</p>
-                  </Button>
-                  <Button id="mid-level-btn" variant="text" onClick={clickMid}>
-                    <p className="white-text new-font">MID</p>
-                  </Button>
-                  <Button id="high-level-btn" variant="text" onClick={clickHigh}>
-                    <p className="white-text new-font">HIGH</p>
-                  </Button>
-                </Box>
-              </Stack>
-              
-              {/* 레벨 컨트롤러 */}
+              </Stack>              
+              {/* </Grid> */}
+  
+              {/* 레벨별 컨트롤러 */}
               {controllerDegree === 0 ? <LowLevelController/> : controllerDegree === 1 ? <NormalLevelController /> : <HighLevelController/>}
             </Stack>
           </Grid>

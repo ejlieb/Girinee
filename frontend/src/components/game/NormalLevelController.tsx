@@ -11,7 +11,8 @@ import { setCntChord } from '../../features/chordgame/GameSlice'
 
 // Material UI
 import Button from '@mui/material/Button'
-import Slider from '@mui/material/Slider'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { Stack } from '@mui/system'
 
 
 export function NormalLevelController() {
@@ -29,42 +30,83 @@ export function NormalLevelController() {
       dispatch(setSecond(newValue as number));
     }
     
-
+    const theme = createTheme({
+      palette: {
+        primary: {
+          main: '#fff',          
+        },
+      },
+    })   
 
     // 버튼 눌렀을 때 해당 코드 연습 화면으로 변경
+    let cntIdx = -2
+
     const startGame = () => {
       const randomIdx = Math.floor(Math.random() * 5)
       const cntChordset = guitarChordSets[randomIdx]
       console.log(cntChordset);
+      
+      cntIdx++
+      // console.log('cntIdx', cntIdx)
 
-      setTimeout(startRecording(), chordSecond * 1000)
+      function plusIdx() {
+          startRecording()
+          // console.log('start recording')
+          if (cntIdx === -1) {
+            cntIdx++
+            dispatch(setCntChord(cntChordset[cntIdx] as string))
+            // console.log('cntIdx', cntIdx)
+          }
+        }
 
-      let cntIdx = -1      
-      setInterval(function() {
-        if (cntIdx !== 3) {
-          cntIdx++
-          dispatch(setCntChord(cntChordset[cntIdx] as string))
-        } else {
-          setTimeout(stopRecording())
-        } 
-      }, chordSecond * 1000)      
+      function flipChord() {setInterval(function() {
+          if (cntIdx === 0 || cntIdx === 1 || cntIdx === 2) {
+            cntIdx++
+            // console.log('cntIdx', cntIdx)
+            dispatch(setCntChord(cntChordset[cntIdx] as string))
+          } else if (cntIdx === 3) {
+            stopRecording()
+            // console.log('stop recording')
+            cntIdx = -2
+          }
+        }, chordSecond*1000)
+      }
+
+      setTimeout(plusIdx, 3000)
+      setTimeout(flipChord, 3000)
     }
+
+      // if (cntIdx === -1) {
+      //   console.log('cntIdx', cntIdx)
+      //   setTimeout(plusIdx, 3000)
+      // } else if (cntIdx >= 0 || cntIdx <= 2) {
+      //   setInterval(function() {
+      //     cntIdx++
+      //     dispatch(setCntChord(cntChordset[cntIdx] as string))
+      //     console.log('cntIdx', cntIdx)
+      //   }, chordSecond*1000)
+      // } else {
+      //   setTimeout(stopRecording(), chordSecond*1000)
+      //   cntIdx = -1
+      // }
+
+      // setInterval(function() {
+      //   if (cntIdx=-1) {
+      //   } else if (cntIdx !== 3) {
+      //     cntIdx++
+      //     dispatch(setCntChord(cntChordset[cntIdx] as string))
+      //   } else {
+      //     setTimeout(stopRecording())
+      //     cntIdx = -1
+      //   } 
+      // }, chordSecond * 1000)      
       
     // JSX
     return (
-      <div>
-        <Slider
-          aria-label="Seconds"
-          defaultValue={3}
-          valueLabelDisplay="auto"
-          step={1}
-          marks
-          min={2}
-          max={6}
-          onChange={handleChange}
-          disabled={isRecording}
-          />
-        <Button className="white-text" disabled={isRecording} onClick={startGame}>시작!</Button>
-      </div>
+      <Stack alignItems="center">
+        <ThemeProvider theme={theme}>
+          <Button id="normal-start-btn" variant="outlined" className="white-text" disabled={isRecording} onClick={startGame}>시 작 하 기</Button>
+        </ThemeProvider>
+      </Stack>
     )
 }
