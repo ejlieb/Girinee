@@ -41,14 +41,9 @@ export function NormalLevelInfo() {
     return (
       <div>
         <div id="chord-box">
-          <h1 id="chord-name" className='white-text'>{cntChord ==='C' ? 'C' : cntChord ==='Cm' ? 'Cm' :
-                                                      cntChord ==='D' ? 'D' : cntChord ==='Dm' ? 'Dm' :
-                                                      cntChord ==='E' ? 'E' : cntChord ==='Em' ? 'Em' :
-                                                      cntChord ==='F' ? 'F' : cntChord ==='Fm' ? 'Fm' :
-                                                      cntChord ==='G' ? 'G' : cntChord ==='Gm' ? 'Gm' :
-                                                      cntChord ==='A' ? 'A' : cntChord ==='Am' ? 'Am' :
-                                                      cntChord ==='B' ? 'B' : 'Bm'} 
-          </h1>
+          <h1 id="level-value" className='line-up'>N O R M A L - L E V E L</h1>
+          <h3 id="level-discription" className='white-text'>'N O R M A L - L E V E L'에서는 실제 음악에서 자주 사용되는 코드 진행을 랜덤으로</h3>
+          
           {/* 여기서 대기 화면을 넣던가 해야겠음 */}
           <img src={cntChord ==='C' ? C_chord : cntChord ==='Cm' ? Cm_chord :
                     cntChord ==='D' ? D_chord : cntChord ==='Dm' ? Dm_chord :
@@ -57,9 +52,6 @@ export function NormalLevelInfo() {
                     cntChord ==='G' ? G_chord : cntChord ==='Gm' ? Gm_chord :
                     cntChord ==='A' ? A_chord : cntChord ==='Am' ? Am_chord :
                     cntChord ==='B' ? B_chord : Bm_chord} id="chord-img" alt="..." />
-
-          <h1 id="level-value" className='line-up'>N O R M A L - L E V E L</h1>
-          <h3 id="level-discription" className='white-text'>'N O R M A L - L E V E L'에서는 실제 음악에서 자주 사용되는 코드 진행을 랜덤으로</h3>
         </div>
       </div>
     )

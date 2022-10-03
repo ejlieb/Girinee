@@ -41,7 +41,7 @@ export function LowLevelController() {
     const theme = createTheme({
       palette: {
         primary: {
-          main: '#000',          
+          main: '#fff',          
         },
       },
     })
@@ -51,23 +51,24 @@ export function LowLevelController() {
       <Stack my={5} spacing={4} alignItems="center">
         {/* 셀렉트 박스(코드 선택) */}
         <div className="selectBox justify-content-center">
-          {/* <ThemeProvider theme={theme}> */}
+          <p className="white-text" style={{margin:0}}>SELECT CHORD</p>
+          <ThemeProvider theme={theme}>
             <FormControl sx={{ minWidth: 200 }}>
-              <InputLabel id="chord-select-label">CHORD</InputLabel>
+              <InputLabel variant="standard" id="chord-select-label"></InputLabel>
               <Select
                 placeholder='Select Chord'
                 labelId="chord-select-label"
                 id="chord-select"
                 value={cntChord}
-                label="Chord"
-                onChange={showChord}            
+                // label="Chord"
+                onChange={showChord}          
               >
                 {guitarChords.map((chord, idx) => (
                   <MenuItem key={idx} value={chord}>{chord}</MenuItem>
                 ))}
               </Select>
             </FormControl>
-          {/* </ThemeProvider> */}
+          </ThemeProvider>
         </div>
         
         {/* 코드 관련 */}

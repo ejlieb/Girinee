@@ -22,6 +22,9 @@ import { setDegree, setSecond } from '../features/chordgame/GameSlice'
 // Material UI
 import { Box } from '@mui/system'
 import { Button, Stack, Grid, Slider, Typography } from '@mui/material'
+import AlarmIcon from '@mui/icons-material/Alarm';
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+
 
 // -----------------------------------------------------------------------------------------------------
 
@@ -65,6 +68,14 @@ export function ChordGame() {
 
     const navigate = useNavigate()
 
+    const theme = createTheme({
+      palette: {
+        primary: {
+          main: '#fff',          
+        },
+      },
+    })   
+
     // JSX
     return (
       <Box component="div" id="game-body" sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -102,7 +113,7 @@ export function ChordGame() {
           {/* 메인 컨트롤러 + Level별 컨트롤러 */}
           <Grid item xs={3} p={5} pt={15} id="controller-box">
             {/* 메인 컨트롤러 */}
-            <Stack>
+            <Stack spacing={12}>
               {/* 메인화면으로 돌아가기 */}
               <Box component="div" my={2} sx={{ display: 'flex', justifyContent: 'center'}}>
                 <form id="quitLever" onClick={() => {
@@ -114,7 +125,7 @@ export function ChordGame() {
               </Box>
 
               {/* <Grid container sx={{ display: 'flex', justifyContent: 'center'}}> */}
-              <Stack direction="row" mt={3} justifyContent="center" spacing={2}>
+              <Stack direction="row" justifyContent="center" spacing={2}>
                 <Stack spacing={3}>
                   {/* 레벨 컨트롤러 */}
                   <Stack direction="row">
@@ -162,8 +173,14 @@ export function ChordGame() {
                   </Stack>
                 </Stack>
 
-                <div>
-                  <Slider onChange={handleChange} aria-label="Seconds" defaultValue={3} orientation="vertical" valueLabelDisplay="auto" step={1} min={2} max={6} disabled={controllerDegree===0 ? true : false}/>
+                <div className='d-flex-row'>
+                  <ThemeProvider theme={theme}>
+                    <Slider marks onChange={handleChange} aria-label="Seconds" defaultValue={3} orientation="vertical" valueLabelDisplay="auto" step={1} min={2} max={6} disabled={controllerDegree===0 ? true : false}/>
+                  </ThemeProvider>
+                  <div>
+                    <AlarmIcon sx={{ color: "white" }} />
+                    <p className="white-text" style={{margin: 0}}>sec</p>
+                  </div>
                 </div>
               </Stack>              
               {/* </Grid> */}

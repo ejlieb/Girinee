@@ -371,8 +371,16 @@ audio::-webkit-media-controls-enclosure {
 }
 
 .selectBox {
-   background-color: white;
+   background-color: transparent;
    border-radius: 5px;
    width: 200px;
 }
-
+#chord-select{
+   color: white;
+}
+#normal-start-btn{
+   font-family: 'MICEGothic-Regular';
+   font-size: 1.3rem;
+   width: 200px;
+   height: 60px;
+}
