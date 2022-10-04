@@ -53,7 +53,7 @@ export function LowLevelController() {
       const wavFile = new File([audioURL], 'soundBlob', {type: 'audio/wav'})
       
       // Axios
-      axios.post('https://j7a202.p.ssafy.io/api/record/practice', {
+      axios.post('https://j7a202.p.ssafy.io/api/record/practice', {}, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         },
