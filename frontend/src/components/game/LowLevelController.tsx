@@ -52,9 +52,8 @@ export function LowLevelController() {
     const checkRecord = () => {
       const data = new FormData()
       console.log('wavFile', audioFile)
-      console.log(typeof(audioFile))
       // console.log('name', audioFile.name)
-      data.append('file', audioFile, audioFile.name)
+      data.append('file', audioFile)
       data.append('chord', cntChord)
       
       // Axios
