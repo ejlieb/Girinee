@@ -23,7 +23,9 @@ const useRecorder = () => {
 
     // Obtain the audio when ready.
     const handleData = e => {
-      setAudioURL(URL.createObjectURL(e.data));
+      const blobDataInWebaFormat = e.data
+      const blobDataInWavFormat = new Blob([blobDataInWebaFormat], {type: 'audio/wav; codecs=0' })
+      setAudioURL(URL.createObjectURL(blobDataInWavFormat));
     };
 
     recorder.addEventListener("dataavailable", handleData);

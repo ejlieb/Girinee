@@ -47,6 +47,9 @@ export function LowLevelController() {
       },
     })
 
+
+    const accessToken = window.localStorage.getItem('accessToken')
+
     const clickStop = () => {
       stopRecording()
       console.log('audioURL=', audioURL)
@@ -55,10 +58,13 @@ export function LowLevelController() {
       axios.post('https://j7a202.p.ssafy.io/api/record/practice', {
         'file': audioURL,
         'chord': cntChord,
-        }
-      )
-      .then((Response) => {console.log(Response.data)})
-      .catch((Error)=> {console.log(Error)})
+        })
+      .then((Response) => {
+        console.log(Response.data)
+      })
+      .catch((Error)=> {
+        console.log(Error)
+      })
     }
 
     // JSX
