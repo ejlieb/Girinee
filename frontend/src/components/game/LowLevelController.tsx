@@ -50,15 +50,13 @@ export function LowLevelController() {
     const accessToken = window.localStorage.getItem('accessToken')
 
     const checkRecord = () => {
+      const data = new FormData()
       const wavFile = new File([audioURL], 'soundBlob', {type: 'audio/wav'})
-      console.log('accessToken', accessToken)
+      data.append('file', wavFile)
+      data.append('chord', cntChord)
+      
       // Axios
-      axios.post('https://j7a202.p.ssafy.io/api/record/practice', 
-        {
-        file: wavFile,
-        chord: cntChord,
-        }, 
-        {
+      axios.post('https://j7a202.p.ssafy.io/api/record/practice', data, {
         headers: {
           Authorization: `Bearer ${accessToken}`
           },
