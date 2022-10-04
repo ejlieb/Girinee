@@ -5,9 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
+@Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u.refreshToken FROM User u WHERE u.id = :id")
@@ -19,4 +22,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     void updateRefreshToken(@Param("id") Long id, @Param("token") String token);
 
     void deleteRefreshTokenById(Long id);
+    Optional<User> findById(Long id);
 }
