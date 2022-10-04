@@ -6,7 +6,7 @@
 /* id로 지정 */
 /* 뒷배경 - 추후에 three로 변경 */
 #game-body {
-  background-color: black;
+  background-color: transparent;
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
@@ -14,6 +14,8 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+  position: absolute;
+  bottom: 0px;
 }
 
 /* 상단 메뉴 바 */
@@ -434,4 +436,9 @@ audio::-webkit-media-controls-enclosure {
    transform: scale( 1.05 );
    cursor: pointer;
    background-color: rgba(255, 255, 255, 0.15);   
+}
+
+#chord-game-container {
+    width: 100%;
+    height: 100%;
 }

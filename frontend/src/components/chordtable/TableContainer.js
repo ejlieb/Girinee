@@ -32,6 +32,8 @@ import { Bm } from './Bm'
 
 export function TableContainer(props) {
 
+  const chordColor = useAppSelector((state) => state.chord.chordColor)
+
   const cntChord = useAppSelector((state) => state.game.cntChord)
   
   return (
@@ -42,13 +44,13 @@ export function TableContainer(props) {
       <Suspense fallback={null}>
           
         <Center onCentered={({ container, height }) => container.scale.setScalar(1)}>
-        {cntChord ==='C' ? <C position={[-0.6,-0.16,0]}/> : cntChord ==='Cm' ? <Cm position={[-0.6,-0.16,0]}/> :
-                                                      cntChord ==='D' ? <D position={[-0.6,-0.16,0]}/> : cntChord ==='Dm' ? <Dm position={[-0.6,-0.16,0]}/> :
-                                                      cntChord ==='E' ? <E position={[-0.6,-0.16,0]}/> : cntChord ==='Em' ? <Em position={[-0.6,-0.16,0]}/> :
-                                                      cntChord ==='F' ? <F position={[-0.6,-0.16,0]}/> : cntChord ==='Fm' ? <Fm position={[-0.6,-0.16,0]}/> :
-                                                      cntChord ==='G' ? <G position={[-0.6,-0.16,0]}/> : cntChord ==='Gm' ? <Gm position={[-0.6,-0.16,0]}/> :
-                                                      cntChord ==='A' ? <A position={[-0.6,-0.16,0]}/> : cntChord ==='Am' ? <Am position={[-0.6,-0.16,0]}/> :
-                                                      cntChord ==='B' ? <B position={[-0.6,-0.16,0]}/> : <Bm position={[-0.6,-0.16,0]}/>}
+        {cntChord ==='C' ? <C position={[-0.6,-0.16,0]} clr={chordColor}/> : cntChord ==='Cm' ? <Cm position={[-0.6,-0.16,0]} clr={chordColor}/> :
+                                                      cntChord ==='D' ? <D position={[-0.6,-0.16,0]} clr={chordColor}/> : cntChord ==='Dm' ? <Dm position={[-0.6,-0.16,0]} clr={chordColor}/> :
+                                                      cntChord ==='E' ? <E position={[-0.6,-0.16,0]} clr={chordColor}/> : cntChord ==='Em' ? <Em position={[-0.6,-0.16,0]} clr={chordColor}/> :
+                                                      cntChord ==='F' ? <F position={[-0.6,-0.16,0]} clr={chordColor}/> : cntChord ==='Fm' ? <Fm position={[-0.6,-0.16,0]} clr={chordColor}/> :
+                                                      cntChord ==='G' ? <G position={[-0.6,-0.16,0]} clr={chordColor}/> : cntChord ==='Gm' ? <Gm position={[-0.6,-0.16,0]} clr={chordColor}/> :
+                                                      cntChord ==='A' ? <A position={[-0.6,-0.16,0]} clr={chordColor}/> : cntChord ==='Am' ? <Am position={[-0.6,-0.16,0]} clr={chordColor}/> :
+                                                      cntChord ==='B' ? <B position={[-0.6,-0.16,0]} clr={chordColor}/> : <Bm position={[-0.6,-0.16,0]}/>}
         </Center>
         <mesh position={[0, -0.77, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[500000, 500000]} />

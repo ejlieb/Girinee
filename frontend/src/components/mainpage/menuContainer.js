@@ -34,7 +34,13 @@ export function MenuContainer(props) {
     
     setTimeout(() => {
       dispatch(setRoBtnState(0))
-      navigate('/game')
+      if (props.num === 0.65) {
+        navigate('/game')
+      }
+      else {
+        navigate('/table')
+      }
+      
     },3000)
   }
 
