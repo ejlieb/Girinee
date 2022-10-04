@@ -51,22 +51,24 @@ export function LowLevelController() {
 
     const checkRecord = () => {
       const wavFile = new File([audioURL], 'soundBlob', {type: 'audio/wav'})
-      
+      console.log('accessToken', accessToken)
       // Axios
-      axios.post('https://j7a202.p.ssafy.io/api/record/practice', {
+      axios.post('https://j7a202.p.ssafy.io/api/record/practice', 
+        {
         file: wavFile,
         chord: cntChord,
-      }, {
+        }, 
+        {
         headers: {
           Authorization: `Bearer ${accessToken}`
-        },
-      })
-      .then((response) => {
-        console.log(response.data)
-      })
-      .catch((error)=> {
-        console.log(error)
-      })
+          },
+        })
+        .then((response) => {
+          console.log(response.data)
+        })
+        .catch((error)=> {
+          console.log(error)
+        })
     }
 
     // JSX
