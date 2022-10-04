@@ -55,6 +55,7 @@ export function LowLevelController() {
       console.log('audioType', typeof audioURL)
       console.log('currentChord=', cntChord)
       // Axios
+
       axios.post('https://j7a202.p.ssafy.io/api/record/practice', {
         headers: {
           Authorization: `Bearer ${accessToken}`
