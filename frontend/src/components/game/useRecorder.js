@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const useRecorder = () => {
-  const [audioURL, setAudioURL] = useState("");
+  const [audioFile, setAudioFile] = useState("");
   const [isRecording, setIsRecording] = useState(false);
   const [recorder, setRecorder] = useState(null);
 
@@ -25,7 +25,7 @@ const useRecorder = () => {
     const handleData = e => {
       const blobDataInWebaFormat = e.data
       const blobDataInWavFormat = new Blob([blobDataInWebaFormat], {type: 'audio/wav; codecs=0'})
-      setAudioURL(URL.createObjectURL(blobDataInWavFormat));
+      setAudioFile((prev) => blobDataInWavFormat);
     };
 
     recorder.addEventListener("dataavailable", handleData);
@@ -40,7 +40,7 @@ const useRecorder = () => {
     setIsRecording(false);
   };
 
-  return [audioURL, isRecording, startRecording, stopRecording];
+  return [audioFile, isRecording, startRecording, stopRecording];
 };
 
 async function requestRecorder() {

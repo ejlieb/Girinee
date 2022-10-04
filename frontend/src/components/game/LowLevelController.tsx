@@ -36,7 +36,7 @@ export function LowLevelController() {
 
     // 녹음에 필요한 것
     // 금단의 any를 사용하고 말았음
-    const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
+    const [audioFile, isRecording, startRecording, stopRecording]:any[] = useRecorder()
 
     // MUI select 테마 변경
     const theme = createTheme({
@@ -51,10 +51,9 @@ export function LowLevelController() {
 
     const checkRecord = () => {
       const data = new FormData()
-      const wavFile = new File([audioURL], 'soundBlob', {type: 'audio/wav'})
-      console.log('wavFile', wavFile)
-      console.log('name', wavFile.name)
-      data.append('file', wavFile)
+      console.log('wavFile', audioFile)
+      console.log('name', audioFile.name)
+      data.append('file', audioFile)
       data.append('chord', cntChord)
       
       // Axios
@@ -109,7 +108,7 @@ export function LowLevelController() {
               <StopIcon id="stop-icon" fontSize="large"/>
             </button>
             {/* 녹음 파일 보내기 */}
-            <button id="stop-btn" onClick={checkRecord} disabled={isRecording || audioURL=== ""}>
+            <button id="stop-btn" onClick={checkRecord} disabled={isRecording || audioFile === ""}>
               채점하기
             </button>
           </Stack>
