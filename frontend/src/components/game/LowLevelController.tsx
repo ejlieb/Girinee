@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { AnimatePresence } from 'framer-motion'
 import { render } from "react-dom"
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import axios from 'axios'
 
 // Other components
 import useRecorder from "./useRecorder"
@@ -46,6 +47,20 @@ export function LowLevelController() {
       },
     })
 
+    const clickStop = () => {
+      stopRecording()
+      console.log('audioURL=', audioURL)
+      console.log('currentChord=', cntChord)
+      // Axios
+      axios.post('https://j7a202.p.ssafy.io/api/record/practice', {
+        'file': audioURL,
+        'chord': cntChord,
+        }
+      )
+      .then((Response) => {console.log(Response.data)})
+      .catch((Error)=> {console.log(Error)})
+    }
+
     // JSX
     return (
       <Stack my={5} spacing={4} alignItems="center">
@@ -80,7 +95,7 @@ export function LowLevelController() {
               <MicIcon id="record-icon" fontSize="large"/>
             </button>
             {/* 녹음 정지 */}
-            <button id="stop-btn" onClick={stopRecording} disabled={!isRecording}>
+            <button id="stop-btn" onClick={clickStop} disabled={!isRecording}>
               <StopIcon id="stop-icon" fontSize="large"/>
             </button>
           </Stack>

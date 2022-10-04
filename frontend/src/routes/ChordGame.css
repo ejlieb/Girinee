@@ -299,7 +299,6 @@ audio::-webkit-media-controls-enclosure {
    background: none;
    border: 1px solid #e74c3c;
    border-radius: 50%;
-   cursor: pointer;
    transition: 0.15s linear;
 }
 #record-icon {
@@ -308,7 +307,8 @@ audio::-webkit-media-controls-enclosure {
 #record-btn:hover {
    transition: 0.15s linear;
    transform: scale( 1.05 );
-   background-color: rgba(255, 0, 0, 0.15);   
+    cursor: pointer;
+  background-color: rgba(255, 0, 0, 0.15);   
 }
 #record-btn:active {
    background: #fff;
@@ -414,4 +414,24 @@ audio::-webkit-media-controls-enclosure {
    display: flex;
    align-items: center;
    justify-content: space-around;
+}
+
+/* 음원 재생 버튼 */
+#audio-play-btn {
+   width: 60px;
+   height: 60px;
+   color: white;
+   background: none;
+   border: 1px solid white;
+   border-radius: 50%;
+   transition: 0.15s linear;
+}
+#audio-play-icon {
+   margin-top: 4px;
+}
+#audio-play-btn:hover {
+   transition: 0.15s linear;
+   transform: scale( 1.05 );
+   cursor: pointer;
+   background-color: rgba(255, 255, 255, 0.15);   
 }
