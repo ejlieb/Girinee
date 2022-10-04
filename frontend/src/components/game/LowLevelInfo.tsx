@@ -4,6 +4,9 @@ import { Link } from "react-router-dom"
 import { AnimatePresence } from 'framer-motion'
 import { render } from "react-dom"
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { useRef } from 'react'
+import playbtn from '../../assets/images/play-btn.png'
+import pausebtn from '../../assets/images/pause-btn.png'
 
 // Other Component 
 import '../../routes/Display.css'
@@ -46,6 +49,19 @@ export function LowLevelInfo() {
     // script
     // 코드 정보 받아오기
     const cntChord = useAppSelector((state)=>state.game.cntChord)
+    const audioRef = useRef<HTMLAudioElement>(null)
+
+    const playAudio = () => {
+      if (audioRef.current != null) {
+        audioRef.current.play()
+        }
+    }
+  
+    const pauseAudio = () => {
+      if (audioRef.current != null) {
+        audioRef.current.pause()
+        }
+    }
     
     // JSX
     return (
@@ -69,7 +85,14 @@ export function LowLevelInfo() {
                       cntChord ==='F' ? F_sound : cntChord ==='Fm' ? Fm_sound :
                       cntChord ==='G' ? G_sound : cntChord ==='Gm' ? Gm_sound :
                       cntChord ==='A' ? A_sound : cntChord ==='Am' ? Am_sound :
-                      cntChord ==='B' ? B_sound : Bm_sound} controls></audio>
+                      cntChord ==='B' ? B_sound : Bm_sound} ref={audioRef}></audio>
+
+          <div id="my-controller-bgm-box">
+            <div id="my-controller-audio-control-box">
+              <img src={playbtn} alt="" id="my-controller-audio-play"  onClick={() => playAudio()}/>
+              <img src={pausebtn} alt="" id="my-controller-audio-play" onClick={() => pauseAudio()}/>
+            </div>
+          </div>
         </Stack>
       </div>
     )
