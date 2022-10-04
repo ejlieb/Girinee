@@ -24,7 +24,7 @@ const useRecorder = () => {
     // Obtain the audio when ready.
     const handleData = e => {
       const blobDataInWebaFormat = e.data
-      const blobDataInWavFormat = new Blob([blobDataInWebaFormat], {type: 'audio/wav; codecs=0'})
+      const blobDataInWavFormat = new File([blobDataInWebaFormat], 'recordfile.wav', {type: 'audio/wav'})
       setAudioFile((prev) => blobDataInWavFormat);
     };
 
