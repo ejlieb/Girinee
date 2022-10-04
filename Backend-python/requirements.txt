@@ -1,0 +1,10 @@
+pillow
+matplotlib
+python-multipart
+SoundFile
+librosa
+ffmpeg
+fastapi
+keras
+uvicorn
+tensorflow
