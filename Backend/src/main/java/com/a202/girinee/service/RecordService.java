@@ -9,6 +9,7 @@ import com.a202.girinee.repository.GameRecordRepository;
 import com.a202.girinee.repository.PracticeRecordRepository;
 import com.a202.girinee.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -30,6 +31,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Log4j2
 public class RecordService {
 
     private final PracticeRecordRepository practiceRecordRepository;
@@ -93,15 +95,23 @@ public class RecordService {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+//        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
         MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
         body.add("wav_path", uploadPath);
         body.add("answer", chord);
 
+        log.info(body.keySet());
+        log.info(body.values());
+
         HttpEntity<?> requestMessage = new HttpEntity<>(body, httpHeaders);
 
+        log.info(requestMessage.toString());
         ResponseEntity<AiResponseDto> response = restTemplate.postForEntity(practiceUrl, requestMessage, AiResponseDto.class);
+        log.info(response.getStatusCode());
+        log.info(response.getBody());
+
 
         PracticeRecord practiceRecord = practiceRecordRepository.findByUserIdAndChord(id, chord).orElse(PracticeRecord.builder()
                 .chord(chord)
