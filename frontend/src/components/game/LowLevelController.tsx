@@ -49,18 +49,15 @@ export function LowLevelController() {
 
     const accessToken = window.localStorage.getItem('accessToken')
 
-    const clickStop = () => {
-      stopRecording()
-      console.log('audioURL=', audioURL)
-      console.log('audioType', typeof audioURL)
-      console.log('currentChord=', cntChord)
+    const checkRecord = () => {
+      const wavFile = new File([audioURL], 'soundBlob', {type: 'audio/wav'})
+      
       // Axios
-
       axios.post('https://j7a202.p.ssafy.io/api/record/practice', {
         headers: {
           Authorization: `Bearer ${accessToken}`
         },
-        'file': audioURL,
+        'file': wavFile,
         'chord': cntChord,
         })
       .then((Response) => {
@@ -105,8 +102,12 @@ export function LowLevelController() {
               <MicIcon id="record-icon" fontSize="large"/>
             </button>
             {/* 녹음 정지 */}
-            <button id="stop-btn" onClick={clickStop} disabled={!isRecording}>
+            <button id="stop-btn" onClick={stopRecording} disabled={!isRecording}>
               <StopIcon id="stop-icon" fontSize="large"/>
+            </button>
+            {/* 녹음 파일 보내기 */}
+            <button id="stop-btn" onClick={checkRecord} disabled={isRecording || audioURL=== ""}>
+              채점하기
             </button>
           </Stack>
         </div>
