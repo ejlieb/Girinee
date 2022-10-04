@@ -23,4 +23,12 @@ public class PracticeRecord extends BaseEntity {
     private String chord;
     private Integer success;
     private Integer failure;
+
+    public void increaseSuccess(){
+        success++;
+    }
+
+    public void increaseFailure(){
+        failure++;
+    }
 }

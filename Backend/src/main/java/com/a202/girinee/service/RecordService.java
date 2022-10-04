@@ -1,13 +1,23 @@
 package com.a202.girinee.service;
 
+import com.a202.girinee.dto.response.AiResponseDto;
 import com.a202.girinee.dto.response.GameRecordResponseDto;
 import com.a202.girinee.dto.response.PracticeRecordResponseDto;
 import com.a202.girinee.entity.GameRecord;
 import com.a202.girinee.entity.PracticeRecord;
 import com.a202.girinee.repository.GameRecordRepository;
 import com.a202.girinee.repository.PracticeRecordRepository;
+import com.a202.girinee.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -24,6 +34,11 @@ public class RecordService {
 
     private final PracticeRecordRepository practiceRecordRepository;
     private final GameRecordRepository gameRecordRepository;
+    private final UserRepository userRepository;
+    @Value("${python.url.game}")
+    private String gameUrl;
+    @Value("${python.url.practice}")
+    private String practiceUrl;
 
     public Map<String, PracticeRecordResponseDto> getPracticeRecord(Long userId) {
         List<PracticeRecord> practiceRecords = practiceRecordRepository.findByUserId(userId);
@@ -73,22 +88,47 @@ public class RecordService {
             e.printStackTrace();
         }
 
-        /* AI 서버 채점
-         *
-         *
-         *
-         *
-         *
-         *
-         * AI 서버 채점 끝 */
+        // AI 서버 채점
 
-        /* 파일 삭제
-         *
-         * File deleteFile = new File(uploadPath);
-         * deleteFile.delete();
-         *
-         * 파일 삭제 끝*/
+        RestTemplate restTemplate = new RestTemplate();
 
-        return true;
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+
+        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+        body.add("wav_path", uploadPath);
+        body.add("answer", chord);
+
+        HttpEntity<?> requestMessage = new HttpEntity<>(body, httpHeaders);
+
+        ResponseEntity<AiResponseDto> response = restTemplate.postForEntity(practiceUrl, requestMessage, AiResponseDto.class);
+
+        PracticeRecord practiceRecord = practiceRecordRepository.findByUserIdAndChord(id, chord).orElse(PracticeRecord.builder()
+                .chord(chord)
+                .success(0)
+                .failure(0)
+                .user(userRepository.findById(id).get())
+                .build());
+
+        boolean result = response.getBody().getIsCorrect();
+
+        if(result){
+            practiceRecord.increaseSuccess();
+        } else{
+            practiceRecord.increaseFailure();
+        }
+
+        practiceRecordRepository.save(practiceRecord);
+
+        // AI 서버 채점 끝
+
+        // 파일 삭제
+
+        File deleteFile = new File(uploadPath);
+        deleteFile.delete();
+
+        // 파일 삭제 끝
+
+        return result;
     }
 }
