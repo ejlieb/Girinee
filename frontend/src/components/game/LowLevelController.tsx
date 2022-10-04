@@ -53,18 +53,19 @@ export function LowLevelController() {
       const wavFile = new File([audioURL], 'soundBlob', {type: 'audio/wav'})
       
       // Axios
-      axios.post('https://j7a202.p.ssafy.io/api/record/practice', {}, {
+      axios.post('https://j7a202.p.ssafy.io/api/record/practice', {
+        file: wavFile,
+        chord: cntChord,
+      }, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         },
-        'file': wavFile,
-        'chord': cntChord,
-        })
-      .then((Response) => {
-        console.log(Response.data)
       })
-      .catch((Error)=> {
-        console.log(Error)
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error)=> {
+        console.log(error)
       })
     }
 
