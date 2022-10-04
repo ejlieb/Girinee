@@ -52,14 +52,15 @@ export function LowLevelController() {
     const checkRecord = () => {
       const data = new FormData()
       console.log('wavFile', audioFile)
-      console.log('name', audioFile.name)
+      // console.log('name', audioFile.name)
       data.append('file', audioFile)
       data.append('chord', cntChord)
       
       // Axios
       axios.post('https://j7a202.p.ssafy.io/api/record/practice', data, {
         headers: {
-          Authorization: `Bearer ${accessToken}`
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'multipart/form-data',
           },
         })
         .then((response) => {

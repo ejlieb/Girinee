@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const useRecorder = () => {
-  const [audioFile, setAudioFile] = useState("");
+  const [audioFile, setAudioFile] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [recorder, setRecorder] = useState(null);
 
