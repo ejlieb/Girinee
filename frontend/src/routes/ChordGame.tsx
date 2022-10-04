@@ -17,6 +17,8 @@ import { NormalLevelController } from '../components/game/NormalLevelController'
 import { HighLevelInfo } from '../components/game/HighLevelInfo'
 import { HighLevelController } from '../components/game/HighLevelController'
 import { setDegree, setSecond } from '../features/chordgame/GameSlice'
+import { TableContainer } from '../components/chordtable/TableContainer'
+
 // import { setSecond } from '../features/chordgame/GameSlice'
 
 // Material UI
@@ -24,6 +26,7 @@ import { Box } from '@mui/system'
 import { Button, Stack, Grid, Slider, Typography } from '@mui/material'
 import AlarmIcon from '@mui/icons-material/Alarm';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { setChordColor } from '../features/chordthree/ChordSlice'
 
 
 // -----------------------------------------------------------------------------------------------------
@@ -52,6 +55,11 @@ export function ChordGame() {
     const handleChange = (event: Event, newValue: number | number[]) => {
       dispatch(setSecond(newValue as number));
     }
+    
+    // three 색상
+    const handleColor = (color: string) => {
+      dispatch(setChordColor(color))
+    }
 
     let levelValue = "E A S Y - L E V E L"
     let levelExplanation = "쉬워요"
@@ -78,6 +86,8 @@ export function ChordGame() {
 
     // JSX
     return (
+      <div id ="chord-game-container">
+      <TableContainer/>
       <Box component="div" id="game-body" sx={{ display: 'flex', flexDirection: 'column' }}>
         {/* Navbar */}
         <Box component="div" id="menu-bar" sx={{ mt: 4, px: 8, py:0, display: 'flex', justifyContent: 'space-between'}}>
@@ -160,13 +170,13 @@ export function ChordGame() {
                     </div>
 
                     <Box component="div" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                      <Button variant="text">
+                      <Button variant="text" onClick={() => handleColor('lightblue')}>
                         <p className="white-text new-font">BLUE</p>
                       </Button>
-                      <Button variant="text">
+                      <Button variant="text" onClick={() => handleColor('lightyellow')}>
                         <p className="white-text new-font">YELLOW</p>
                       </Button>
-                      <Button variant="text">
+                      <Button variant="text" onClick={() => handleColor('lightpink')}>
                         <p className="white-text new-font">PINK</p>
                       </Button>
                     </Box>
@@ -191,6 +201,7 @@ export function ChordGame() {
           </Grid>
         </Grid>
       </Box>
+      </div>
     )
   }
   
