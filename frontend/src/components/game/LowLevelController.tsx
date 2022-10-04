@@ -53,7 +53,7 @@ export function LowLevelController() {
       const data = new FormData()
       console.log('wavFile', audioFile)
       // console.log('name', audioFile.name)
-      data.append('file', audioFile)
+      data.append('file', audioFile, audioFile.name)
       data.append('chord', cntChord)
       
       // Axios
