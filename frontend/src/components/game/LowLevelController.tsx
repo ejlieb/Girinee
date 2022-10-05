@@ -51,10 +51,11 @@ export function LowLevelController() {
 
     const checkRecord = () => {
       const data = new FormData()
-      const audioFile = new File([audioURL], 'recorde.wav', {type: 'audio/wav'})
+      const audioFile = new File([audioURL], 'recorde.wav', {type: 'audio'})
       console.log('audioURL', audioURL)
       console.log(URL.createObjectURL(audioURL))
       console.log('audioFile', audioFile)
+      console.log(URL.createObjectURL(audioFile))
       // console.log('name', audioFile.name)
       data.append('file', audioFile)
       data.append('chord', cntChord)
