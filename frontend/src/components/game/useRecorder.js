@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { MediaRecorder, register } from 'extendable-media-recorder';
+import { connect } from 'extendable-media-recorder-wav-encoder';
 
 const useRecorder = () => {
   const [audioURL, setAudioURL] = useState("");
@@ -24,9 +26,9 @@ const useRecorder = () => {
     // Obtain the audio when ready.
     const handleData = e => {
       const blobDataInWebaFormat = e.data
-      const blobDataInWavFormat = new File([blobDataInWebaFormat], 'recordfile.wav', {type: 'audio'})
+      // const blobDataInWavFormat = new File([blobDataInWebaFormat], 'recordfile.wav', {type: 'audio'})
       // const blobDataInWavFormat = new File([blobDataInWebaFormat], 'record.wav', { 'type' : 'audio/webm; codecs=opus' })
-      setAudioURL(blobDataInWavFormat);
+      setAudioURL(blobDataInWebaFormat);
     };
 
     recorder.addEventListener("dataavailable", handleData);
@@ -45,7 +47,9 @@ const useRecorder = () => {
 };
 
 async function requestRecorder() {
+  await register(await connect());
+
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-  return new MediaRecorder(stream);
+  return new MediaRecorder(stream, { mimeType: 'audio/wav' });
 }
 export default useRecorder;

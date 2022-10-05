@@ -60,7 +60,7 @@ export function LowLevelController() {
 
       // file과 chord 추가
       // data.append('file', audioURL, 'recorded.wav')
-      data.append('file', audioURL)
+      data.append('file', audioURL, 'audioName')
       data.append('chord', cntChord)
 
       console.log('data_getall', data.get('file'))
