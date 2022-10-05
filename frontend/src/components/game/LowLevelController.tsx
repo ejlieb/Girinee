@@ -51,30 +51,6 @@ export function LowLevelController() {
     const accessToken = window.localStorage.getItem('accessToken')
 
     const checkRecord = () => {
-
-      const types = [
-        "audio/weba",
-        "audio/weba;codecs=opus",
-        "audio/weba;codecs=PCM",
-        "audio/weba;codecs=0",
-        "audio/webm",
-        "audio/webm;codecs=opus",
-        "audio/webm;codecs=PCM",
-        "audio/webm;codecs=0",
-        "audio/wav",
-        "audio/wav;codecs=opus",
-        "audio/wav;codecs=PCM",
-        "audio/wav;codecs=0",
-        "audio/ogg",
-        "audio/ogg;codecs=opus",
-        "audio/ogg;codecs=PCM",
-        "audio/ogg;codecs=0",
-      ];
-      
-      for (const type of types) {
-        console.log(`Is ${type} supported? ${MediaRecorder.isTypeSupported(type) ? "Maybe!" : "Nope :("}`);
-      }
-
       // axios body에 담을 멀티파트 폼 데이터 생성
       const data = new FormData()
       // audioURL (이름은 URL이지만 현재는 audio/wav형태의 blob)
@@ -84,7 +60,7 @@ export function LowLevelController() {
 
       // file과 chord 추가
       // data.append('file', audioURL, 'recorded.wav')
-      data.append('file', audioURL, 'audiofile.wav')
+      data.append('file', audioURL)
       data.append('chord', cntChord)
 
       console.log('data_getall', data.get('file'))
