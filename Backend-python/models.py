@@ -7,7 +7,7 @@ import librosa.display
 import matplotlib.pyplot as plt
 import os
 
-chords = ["A","Am","B","Bm","C","Cm","D","Dm","E","Em","F","G"]
+chords = ["A","Am","B","Bm","C","Cm","D","Dm","E","Em","F","Fm","G"]
 def init():
     return (load_model(os.path.join('check_point','keras_model_cqt_200.h5'), compile = False), \
         load_model(os.path.join('check_point','keras_model_ton_200.h5'), compile = False), load_model(os.path.join('check_point','keras_model_cens_200.h5'), compile = False))
@@ -64,6 +64,7 @@ def predict_easy(model_list,img_paths):
         data[0] = normalized_image_array
         predictions.append(model_list[i].predict(data))
     prediction = predictions[0]+predictions[1]+ 0.5*predictions[2]
+    print(predction)
     return chords[np.argmax(prediction)]
 
 def predict_hard(model_list,img_paths):
