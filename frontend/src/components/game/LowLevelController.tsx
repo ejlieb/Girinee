@@ -50,14 +50,22 @@ export function LowLevelController() {
     const accessToken = window.localStorage.getItem('accessToken')
 
     const checkRecord = () => {
+      // axios body에 담을 멀티파트 폼 데이터 생성
       const data = new FormData()
+
       // const audioFile = new File([audioURL], 'recorde.wav', {type: 'audio'})
+      // audioURL (이름은 URL이지만 현재는 audio/wav형태의 blob)
       console.log('audioURL', audioURL)
-      console.log(URL.createObjectURL(audioURL))
+      // axios로 보내기 전 파일 멀쩡한지 확인 => 정상
+      const checkURL = URL.createObjectURL(audioURL)
+      console.log(checkURL)
+      const audioFile = new Audio(checkURL)
+      console.log(audioFile)
       // console.log('audioFile', audioFile)
       // console.log(URL.createObjectURL(audioFile))
       // console.log('name', audioFile.name)
-      data.append('file', 'text test')
+      // file과 chord 추가
+      data.append('file', audioURL, 'recorded.wav')
       data.append('chord', cntChord)
       
       // Axios
