@@ -90,13 +90,13 @@ export function LowLevelInfo() {
                       cntChord ==='A' ? A_sound : cntChord ==='Am' ? Am_sound :
                       cntChord ==='B' ? B_sound : Bm_sound} ref={audioRef}></audio>
 
-          {/* <div id="my-controller-bgm-box"> */}
-            {/* <div id="my-controller-audio-control-box"> */}
-              <button id="audio-play-btn" onClick={() => playAudio()}>
-                <PlayArrowIcon id="audio-play-icon" fontSize="large"/>
-              </button>
-            {/* </div> */}
-          {/* </div> */}
+          <Stack alignItems="center">
+            <button id="audio-play-btn" onClick={() => playAudio()}>
+              <PlayArrowIcon id="audio-play-icon" fontSize="large"/>
+            </button>
+            <p id="audio-play-btn-name" className="white-text">{cntChord} 코드 듣기</p>
+          </Stack>          
+
         </Stack>
       </Stack>
     )

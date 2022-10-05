@@ -123,7 +123,7 @@ export function ChordGame() {
           {/* 메인 컨트롤러 + Level별 컨트롤러 */}
           <Grid item xs={3} p={5} pt={15} id="controller-box">
             {/* 메인 컨트롤러 */}
-            <Stack spacing={12}>
+            <Stack spacing={10}>
               {/* 메인화면으로 돌아가기 */}
               <Box component="div" my={2} sx={{ display: 'flex', justifyContent: 'center'}}>
                 <form id="quitLever" onClick={() => {

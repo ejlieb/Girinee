@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from "react-router-dom"
 import { AnimatePresence } from 'framer-motion'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import axios from 'axios'
 
 // Other Component 
 import useRecorder from "./useRecorder"
@@ -76,36 +77,37 @@ export function NormalLevelController() {
       setTimeout(flipChord, 3000)
     }
 
-      // if (cntIdx === -1) {
-      //   console.log('cntIdx', cntIdx)
-      //   setTimeout(plusIdx, 3000)
-      // } else if (cntIdx >= 0 || cntIdx <= 2) {
-      //   setInterval(function() {
-      //     cntIdx++
-      //     dispatch(setCntChord(cntChordset[cntIdx] as string))
-      //     console.log('cntIdx', cntIdx)
-      //   }, chordSecond*1000)
-      // } else {
-      //   setTimeout(stopRecording(), chordSecond*1000)
-      //   cntIdx = -1
-      // }
+    const accessToken = window.localStorage.getItem('accessToken')
 
-      // setInterval(function() {
-      //   if (cntIdx=-1) {
-      //   } else if (cntIdx !== 3) {
-      //     cntIdx++
-      //     dispatch(setCntChord(cntChordset[cntIdx] as string))
-      //   } else {
-      //     setTimeout(stopRecording())
-      //     cntIdx = -1
-      //   } 
-      // }, chordSecond * 1000)      
+    const checkRecord = () => {
+      const fullAudio = audioURL
+      // full Audio 자르기
+      
+      const data = new FormData()
+
+      // Axios
+      axios.post('https://j7a202.p.ssafy.io/', data, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((response) => {
+          console.log(response.data)
+        })
+        .catch((error)=> {
+          console.log(error)
+        })
+    }
       
     // JSX
     return (
-      <Stack alignItems="center">
+      <Stack alignItems="center" spacing={5}>
         <ThemeProvider theme={theme}>
           <Button id="normal-start-btn" variant="outlined" className="white-text" disabled={isRecording} onClick={startGame}>시 작 하 기</Button>
+        </ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <Button id="normal-check-btn" variant="outlined" className="white-text" disabled={isRecording || audioURL===""} onClick={checkRecord}>채 점 하 기</Button>
         </ThemeProvider>
       </Stack>
     )
