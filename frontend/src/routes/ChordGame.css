@@ -165,6 +165,15 @@
 .degree2 {
   transform: rotate(80deg);
 }
+.selectlightblue{
+  transform: rotate(0deg);
+}
+.selectlightyellow{
+  transform: rotate(40deg);
+}
+.selectlightpink{
+  transform: rotate(80deg);
+}
 
 /* 폰트 애니메이션 */
 .line-up {

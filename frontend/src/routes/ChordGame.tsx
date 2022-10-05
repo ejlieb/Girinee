@@ -57,6 +57,8 @@ export function ChordGame() {
     }
     
     // three 색상
+    const selectedColor = useAppSelector((state) => state.chord.chordColor)
+
     const handleColor = (color: string) => {
       dispatch(setChordColor(color))
     }
@@ -110,7 +112,7 @@ export function ChordGame() {
         <Grid component="div" container>
 
           {/* Level Info */}
-          <Grid item xs={3} p={4} pt={15} id="info-box">
+          <Grid item xs={3} pl={10} pt={15} id="info-box">
             {/* 선택한 난이도 따라서 나타나는 내용 */}
             {controllerDegree === 0 ? <LowLevelInfo/> : controllerDegree === 1 ? <NormalLevelInfo/> : <HighLevelInfo/>}
             {/* </Box> */}
@@ -163,7 +165,7 @@ export function ChordGame() {
                   {/* 색상 컨트롤러 */}
                   <Stack direction="row">
                     {/* 노브 */}
-                    <div id="color-controller-outline" className='d-flex-row justify-content-center'>
+                    <div id="color-controller-outline" className={`d-flex-row justify-content-center select${ selectedColor }`}>
                       <div id="color-controller">
                         <div id="color-index"></div>
                       </div>

@@ -67,9 +67,18 @@ export function LowLevelInfo() {
     // JSX
     return (
       <Stack spacing={10}>
-        <Stack alignItems="center">
-          <h3 id="level-value" className='line-up'>L O W - L E V E L</h3>
-          <h3 id="level-discription" className='white-text'>연습하기 원하는 코드를 직접 선택하여 진행하세요.</h3>
+        <Stack alignItems="center" spacing={5}>
+          <p id="level-value" className='line-up'>L O W - L E V E L</p>
+          <p id="level-discription" className='white-text'>
+            원하는 코드를 직접 선택하여 연습하세요.<br/>
+            <br/>
+            코드 선택은 우측 하단에서 가능합니다.<br/>
+            선택을 마치면 녹음 버튼을 눌러 녹음을 시작하세요.<br/>
+            <br/>
+            녹음 시에는 하단의 운지표를 참고하면 좋습니다.<br/>
+            녹음을 마쳤다면 정지 버튼을 눌러 녹음을 종료하고, <br/>
+            활성화되는 채점 버튼을 눌러 코드를 올바르게 쳤는지 바로 확인할 수 있습니다.<br/>
+          </p>
         </Stack>          
         
         <Stack id="chord-box" alignItems="center" spacing={5}>

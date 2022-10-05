@@ -83,6 +83,7 @@ export function LowLevelController() {
               text: '코드가 정확합니다.',
               icon: 'success',
               confirmButtonText: '확인',
+              confirmButtonColor: 'ligthgrey'
             })
           } else {
             Swal.fire({
@@ -90,6 +91,7 @@ export function LowLevelController() {
               html: '코드가 정확하지 않습니다.<br/>다음 사항들을 체크해보세요! <br/> 1. 주변 잡음이 없는지 체크해주세요<br/> 2. 운지표대로 맞게 눌렀는지 체크해주세요<br/>3. 기타줄을 확실하게 눌렀는지 확인해주세요',
               icon: 'error',
               confirmButtonText: '확인',
+              confirmButtonColor: 'ligthgrey'
             })
           }
         })

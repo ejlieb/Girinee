@@ -7,8 +7,7 @@ import axios from 'axios'
 
 // Other Component 
 import useRecorder from "./useRecorder"
-import { setSecond } from '../../features/chordgame/GameSlice'
-import { setCntChord } from '../../features/chordgame/GameSlice'
+import { setSecond, setCountDownNumber, setCntChord } from '../../features/chordgame/GameSlice'
 
 // Material UI
 import Button from '@mui/material/Button'
@@ -21,6 +20,8 @@ export function NormalLevelController() {
     // 준비된 기타 코드셋 5개
     const guitarChordSets = [['A', 'B', 'C', 'D'], ['B', 'C', 'D', 'E'], ['C', 'D', 'E', 'F'],['D', 'E', 'F', 'G'],['E', 'F', 'G', 'A']]
 
+    const [whichSet, setWhichSet] = useState(['','','',''])
+
     // 녹음에 필요한 정보들
     const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
 
@@ -30,6 +31,9 @@ export function NormalLevelController() {
     const handleChange = (event: Event, newValue: number | number[]) => {
       dispatch(setSecond(newValue as number));
     }
+
+    // 카운트다운 숫자
+    const countDownNumber:number = useAppSelector((state) => state.game.countDownNumber)
     
     const theme = createTheme({
       palette: {
@@ -45,10 +49,13 @@ export function NormalLevelController() {
     const startGame = () => {
       const randomIdx = Math.floor(Math.random() * 5)
       const cntChordset = guitarChordSets[randomIdx]
+
       console.log(cntChordset);
       
       cntIdx++
       // console.log('cntIdx', cntIdx)
+      function countDown() {
+      }
 
       function plusIdx() {
           startRecording()
@@ -73,31 +80,52 @@ export function NormalLevelController() {
         }, chordSecond*1000)
       }
 
-      setTimeout(plusIdx, 3000)
+      countDown()
+      setTimeout(plusIdx, 4000)
       setTimeout(flipChord, 3000)
+      setWhichSet((prev) => cntChordset)
     }
 
     const accessToken = window.localStorage.getItem('accessToken')
 
     const checkRecord = () => {
       const fullAudio = audioURL
+      console.log(fullAudio)
+      const fullSize = fullAudio.size
+      const quarterSize = Math.floor(fullSize / 4)
+
+      console.log(fullAudio.size)
+      console.log(whichSet)
       // full Audio 자르기
-      
+      const audio_1 = fullAudio.slice(0, quarterSize, 'audio/wav')
+      const audio_2 = fullAudio.slice(quarterSize, 2*quarterSize, 'audio/wav')
+      const audio_3 = fullAudio.slice(2*quarterSize, 3*quarterSize, 'audio/wav')
+      const audio_4 = fullAudio.slice(3*quarterSize, 4*quarterSize, 'audio/wav')
+      const [chord_1, chord_2, chord_3, chord_4] = whichSet
+      console.log(audio_1)
+      console.log(audio_2)
+      console.log(audio_3)
+      console.log(audio_4)
+      console.log(chord_1)
+      console.log(chord_2)
+      console.log(chord_3)
+      console.log(chord_4)
+
       const data = new FormData()
 
       // Axios
-      axios.post('https://j7a202.p.ssafy.io/', data, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'multipart/form-data',
-          },
-        })
-        .then((response) => {
-          console.log(response.data)
-        })
-        .catch((error)=> {
-          console.log(error)
-        })
+      // axios.post('https://j7a202.p.ssafy.io/', data, {
+      //   headers: {
+      //     Authorization: `Bearer ${accessToken}`,
+      //     'Content-Type': 'multipart/form-data',
+      //     },
+      //   })
+      //   .then((response) => {
+      //     console.log(response.data)
+      //   })
+      //   .catch((error)=> {
+      //     console.log(error)
+      //   })
     }
       
     // JSX

@@ -6,6 +6,7 @@ export interface gameData {
   cntChord: string,
   controllerDegree: number,
   chordSecond: number,
+  countDownNumber: number,
 }
 
 
@@ -15,6 +16,7 @@ const initialState = {
     cntChord: 'C',
     controllerDegree: 0,
     chordSecond: 3,
+    countDownNumber: 4,
 }
 
 const gameSlice = createSlice({
@@ -31,10 +33,14 @@ const gameSlice = createSlice({
     setSecond: (state:gameData, action) => {
       state.chordSecond = action.payload
     },
+    setCountDownNumber: (state: gameData, action) => {
+      state.countDownNumber = action.payload
+    }
   }
 })
 const { reducer, actions } =gameSlice
 export const {setCntChord} = actions
 export const {setDegree} = actions
 export const {setSecond} = actions
+export const {setCountDownNumber} = actions
 export default gameSlice.reducer

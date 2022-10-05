@@ -23,6 +23,7 @@ import Bm_chord from '../../assets/images/chords/Bm_chord.png'
 
 // Material UI
 import Button from '@mui/material/Button'
+import { Stack } from '@mui/system'
 
 // -----------------------------------------------------------------------------------------------------
 
@@ -36,14 +37,28 @@ export function NormalLevelInfo() {
     // 사용자가 선택한 시간초 정보
     const chordSecond:number = useAppSelector((state) => state.game.chordSecond)
 
+    // 카운트다운 숫자
+    const countDownNumber:number = useAppSelector((state) => state.game.countDownNumber)
+
+    // 현재 코드
     const cntChord:string = useAppSelector((state) => state.game.cntChord)
+
     // JSX
     return (
-      <div>
-        <div id="chord-box">
-          <h1 id="level-value" className='line-up'>N O R M A L - L E V E L</h1>
-          <h3 id="level-discription" className='white-text'>'N O R M A L - L E V E L'에서는 실제 음악에서 자주 사용되는 코드 진행을 랜덤으로</h3>
-          
+      <Stack spacing={10}>
+        <Stack alignItems="center" spacing={5}>
+          <p id="level-value" className='line-up'>N O R M A L - L E V E L</p>
+          <p id="level-discription" className='white-text'>
+            랜덤으로 주어지는 4개의 코드들을 박자에 맞춰 연주하세요.<br/>
+            <br/>
+            우측 하단의 시작하기 버튼을 누르면 실제 음악에서 자주 사용되는 4개의 코드 진행이 랜덤으로 주어집니다.<br/>
+            각 코드를 연주할 시간은 슬라이더로 설정 가능합니다.<br/>
+            <br/>
+            연주가 모두 끝나면 녹음이 자동으로 종료되고,<br/>
+            활성화되는 채점 버튼을 눌러 연주를 올바르게 했는지 바로 확인할 수 있습니다.
+          </p>
+        </Stack>
+        <Stack id="chord-box" alignItems="center">
           {/* 여기서 대기 화면을 넣던가 해야겠음 */}
           <img src={cntChord ==='C' ? C_chord : cntChord ==='Cm' ? Cm_chord :
                     cntChord ==='D' ? D_chord : cntChord ==='Dm' ? Dm_chord :
@@ -52,8 +67,9 @@ export function NormalLevelInfo() {
                     cntChord ==='G' ? G_chord : cntChord ==='Gm' ? Gm_chord :
                     cntChord ==='A' ? A_chord : cntChord ==='Am' ? Am_chord :
                     cntChord ==='B' ? B_chord : Bm_chord} id="chord-img" alt="..." />
-        </div>
-      </div>
+          <div className="white-text">{countDownNumber}</div>
+        </Stack>
+      </Stack>
     )
   }
   
