@@ -149,7 +149,7 @@ export function LowLevelController() {
               채점하기
             </button>
 
-            <input type="file" name='file'/>
+            <input type="file" name='file' id='file'/>
             <button onClick={upload} value="upload">asdf</button>
 
           </Stack>
