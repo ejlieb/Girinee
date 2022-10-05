@@ -53,9 +53,8 @@ export function LowLevelController() {
     const checkRecord = () => {
       // axios body에 담을 멀티파트 폼 데이터 생성
       const data = new FormData()
-      const audioFile = new File([audioURL], 'recorde.wav', {type: 'application/octet-stream'})
-      
-      // 
+      // blob을 file로 변환
+      const audioFile = new File([audioURL], 'record', {type: 'application/octet-stream'})
 
       // audioURL (이름은 URL이지만 현재는 audio/wav형태의 blob)
       console.log('audioURL', audioURL)
@@ -88,6 +87,24 @@ export function LowLevelController() {
         })
     }
 
+    const upload = () => {
+      const formData = new FormData()
+      const file:any = document.getElementById('file')
+      formData.append('file', file.files[0])
+      formData.append('chord', cntChord)
+      axios.post('https://j7a202.p.ssafy.io/api/record/practice', formData, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'multipart/form-data',
+        }
+      })
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error)=> {
+        console.log(error)
+      })
+    }
     // JSX
     return (
       <Stack my={5} spacing={4} alignItems="center">
@@ -129,6 +146,10 @@ export function LowLevelController() {
             <button id="stop-btn" onClick={checkRecord} disabled={isRecording || audioURL === ""}>
               채점하기
             </button>
+
+            <input type="file" name='file'/>
+            <button onClick={upload} value="upload"></button>
+
           </Stack>
         </div>
       </Stack>
