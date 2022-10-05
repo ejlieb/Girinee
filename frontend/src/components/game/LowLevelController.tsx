@@ -90,6 +90,8 @@ export function LowLevelController() {
     const upload = () => {
       const formData = new FormData()
       const file:any = document.getElementById('file')
+      console.log('file', file)
+      console.log('file.files', file.files)
       formData.append('file', file.files[0])
       formData.append('chord', cntChord)
       axios.post('https://j7a202.p.ssafy.io/api/record/practice', formData, {
@@ -148,7 +150,7 @@ export function LowLevelController() {
             </button>
 
             <input type="file" name='file'/>
-            <button onClick={upload} value="upload"></button>
+            <button onClick={upload} value="upload">asdf</button>
 
           </Stack>
         </div>
