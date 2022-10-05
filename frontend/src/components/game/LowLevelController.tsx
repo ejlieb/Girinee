@@ -53,20 +53,14 @@ export function LowLevelController() {
     const checkRecord = () => {
       // axios body에 담을 멀티파트 폼 데이터 생성
       const data = new FormData()
-      // blob을 file로 변환
-      const audioFile = new File([audioURL], 'record', {type: 'application/octet-stream'})
-
       // audioURL (이름은 URL이지만 현재는 audio/wav형태의 blob)
       console.log('audioURL', audioURL)
-      console.log('audioFile', audioFile)
 
       // axios로 보내기 전 파일 멀쩡한지 확인 => 정상
-      const checkURL = URL.createObjectURL(audioFile)
-      console.log(checkURL)
 
       // file과 chord 추가
       // data.append('file', audioURL, 'recorded.wav')
-      data.append('file', audioFile)
+      data.append('file', audioURL)
       data.append('chord', cntChord)
 
       console.log('data_getall', data.get('file'))
@@ -86,6 +80,42 @@ export function LowLevelController() {
           console.log(error)
         })
     }
+    // const checkRecord = () => {
+    //   // axios body에 담을 멀티파트 폼 데이터 생성
+    //   const data = new FormData()
+    //   // blob을 file로 변환
+    //   const audioFile = new File([audioURL], 'record', {type: 'application/octet-stream'})
+
+    //   // audioURL (이름은 URL이지만 현재는 audio/wav형태의 blob)
+    //   console.log('audioURL', audioURL)
+    //   console.log('audioFile', audioFile)
+
+    //   // axios로 보내기 전 파일 멀쩡한지 확인 => 정상
+    //   const checkURL = URL.createObjectURL(audioFile)
+    //   console.log(checkURL)
+
+    //   // file과 chord 추가
+    //   // data.append('file', audioURL, 'recorded.wav')
+    //   data.append('file', audioFile)
+    //   data.append('chord', cntChord)
+
+    //   console.log('data_getall', data.get('file'))
+    //   console.log('data_getall', data.get('chord'))
+
+    //   // Axios
+    //   axios.post('https://j7a202.p.ssafy.io/api/record/practice', data, {
+    //     headers: {
+    //       Authorization: `Bearer ${accessToken}`,
+    //       'Content-Type': 'multipart/form-data',
+    //       },
+    //     })
+    //     .then((response) => {
+    //       console.log(response.data)
+    //     })
+    //     .catch((error)=> {
+    //       console.log(error)
+    //     })
+    // }
 
     const upload = () => {
       const formData = new FormData()
