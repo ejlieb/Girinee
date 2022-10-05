@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,6 +83,10 @@ public class RecordService {
         log.info("file size = {}", file.getSize());
         log.info("file resource = {}", file.getResource());
         log.info("file isEmpty = {}", file.isEmpty());
+        try {
+            log.info("file bytes = {}", Arrays.toString(file.getBytes()));
+        }catch(Exception e){
+        }
         char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
         StringBuilder fileName = new StringBuilder();
         for (int i = 0; i < 20; i++) {
