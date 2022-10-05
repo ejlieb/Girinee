@@ -57,7 +57,7 @@ export function LowLevelController() {
       // console.log('audioFile', audioFile)
       // console.log(URL.createObjectURL(audioFile))
       // console.log('name', audioFile.name)
-      data.append('file', audioURL, 'record.wav')
+      data.append('file', 'text test')
       data.append('chord', cntChord)
       
       // Axios
