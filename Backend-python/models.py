@@ -64,7 +64,7 @@ def predict_easy(model_list,img_paths):
         data[0] = normalized_image_array
         predictions.append(model_list[i].predict(data))
     prediction = predictions[0]+predictions[1]+ 0.5*predictions[2]
-    print(predction)
+    print(prediction)
     return chords[np.argmax(prediction)]
 
 def predict_hard(model_list,img_paths):
