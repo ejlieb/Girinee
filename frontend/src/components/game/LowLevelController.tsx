@@ -83,17 +83,20 @@ export function LowLevelController() {
               text: '코드가 정확합니다.',
               icon: 'success',
               confirmButtonText: '확인',
-            })} else {
-              Swal.fire({
-                title: 'Wrong Chord...',
-                text: '코드가 정확하지 않습니다.\n' + '다음을 체크해보세요.\n' + ' 1. 주변 잡음이 없는지 체크해주세요. \n' + '2. 운지표대로 맞게 눌렀는지 체크해주세요. \n' + '3. 기타줄을 확실하게 눌러주세요.',
-                icon: 'error',
-                confirmButtonText: '확인',
-                background: 'grey',
-              })
-            }
+            })
+          } else {
+            Swal.fire({
+              title: 'Wrong Chord...',
+              text: `코드가 정확하지 않습니다. 
+              다음을 체크해보세요.
+               1. 주변 잡음이 없는지 체크해주세요. 
+               2. 운지표대로 맞게 눌렀는지 체크해주세요. 
+               3. 기타줄을 확실하게 눌러주세요.`,
+              icon: 'error',
+              confirmButtonText: '확인',
+            })
           }
-        )
+        })
         .catch((error)=> {
           console.log(error)
         })
