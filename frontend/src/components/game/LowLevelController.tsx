@@ -21,6 +21,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select'
 import StopIcon from '@mui/icons-material/Stop';
 import MicIcon from '@mui/icons-material/Mic';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { grey } from '@mui/material/colors'
 
 // -----------------------------------------------------------------------------------------------------
 
@@ -85,9 +86,10 @@ export function LowLevelController() {
             })} else {
               Swal.fire({
                 title: 'Wrong Chord...',
-                text: '코드가 정확하지 않습니다. \n 다음을 체크해보세요. \n 1. 주변 잡음이 없는지 체크해주세요. \n 2. 운지표대로 맞게 눌렀는지 체크해주세요. \n 3. 기타줄을 확실하게 눌러주세요.',
+                text: '코드가 정확하지 않습니다.\n' + '다음을 체크해보세요.\n' + ' 1. 주변 잡음이 없는지 체크해주세요. \n' + '2. 운지표대로 맞게 눌렀는지 체크해주세요. \n' + '3. 기타줄을 확실하게 눌러주세요.',
                 icon: 'error',
                 confirmButtonText: '확인',
+                background: 'grey',
               })
             }
           }
