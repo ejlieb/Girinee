@@ -67,7 +67,7 @@ export function LowLevelController() {
 
       // file과 chord 추가
       // data.append('file', audioURL, 'recorded.wav')
-      data.append('file', C_sound)
+      data.append('file', audioFile)
       data.append('chord', cntChord)
       console.log('data', data)
       // Axios
