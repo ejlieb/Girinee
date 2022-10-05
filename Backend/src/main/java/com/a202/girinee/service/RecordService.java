@@ -76,6 +76,12 @@ public class RecordService {
     }
 
     public boolean postPracticeRecord(Long id, MultipartFile file, String chord) {
+        log.info("file content type = {}", file.getContentType());
+        log.info("file name = {}", file.getName());
+        log.info("file original file name = {}", file.getOriginalFilename());
+        log.info("file size = {}", file.getSize());
+        log.info("file resource = {}", file.getResource());
+        log.info("file isEmpty = {}", file.isEmpty());
         char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
         StringBuilder fileName = new StringBuilder();
         for (int i = 0; i < 20; i++) {
