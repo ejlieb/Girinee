@@ -52,19 +52,21 @@ export function LowLevelController() {
     const checkRecord = () => {
       // axios body에 담을 멀티파트 폼 데이터 생성
       const data = new FormData()
-      // const audioFile = new File([audioURL], 'recorde.wav', {type: 'audio'})
+      const audioFile = new File([audioURL], 'recorde.wav', {type: 'audio/wav'})
 
       // audioURL (이름은 URL이지만 현재는 audio/wav형태의 blob)
       console.log('audioURL', audioURL)
       // axios로 보내기 전 파일 멀쩡한지 확인 => 정상
       const checkURL = URL.createObjectURL(audioURL)
       console.log(checkURL)
+      console.log(URL.createObjectURL(audioFile))
       // console.log('audioFile', audioFile)
       // console.log(URL.createObjectURL(audioFile))
       // console.log('name', audioFile.name)
-      
+
       // file과 chord 추가
-      data.append('file', audioURL, 'recorded.wav')
+      // data.append('file', audioURL, 'recorded.wav')
+      data.append('file', audioFile)
       data.append('chord', cntChord)
       
       // Axios
