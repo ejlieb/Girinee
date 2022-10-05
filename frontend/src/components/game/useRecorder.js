@@ -25,8 +25,8 @@ const useRecorder = () => {
     const handleData = e => {
       const blobDataInWebaFormat = e.data
       // const blobDataInWavFormat = new File([blobDataInWebaFormat], 'recordfile.wav', {type: 'audio/wav'})
-      const blobDataInWavFormat = new File([blobDataInWebaFormat], 'record.wav', { 'type' : 'audio/webm; codecs=opus' })
-      setAudioURL(blobDataInWavFormat);
+      // const blobDataInWavFormat = new File([blobDataInWebaFormat], 'record.wav', { 'type' : 'audio/webm; codecs=opus' })
+      setAudioURL(blobDataInWebaFormat);
     };
 
     recorder.addEventListener("dataavailable", handleData);
@@ -46,6 +46,6 @@ const useRecorder = () => {
 
 async function requestRecorder() {
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-  return new MediaRecorder(stream);
+  return new MediaRecorder(stream, {mimeType: 'audio/wav'});
 }
 export default useRecorder;
