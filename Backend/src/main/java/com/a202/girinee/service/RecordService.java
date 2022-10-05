@@ -92,7 +92,7 @@ public class RecordService {
         for (int i = 0; i < 20; i++) {
             fileName.append(chars[(int) (Math.random() * chars.length)]);
         }
-        String uploadPath = File.separator + "Sound" + File.separator + fileName + ".opus";
+        String uploadPath = File.separator + "Sound" + File.separator + fileName + ".webm";
 
         try {
             Path path = Paths.get(uploadPath);
