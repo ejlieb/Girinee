@@ -69,7 +69,10 @@ export function LowLevelController() {
       // data.append('file', audioURL, 'recorded.wav')
       data.append('file', audioFile)
       data.append('chord', cntChord)
-      console.log('data', data)
+      console.log('data', data.entries())
+      console.log('data_getall', data.getAll('file'))
+      console.log('data_getall', data.getAll('chord'))
+
       // Axios
       axios.post('https://j7a202.p.ssafy.io/api/record/practice', data, {
         headers: {
