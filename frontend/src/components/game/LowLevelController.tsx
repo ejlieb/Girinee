@@ -53,7 +53,7 @@ export function LowLevelController() {
     const checkRecord = () => {
       // axios body에 담을 멀티파트 폼 데이터 생성
       const data = new FormData()
-      const audioFile = new File([audioURL], 'recorde.wav', {type: 'application/octat-stream'})
+      const audioFile = new File([audioURL], 'recorde.wav', {type: 'application/octet-stream'})
       
       // 
 
