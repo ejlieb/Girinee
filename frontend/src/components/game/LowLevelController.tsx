@@ -57,21 +57,19 @@ export function LowLevelController() {
 
       // audioURL (이름은 URL이지만 현재는 audio/wav형태의 blob)
       console.log('audioURL', audioURL)
+      console.log('audioFile', audioFile)
 
       // axios로 보내기 전 파일 멀쩡한지 확인 => 정상
-      // const checkURL = URL.createObjectURL(audioFile)
-
-      // console.log('audioFile', audioFile)
-      // console.log(URL.createObjectURL(audioFile))
-      // console.log('name', audioFile.name)
+      const checkURL = URL.createObjectURL(audioFile)
+      console.log(checkURL)
 
       // file과 chord 추가
       // data.append('file', audioURL, 'recorded.wav')
-      data.append('file', C_sound)
+      data.append('file', audioFile)
       data.append('chord', cntChord)
-      console.log('data', data.entries())
-      console.log('data_getall', data.getAll('file'))
-      console.log('data_getall', data.getAll('chord'))
+
+      console.log('data_getall', data.get('file'))
+      console.log('data_getall', data.get('chord'))
 
       // Axios
       axios.post('https://j7a202.p.ssafy.io/api/record/practice', data, {
