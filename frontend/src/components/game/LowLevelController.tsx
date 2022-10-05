@@ -10,6 +10,7 @@ import axios from 'axios'
 import useRecorder from "./useRecorder"
 import { setCntChord } from '../../features/chordgame/GameSlice'
 import { setSecond } from '../../features/chordgame/GameSlice'
+import C_sound from '../../assets/chord_sounds/C_sound.wav'
 
 // MUI
 import { InputLabel, FormControl, Stack } from '@mui/material'
@@ -58,15 +59,14 @@ export function LowLevelController() {
       console.log('audioURL', audioURL)
       // axios로 보내기 전 파일 멀쩡한지 확인 => 정상
       const checkURL = URL.createObjectURL(audioURL)
-      console.log(checkURL)
-      console.log(URL.createObjectURL(audioFile))
+
       // console.log('audioFile', audioFile)
       // console.log(URL.createObjectURL(audioFile))
       // console.log('name', audioFile.name)
 
       // file과 chord 추가
       // data.append('file', audioURL, 'recorded.wav')
-      data.append('file', audioFile)
+      data.append('file', C_sound)
       data.append('chord', cntChord)
       
       // Axios
