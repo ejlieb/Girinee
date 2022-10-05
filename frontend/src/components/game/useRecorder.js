@@ -25,7 +25,7 @@ const useRecorder = () => {
     const handleData = e => {
       const blobDataInWebaFormat = e.data
       // const blobDataInWavFormat = new File([blobDataInWebaFormat], 'recordfile.wav', {type: 'audio/wav'})
-      const blobDataInWavFormat = new File([blobDataInWebaFormat], 'record.wav', { 'type' : 'audio/wav; codecs=PCM' })
+      const blobDataInWavFormat = new File([blobDataInWebaFormat], 'record.wav', { 'type' : 'audio/webm; codecs=opus' })
       setAudioURL(blobDataInWavFormat);
     };
 
