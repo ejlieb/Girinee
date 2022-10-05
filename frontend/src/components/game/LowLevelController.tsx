@@ -53,7 +53,7 @@ export function LowLevelController() {
       const data = new FormData()
       const audioFile = new File([audioURL], 'recorde.wav', {type: 'audio/wav'})
       console.log('audioURL', audioURL)
-      console.log(URL.createObjectURL(audioUrl))
+      console.log(URL.createObjectURL(audioURL))
       console.log('audioFile', audioFile)
       // console.log('name', audioFile.name)
       data.append('file', audioFile)
