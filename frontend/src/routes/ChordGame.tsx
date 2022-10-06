@@ -39,7 +39,7 @@ export function ChordGame() {
       if (logoutConfirm) {
         localStorage.setItem("token", ' ');
         console.log('로그아웃 되었습니다.')
-        window.location.replace('http://localhost:3000')
+        window.location.replace('https://j7a202.p.ssafy.io')
       }
     };
     
@@ -98,7 +98,7 @@ export function ChordGame() {
           <Stack spacing={2} direction="row">
             {/* 마이페이지 */}
             <Button variant="text" className="menu-btn">
-              <Typography className="menu-text"><Link to="/:userId" className="none-deco menu-text">MY PAGE</Link></Typography>
+              <Typography className="menu-text"><Link to="/profile" className="none-deco menu-text">MY PAGE</Link></Typography>
             </Button>
 
             {/* 로그아웃 */}
