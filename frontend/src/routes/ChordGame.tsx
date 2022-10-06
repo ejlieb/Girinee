@@ -49,7 +49,9 @@ export function ChordGame() {
       }
     }
   
-    
+    // 카운트다운 숫자
+    const countDownNumber:number = useAppSelector((state) => state.game.countDownNumber)
+
     const dispatch = useAppDispatch()
 
     // const [controllerDegree, setDegree] = useState(0)
@@ -127,8 +129,11 @@ export function ChordGame() {
 
           {/* Three js를 위한 공간~ */}
           <Grid item xs={6}>
+            <div className={countDownNumber===4? "d-none": "line-up countDownDiv"}>
+              <div className="countDownNumber">{countDownNumber}</div>
+            </div>
           </Grid>
-
+      
           {/* 메인 컨트롤러 + Level별 컨트롤러 */}
           <Grid item xs={3} p={5} pt={15} pb={0} id="controller-box">
             {/* 메인 컨트롤러 */}

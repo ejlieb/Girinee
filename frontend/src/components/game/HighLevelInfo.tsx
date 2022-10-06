@@ -16,9 +16,6 @@ import { Stack } from '@mui/system'
 export function HighLevelInfo() {
     // script
 
-    // 카운트다운 숫자
-    const countDownNumber:number = useAppSelector((state) => state.game.countDownNumber)
-
     // JSX
     return (
       <Stack alignItems="center" spacing={5}>

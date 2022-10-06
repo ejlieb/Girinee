@@ -37,8 +37,6 @@ export function NormalLevelInfo() {
     // 사용자가 선택한 시간초 정보
     const chordSecond:number = useAppSelector((state) => state.game.chordSecond)
 
-    // 카운트다운 숫자
-    const countDownNumber:number = useAppSelector((state) => state.game.countDownNumber)
 
     // 현재 코드
     const cntChord:string = useAppSelector((state) => state.game.cntChord)
@@ -67,7 +65,6 @@ export function NormalLevelInfo() {
                     cntChord ==='G' ? G_chord : cntChord ==='Gm' ? Gm_chord :
                     cntChord ==='A' ? A_chord : cntChord ==='Am' ? Am_chord :
                     cntChord ==='B' ? B_chord : Bm_chord} id="chord-img" alt="..." />
-          <div className="white-text">{countDownNumber}</div>
         </Stack>
       </Stack>
     )
