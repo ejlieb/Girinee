@@ -36,12 +36,19 @@ export function ChordGame() {
     // 로그아웃
     const logout = () => {
       const logoutConfirm = window.confirm('로그아웃 하시겠습니까?')
+  
+      function deleteCookie(Name:any) {
+        document.cookie = Name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      }
+  
       if (logoutConfirm) {
-        localStorage.setItem("token", ' ');
+        localStorage.removeItem('accessToken')
         console.log('로그아웃 되었습니다.')
+        deleteCookie("Reply");
         window.location.replace('https://j7a202.p.ssafy.io')
       }
-    };
+    }
+  
     
     const dispatch = useAppDispatch()
 
