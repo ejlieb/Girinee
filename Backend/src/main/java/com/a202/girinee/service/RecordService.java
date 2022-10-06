@@ -8,22 +8,13 @@ import com.a202.girinee.entity.PracticeRecord;
 import com.a202.girinee.repository.GameRecordRepository;
 import com.a202.girinee.repository.PracticeRecordRepository;
 import com.a202.girinee.repository.UserRepository;
+import com.a202.girinee.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,10 +28,8 @@ public class RecordService {
     private final PracticeRecordRepository practiceRecordRepository;
     private final GameRecordRepository gameRecordRepository;
     private final UserRepository userRepository;
-    @Value("${python.url.game}")
-    private String gameUrl;
-    @Value("${python.url.practice}")
-    private String practiceUrl;
+    private final FileUtil fileUtil;
+
 
     public Map<String, PracticeRecordResponseDto> getPracticeRecord(Long userId) {
         List<PracticeRecord> practiceRecords = practiceRecordRepository.findByUserId(userId);
@@ -76,43 +65,11 @@ public class RecordService {
     }
 
     public boolean postPracticeRecord(Long id, MultipartFile file, String chord) {
-        char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
-        StringBuilder fileName = new StringBuilder();
-        for (int i = 0; i < 20; i++) {
-            fileName.append(chars[(int) (Math.random() * chars.length)]);
-        }
-        String uploadPath = File.separator + "Sound" + File.separator + fileName + ".wav";
-
-        try {
-            Path path = Paths.get(uploadPath);
-            file.transferTo(path);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         // AI 서버 채점
+        AiResponseDto aiResponseDto = fileUtil.postAi(file, chord);
+        // AI 서버 채점 끝
 
-        RestTemplate restTemplate = new RestTemplate();
-
-        HttpHeaders httpHeaders = new HttpHeaders();
-//        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
-        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
-        body.add("wav_path", uploadPath);
-        body.add("answer", chord);
-
-        log.info(body.keySet());
-        log.info(body.values());
-
-        HttpEntity<?> requestMessage = new HttpEntity<>(body, httpHeaders);
-
-        log.info(requestMessage.toString());
-        ResponseEntity<AiResponseDto> response = restTemplate.postForEntity(practiceUrl, requestMessage, AiResponseDto.class);
-        log.info(response.getStatusCode());
-        log.info(response.getBody());
-
-
+        // DB 갱신
         PracticeRecord practiceRecord = practiceRecordRepository.findByUserIdAndChord(id, chord).orElse(PracticeRecord.builder()
                 .chord(chord)
                 .success(0)
@@ -120,25 +77,40 @@ public class RecordService {
                 .user(userRepository.findById(id).get())
                 .build());
 
-        boolean result = response.getBody().getIsCorrect();
-
+        boolean result = aiResponseDto.getIsCorrect();
         if (result) {
             practiceRecord.increaseSuccess();
         } else {
             practiceRecord.increaseFailure();
         }
-
         practiceRecordRepository.save(practiceRecord);
-
-        // AI 서버 채점 끝
-
-        // 파일 삭제
-
-        File deleteFile = new File(uploadPath);
-        deleteFile.delete();
-
-        // 파일 삭제 끝
+        // DB 갱신
 
         return result;
+    }
+
+    public List<AiResponseDto> postGameRecord(Long id, MultipartFile[] files, String[] chords, String difficulty){
+        // 채점
+        List<AiResponseDto> list = new ArrayList<AiResponseDto>(4);
+        for(int i = 0; i < 4; i++){
+            list.add(fileUtil.postAi(files[i], chords[i]));
+        }
+        // 채점 끝
+
+        // DB 갱신
+        gameRecordRepository.save(GameRecord.builder()
+                .difficulty(difficulty)
+                .chord1(chords[0])
+                .chord2(chords[1])
+                .chord3(chords[2])
+                .chord3(chords[3])
+                .score1(list.get(0).getScore())
+                .score2(list.get(1).getScore())
+                .score3(list.get(2).getScore())
+                .score4(list.get(3).getScore())
+                .user(userRepository.findById(id).get())
+                .build());
+        // DB 갱신 끝
+        return list;
     }
 }
