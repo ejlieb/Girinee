@@ -1,7 +1,6 @@
 package com.a202.girinee.util;
 
 import com.a202.girinee.dto.response.AiResponseDto;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -16,14 +15,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FileUtil {
-    private static final char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
-    @Value("${python.url}")
-    private static String url;
+    private static final char[] CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
+    private static final String URL = "https://j7a202.p.ssafy.io/chords";
 
     public static String randomFileName() {
         StringBuilder fileName = new StringBuilder();
         for (int i = 0; i < 20; i++) {
-            fileName.append(chars[(int) (Math.random() * chars.length)]);
+            fileName.append(CHARS[(int) (Math.random() * CHARS.length)]);
         }
         return File.separator + "Sound" + File.separator + fileName + ".wav";
     }
@@ -52,8 +50,7 @@ public class FileUtil {
         body.add("answer", chord);
 
         HttpEntity<?> requestMessage = new HttpEntity<>(body, httpHeaders);
-
-        ResponseEntity<AiResponseDto> response = restTemplate.postForEntity(url, requestMessage, AiResponseDto.class);
+        ResponseEntity<AiResponseDto> response = restTemplate.postForEntity(URL, requestMessage, AiResponseDto.class);
 
         File deleteFile = new File(uploadPath);
         deleteFile.delete();
