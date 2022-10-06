@@ -28,8 +28,6 @@ public class RecordService {
     private final PracticeRecordRepository practiceRecordRepository;
     private final GameRecordRepository gameRecordRepository;
     private final UserRepository userRepository;
-    private final FileUtil fileUtil;
-
 
     public Map<String, PracticeRecordResponseDto> getPracticeRecord(Long userId) {
         List<PracticeRecord> practiceRecords = practiceRecordRepository.findByUserId(userId);
@@ -66,7 +64,7 @@ public class RecordService {
 
     public boolean postPracticeRecord(Long id, MultipartFile file, String chord) {
         // AI 서버 채점
-        AiResponseDto aiResponseDto = fileUtil.postAi(file, chord);
+        AiResponseDto aiResponseDto = FileUtil.postAi(file, chord);
         // AI 서버 채점 끝
 
         // DB 갱신
@@ -93,7 +91,7 @@ public class RecordService {
         // 채점
         List<AiResponseDto> list = new ArrayList<AiResponseDto>(4);
         for(int i = 0; i < 4; i++){
-            list.add(fileUtil.postAi(files[i], chords[i]));
+            list.add(FileUtil.postAi(files[i], chords[i]));
         }
         // 채점 끝
 
