@@ -51,7 +51,7 @@ export function KakaoLogin() {
     return (
       <div id="kakao-body">
         <MainContainer/>
-        {/* <RotatingBtn/> */}
+        <RotatingBtn/>
         <div id="kakao-div">
             <a href={REDIRECT_URI}>
               <div id="kakao-button" className={kakaoBtnState === false ? "component-off" : "d"}><img src={kakaoImage} width="400" alt="kakao_login_large_wide" />
