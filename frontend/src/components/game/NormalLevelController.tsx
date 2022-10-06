@@ -138,56 +138,35 @@ export function NormalLevelController() {
         .then((response) => {
           console.log(response.data)
           const resultArr = response.data
-          const scoreForChords:object[] = []
+          const scoreForChords:string[] = ["", "", "", ""]
 
           for (let i = 0; i < 4; i++) {
             if ( resultArr[i].is_correct === false) {
               // Bad
-              let resultObj = {
-                'score': 'Bad',
-                'chord': whichSet[i]
-              }
-              scoreForChords.push(resultObj)
+              scoreForChords[i] = "Bad"
             } else if (resultArr[i].is_correct === true && resultArr[i].score < 50) {
-              // Good
-              let resultObj = {
-                'score': 'SoSo',
-                'chord': whichSet[i]
-              }
-              scoreForChords.push(resultObj)
+              // SoSo
+              scoreForChords[i] = "SoSo"
             } else if (resultArr[i].is_correct === true && resultArr[i].score >= 50 && resultArr[i].score < 70) {
-              // Great
-              let resultObj = {
-                'score': 'Good',
-                'chord': whichSet[i]
-              }
-              scoreForChords.push(resultObj)
+              // Good
+              scoreForChords[i] = "Good"
             } else if (resultArr[i].is_correct === true && resultArr[i].score >= 70 && resultArr[i].score < 90) {
-              // perfect
-              let resultObj = {
-                'score': 'Great',
-                'chord': whichSet[i]
-              }
-              scoreForChords.push(resultObj)
+              // Great
+              scoreForChords[i] = "Great"
             } else if (resultArr[i].is_correct === true && resultArr[i].score >= 90) {
               // perfect
-              let resultObj = {
-                'score': 'Perfect',
-                'chord': whichSet[i]
-              }
-              scoreForChords.push(resultObj)
+              scoreForChords[i] = "Perfect"
             }
           }
 
           console.log(scoreForChords)
-          
-          // Swal.fire({
-          //   title: scoreForChords[0].'score',
-          //   text: scoreForChords[1].'score',
-          //   icon: 'success',
-          //   confirmButtonText: '확인',
-          //   confirmButtonColor: '#D5DAF5'
-          // })
+          const resultString = `${scoreForChords[0]} : ${chord_1}, ${scoreForChords[1]} : ${chord_2}, ${scoreForChords[2]} : ${chord_3}, ${scoreForChords[3]} : ${chord_4}`
+
+          Swal.fire({
+            title: resultString,
+            confirmButtonText: '확인',
+            confirmButtonColor: '#D5DAF5'
+          })
         })
         .catch((error)=> {
           console.log(error)
