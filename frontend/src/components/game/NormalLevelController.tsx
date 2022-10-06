@@ -107,22 +107,26 @@ export function NormalLevelController() {
       console.log(audio_2)
       console.log(audio_3)
       console.log(audio_4)
+      console.log(URL.createObjectURL(audio_1))
+      console.log(URL.createObjectURL(audio_2))
+      console.log(URL.createObjectURL(audio_3))
+      console.log(URL.createObjectURL(audio_4))
       console.log(chord_1)
       console.log(chord_2)
       console.log(chord_3)
       console.log(chord_4)
 
       const data = new FormData()
-      data.append('files', audio_1)
-      data.append('files', audio_2)
-      data.append('files', audio_3)
-      data.append('files', audio_4)
+      data.append('files', audio_1, 'audio_1')
+      data.append('files', audio_2, 'audio_2')
+      data.append('files', audio_3, 'audio_3')
+      data.append('files', audio_4, 'audio_4')
       data.append('chords', chord_1)
       data.append('chords', chord_2)
       data.append('chords', chord_3)
       data.append('chords', chord_4)
       data.append('difficulty', 'normal')
-      
+      console.log(data)
 
       // Axios
       axios.post('https://j7a202.p.ssafy.io/api/record/game', data, {
@@ -131,7 +135,7 @@ export function NormalLevelController() {
           'Content-Type': 'multipart/form-data',
           },
         })
-        .then((response) => { 
+        .then((response) => {
           console.log(response.data)
         })
         .catch((error)=> {
