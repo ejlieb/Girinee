@@ -50,23 +50,6 @@ def wav_to_img(wav_path):
     return img_paths
 
 
-
-def predict_easy(model_list,img_paths):
-    predictions = []
-    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-    for i in range(3):
-        image = Image.open(img_paths[i])
-        size = (224, 224)
-        image = ImageOps.fit(image, size, Image.ANTIALIAS)
-        image_array = np.asarray(image)
-        normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
-        data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-        data[0] = normalized_image_array
-        predictions.append(model_list[i].predict(data))
-    prediction = predictions[0]+predictions[1]+ 0.5*predictions[2]
-    print(prediction)
-    return chords[np.argmax(prediction)]
-
 def predict_hard(model_list,img_paths):
     predictions = []
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)

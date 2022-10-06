@@ -16,11 +16,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FileUtil {
-    private final char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
-    @Value("${python.url.game}")
-    private String url;
+    private static final char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
+    @Value("${python.url}")
+    private static String url;
 
-    public String randomFileName() {
+    public static String randomFileName() {
         StringBuilder fileName = new StringBuilder();
         for (int i = 0; i < 20; i++) {
             fileName.append(chars[(int) (Math.random() * chars.length)]);
@@ -28,7 +28,7 @@ public class FileUtil {
         return File.separator + "Sound" + File.separator + fileName + ".wav";
     }
 
-    public void fileSave(MultipartFile file, String uploadPath) {
+    public static void fileSave(MultipartFile file, String uploadPath) {
         try {
             Path path = Paths.get(uploadPath);
             file.transferTo(path);
@@ -37,7 +37,7 @@ public class FileUtil {
         }
     }
 
-    public AiResponseDto postAi(MultipartFile file, String chord) {
+    public static AiResponseDto postAi(MultipartFile file, String chord) {
         String uploadPath = randomFileName();
 
         fileSave(file, uploadPath);
