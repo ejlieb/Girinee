@@ -30,6 +30,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Cookies } from 'react-cookie';
+import { useAppDispatch } from "../app/hooks";
+import { setRoBtnState } from "../features/rotatingbtn/RotateSlice";
 
 // import "swiper/swiper.css";
 // import "swiper/components/navigation/navigation.css";
@@ -44,7 +46,8 @@ export function MainPage() {
     const accessToken = param.get('accessToken');
     console.log('code = ', code)
     console.log('accessToken = ', accessToken)
-        
+    dispatch(setRoBtnState(0))
+
     if(accessToken) {
       console.log("현재 login됨")
       console.log(accessToken)
@@ -58,6 +61,7 @@ export function MainPage() {
 
   // script
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   
   // cookie 값 사용하기
   // const cookies = new Cookies()
