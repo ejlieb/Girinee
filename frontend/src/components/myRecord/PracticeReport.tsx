@@ -45,8 +45,8 @@ export function PracticeReport() {
   const graphdata = [
     {
       name: "A",
-      Success: users ? (users['A'] ? users['A']['success'] : 0) : 3,
-      Failure: users ? (users['A'] ? users['A']['failure'] : 0) : 4,
+      Success: users ? (users['A'] ? users['A']['success'] : 0) : 0,
+      Failure: users ? (users['A'] ? users['A']['failure'] : 0) : 0,
       // parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']['failure'])) * 100).toFixed(0)
     },
     {
