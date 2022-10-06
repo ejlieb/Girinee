@@ -1,5 +1,6 @@
 package com.a202.girinee.controller;
 
+import com.a202.girinee.dto.response.AiResponseDto;
 import com.a202.girinee.dto.response.GameRecordResponseDto;
 import com.a202.girinee.dto.response.PracticeRecordResponseDto;
 import com.a202.girinee.security.CustomUserDetails;
@@ -10,7 +11,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -35,7 +35,13 @@ public class RecordController {
 
     @PostMapping("/practice")
     @PreAuthorize("hasRole('USER')")
-    public Boolean postPracticeRecord(@AuthenticationPrincipal CustomUserDetails user, @RequestParam("file") MultipartFile file, @RequestParam("chord") String chord) throws IOException {
+    public Boolean postPracticeRecord(@AuthenticationPrincipal CustomUserDetails user, @RequestParam("file") MultipartFile file, @RequestParam("chord") String chord) {
         return recordService.postPracticeRecord(user.getId(), file, chord);
+    }
+
+    @PostMapping("/game")
+    @PreAuthorize("hasRole('USER')")
+    public List<AiResponseDto> postGameRecord(@AuthenticationPrincipal CustomUserDetails user, @RequestParam("files") MultipartFile[] files, @RequestParam("chords") String[] chords, @RequestParam("difficulty") String difficulty){
+        return recordService.postGameRecord(user.getId(), files, chords, difficulty);
     }
 }
