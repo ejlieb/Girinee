@@ -101,8 +101,8 @@ export function PracticeReport() {
         <YAxis />
         <Tooltip cursor={{fill: 'transparent'}}/>
         <Legend />
-        <Bar dataKey="Success" fill="#e0ffff" barSize={20} label={{ fill: 'red', fontSize: 20 }} />
-        <Bar dataKey="Failure" fill="#ffcccc" barSize={20} label={{ fill: 'red', fontSize: 20 }}/>
+        <Bar dataKey="Success" fill="#e0ffff" barSize={20} />
+        <Bar dataKey="Failure" fill="#ffcccc" barSize={20} />
       </BarChart>
     </Box>
   )
