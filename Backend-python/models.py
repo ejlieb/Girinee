@@ -63,8 +63,10 @@ def predict_hard(model_list,img_paths):
         data[0] = normalized_image_array
         predictions.append(model_list[i].predict(data))
     prediction = predictions[0]+predictions[1]+ 0.5*predictions[2]
-    scroe = f'{np.argmax(prediction[0])*40:d}'
-    return chords[np.argmax(prediction[0])], scroe
+    print(prediction)
+    score = f'{np.argmax(prediction[0])*40:d}'
+    print(score)
+    return chords[np.argmax(prediction[0])], score
 
 
 

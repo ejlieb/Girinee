@@ -101,7 +101,7 @@ public class RecordService {
                 .chord1(chords[0])
                 .chord2(chords[1])
                 .chord3(chords[2])
-                .chord3(chords[3])
+                .chord4(chords[3])
                 .score1(list.get(0).getScore())
                 .score2(list.get(1).getScore())
                 .score3(list.get(2).getScore())
