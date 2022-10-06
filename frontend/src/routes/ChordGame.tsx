@@ -123,7 +123,7 @@ export function ChordGame() {
           </Grid>
 
           {/* 메인 컨트롤러 + Level별 컨트롤러 */}
-          <Grid item xs={3} p={5} pt={15} id="controller-box">
+          <Grid item xs={3} p={5} pt={15} pb={0} id="controller-box">
             {/* 메인 컨트롤러 */}
             <Stack spacing={10}>
               {/* 메인화면으로 돌아가기 */}
