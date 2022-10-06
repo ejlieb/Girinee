@@ -176,7 +176,7 @@ export function GameReport() {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="CodeAccuracy" fill="#e0ffff" barSize={30} />
+              <Bar dataKey="CodeAccuracy" fill="#99ffff" barSize={30} />
             </BarChart>
           </Box>
         </TabPanel>
