@@ -131,7 +131,7 @@ export function NormalLevelController() {
           'Content-Type': 'multipart/form-data',
           },
         })
-        .then((response) => {
+        .then((response) => { 
           console.log(response.data)
         })
         .catch((error)=> {
