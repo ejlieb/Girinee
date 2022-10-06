@@ -36,7 +36,7 @@ export function NormalLevelController() {
     }
 
     // 카운트다운 숫자
-    const countDownNumber:number = useAppSelector((state) => state.game.countDownNumber)
+    let countDownNumber:number = useAppSelector((state) => state.game.countDownNumber)
     
     const theme = createTheme({
       palette: {
@@ -56,10 +56,8 @@ export function NormalLevelController() {
       console.log(cntChordset);
       
       cntIdx++
-      // console.log('cntIdx', cntIdx)
-      function countDown() {
-      }
 
+      // console.log('cntIdx', cntIdx)
       function plusIdx() {
           startRecording()
           // console.log('start recording')
@@ -83,9 +81,25 @@ export function NormalLevelController() {
         }, chordSecond*1000)
       }
 
-      countDown()
-      setTimeout(plusIdx, 4000)
-      setTimeout(flipChord, 4000)
+      function toThree() {
+        dispatch(setCountDownNumber(3))
+      }
+      function toTwo() {
+        dispatch(setCountDownNumber(2))
+      }
+      function toOne() {
+        dispatch(setCountDownNumber(1))
+      }
+      function toFour() {
+        dispatch(setCountDownNumber(4))
+      }
+
+      toThree()
+      setTimeout(toTwo, 1000)
+      setTimeout(toOne, 2000)
+      setTimeout(toFour, 3000)
+      setTimeout(plusIdx, 3000)
+      setTimeout(flipChord, 3000)
       setWhichSet((prev) => cntChordset)
     }
 

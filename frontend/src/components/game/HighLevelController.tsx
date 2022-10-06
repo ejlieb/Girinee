@@ -26,7 +26,7 @@ export function HighLevelController() {
     const [whichSet, setWhichSet] = useState(['','','',''])
 
     // 녹음에 필요한 정보들
-    const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
+    let [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
 
     // 디스패치로 사용자가 슬라이더로 선택하는 시간 초 변경, 설정된 초 가져오기
     const chordSecond:number = useAppSelector((state) => state.game.chordSecond)
@@ -57,9 +57,6 @@ export function HighLevelController() {
       
       cntIdx++
       // console.log('cntIdx', cntIdx)
-      function countDown() {
-      }
-
       function plusIdx() {
           startRecording()
           // console.log('start recording')
@@ -82,10 +79,25 @@ export function HighLevelController() {
           }
         }, chordSecond*1000)
       }
+      function toThree() {
+        dispatch(setCountDownNumber(3))
+      }
+      function toTwo() {
+        dispatch(setCountDownNumber(2))
+      }
+      function toOne() {
+        dispatch(setCountDownNumber(1))
+      }
+      function toFour() {
+        dispatch(setCountDownNumber(4))
+      }
 
-      countDown()
-      setTimeout(plusIdx, 4000)
-      setTimeout(flipChord, 4000)
+      toThree()
+      setTimeout(toTwo, 1000)
+      setTimeout(toOne, 2000)
+      setTimeout(toFour, 3000)
+      setTimeout(plusIdx, 3000)
+      setTimeout(flipChord, 3000)
       setWhichSet((prev) => cntChordset)
     }
 
@@ -171,6 +183,8 @@ export function HighLevelController() {
             confirmButtonColor: '#777981',
             customClass: 'swal-wide',
           })
+        
+          audioURL=""
         })
         .catch((error)=> {
           console.log(error)
