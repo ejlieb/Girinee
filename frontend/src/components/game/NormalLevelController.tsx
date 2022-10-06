@@ -4,6 +4,8 @@ import { Link } from "react-router-dom"
 import { AnimatePresence } from 'framer-motion'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import axios from 'axios'
+import Swal from 'sweetalert2'
+
 
 // Other Component 
 import useRecorder from "./useRecorder"
@@ -135,6 +137,57 @@ export function NormalLevelController() {
         })
         .then((response) => {
           console.log(response.data)
+          const resultArr = response.data
+          const scoreForChords:object[] = []
+
+          for (let i = 0; i < 4; i++) {
+            if ( resultArr[i].is_correct === false) {
+              // Bad
+              let resultObj = {
+                'score': 'Bad',
+                'chord': whichSet[i]
+              }
+              scoreForChords.push(resultObj)
+            } else if (resultArr[i].is_correct === true && resultArr[i].score < 50) {
+              // Good
+              let resultObj = {
+                'score': 'SoSo',
+                'chord': whichSet[i]
+              }
+              scoreForChords.push(resultObj)
+            } else if (resultArr[i].is_correct === true && resultArr[i].score >= 50 && resultArr[i].score < 70) {
+              // Great
+              let resultObj = {
+                'score': 'Good',
+                'chord': whichSet[i]
+              }
+              scoreForChords.push(resultObj)
+            } else if (resultArr[i].is_correct === true && resultArr[i].score >= 70 && resultArr[i].score < 90) {
+              // perfect
+              let resultObj = {
+                'score': 'Great',
+                'chord': whichSet[i]
+              }
+              scoreForChords.push(resultObj)
+            } else if (resultArr[i].is_correct === true && resultArr[i].score >= 90) {
+              // perfect
+              let resultObj = {
+                'score': 'Perfect',
+                'chord': whichSet[i]
+              }
+              scoreForChords.push(resultObj)
+            }
+          }
+
+          console.log(scoreForChords)
+          
+          // Swal.fire({
+          //   title: scoreForChords[0].'score',
+          //   text: scoreForChords[1].'score',
+          //   icon: 'success',
+          //   confirmButtonText: '확인',
+          //   confirmButtonColor: '#D5DAF5'
+          // })
         })
         .catch((error)=> {
           console.log(error)
