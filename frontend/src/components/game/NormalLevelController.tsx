@@ -160,12 +160,15 @@ export function NormalLevelController() {
           }
 
           console.log(scoreForChords)
-          const resultString = `${scoreForChords[0]} : ${chord_1}, ${scoreForChords[1]} : ${chord_2}, ${scoreForChords[2]} : ${chord_3}, ${scoreForChords[3]} : ${chord_4}`
+          const resultString = `${chord_1} : ${scoreForChords[0]} / ${chord_2} : ${scoreForChords[1]} / ${chord_3} : ${scoreForChords[2]} / ${chord_4} : ${scoreForChords[3]} `
 
           Swal.fire({
             title: resultString,
+            html: `이번 랜덤 코드세트는 ${chord_1} ➡ ${chord_2} ➡ ${chord_3} ➡ ${chord_4} 순으로 진행됐습니다.<br/>
+            결과는 'Perfect', 'Great', 'Good', 'SoSo', 'Bad'순으로 높은 점수입니다.<br/>
+            본인의 결과를 확인한 후 부족한 코드를 연습모드에서 연습해보세요!`,
             confirmButtonText: '확인',
-            confirmButtonColor: '#D5DAF5'
+            confirmButtonColor: '#777981'
           })
         })
         .catch((error)=> {
