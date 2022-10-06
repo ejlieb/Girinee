@@ -399,6 +399,12 @@ audio::-webkit-media-controls-enclosure {
    width: 200px;
    height: 60px;
 }
+#hard-start-btn{
+   font-family: 'MICEGothic-Regular';
+   font-size: 1.3rem;
+   width: 200px;
+   height: 60px;
+}
 #easy-check-btn{
    font-family: 'MICEGothic-Regular';
    font-size: 1.3rem;
@@ -411,6 +417,13 @@ audio::-webkit-media-controls-enclosure {
    width: 200px;
    height: 60px;
 }
+#hard-check-btn{
+   font-family: 'MICEGothic-Regular';
+   font-size: 1.3rem;
+   width: 200px;
+   height: 60px;
+}
+
 #audio-play-btn-name{
    font-family: 'MICEGothic-Regular';
    font-size: 1.3rem;

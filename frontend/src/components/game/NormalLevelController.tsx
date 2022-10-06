@@ -168,7 +168,8 @@ export function NormalLevelController() {
             결과는 'Perfect', 'Great', 'Good', 'SoSo', 'Bad'순으로 높은 점수입니다.<br/>
             본인의 결과를 확인한 후 부족한 코드를 연습모드에서 연습해보세요!`,
             confirmButtonText: '확인',
-            confirmButtonColor: '#777981'
+            confirmButtonColor: '#777981',
+            customClass: 'swal-wide'
           })
         })
         .catch((error)=> {
