@@ -99,10 +99,10 @@ export function PracticeReport() {
         <CartesianGrid strokeDasharray="2 2" />
         <XAxis dataKey="name" />
         <YAxis />
-        <Tooltip cursor={{fill: 'transparent', stroke: 'red', strokeWidth: 2 }}/>
+        <Tooltip cursor={{fill: 'transparent'}}/>
         <Legend />
-        <Bar dataKey="Success" fill="#e0ffff" barSize={20} />
-        <Bar dataKey="Failure" fill="#ffcccc" barSize={20}/>
+        <Bar dataKey="Success" fill="#e0ffff" barSize={20} label={{ fill: 'red', fontSize: 20 }} />
+        <Bar dataKey="Failure" fill="#ffcccc" barSize={20} label={{ fill: 'red', fontSize: 20 }}/>
       </BarChart>
     </Box>
   )
