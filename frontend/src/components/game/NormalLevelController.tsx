@@ -21,12 +21,12 @@ import { DataArray } from '@mui/icons-material'
 export function NormalLevelController() {
     // script
     // 준비된 기타 코드셋 5개
-    const guitarChordSets = [['A', 'B', 'C', 'D'], ['B', 'C', 'D', 'E'], ['C', 'D', 'E', 'F'],['D', 'E', 'F', 'G'],['E', 'F', 'G', 'A']]
+    const guitarChordSets = [['C', 'G', 'Am', 'F'], ['D', 'A', 'E', 'A'], ['Em', 'C', 'D', 'G'],['C', 'D', 'Em', 'Bm'],['G', 'D', 'Em', 'G']]
 
     const [whichSet, setWhichSet] = useState(['','','',''])
 
     // 녹음에 필요한 정보들
-    const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
+    let [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
 
     // 디스패치로 사용자가 슬라이더로 선택하는 시간 초 변경, 설정된 초 가져오기
     const chordSecond:number = useAppSelector((state) => state.game.chordSecond)
@@ -53,6 +53,8 @@ export function NormalLevelController() {
       const randomIdx = Math.floor(Math.random() * 5)
       const cntChordset = guitarChordSets[randomIdx]
 
+      audioURL = ""
+      
       console.log(cntChordset);
       
       cntIdx++

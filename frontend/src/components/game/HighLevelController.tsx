@@ -21,8 +21,9 @@ import { DataArray } from '@mui/icons-material'
 export function HighLevelController() {
     // script
     // 준비된 기타 코드셋 5개
-    const guitarChordSets = [['A', 'B', 'C', 'D'], ['B', 'C', 'D', 'E'], ['C', 'D', 'E', 'F'],['D', 'E', 'F', 'G'],['E', 'F', 'G', 'A']]
+    const guitarChordSets = [['C', 'G', 'Am', 'F'], ['D', 'A', 'E', 'A'], ['Em', 'C', 'D', 'G'],['C', 'D', 'Em', 'Bm'],['G', 'D', 'Em', 'G']]
 
+    // 어떤 코드셋을 사용하는지 알기 위한 변수
     const [whichSet, setWhichSet] = useState(['','','',''])
 
     // 녹음에 필요한 정보들

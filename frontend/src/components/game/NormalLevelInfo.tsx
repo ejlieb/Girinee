@@ -29,14 +29,13 @@ import { Stack } from '@mui/system'
 
 export function NormalLevelInfo() {
     // script
-    const guitarChordSets = [['A', 'B', 'C', 'D'], ['B', 'C', 'D', 'E'], ['C', 'D', 'E', 'F'],['D', 'E', 'F', 'G'],['E', 'F', 'G', 'A']]
+    const guitarChordSets = [['C', 'G', 'Am', 'F'], ['D', 'A', 'E', 'A'], ['Em', 'C', 'D', 'G'],['C', 'D', 'Em', 'Bm'],['G', 'D', 'Em', 'G']]
 
     // 녹음에 필요한 정보
     const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
 
     // 사용자가 선택한 시간초 정보
     const chordSecond:number = useAppSelector((state) => state.game.chordSecond)
-
 
     // 현재 코드
     const cntChord:string = useAppSelector((state) => state.game.cntChord)
