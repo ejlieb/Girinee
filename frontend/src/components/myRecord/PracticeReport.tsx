@@ -101,8 +101,8 @@ export function PracticeReport() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="Success" fill="#e0ffff" barSize={20} />
-        <Bar dataKey="Failure" fill="#ffcdd2" barSize={20}/>
+        <Bar dataKey="Success" fill="#0099ff" barSize={20} />
+        <Bar dataKey="Failure" fill="#ff66cc" barSize={20}/>
       </BarChart>
     </Box>
   )
