@@ -1,6 +1,6 @@
 import { Suspense, useMemo, useRef, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { useGLTF, useScroll, ScrollControls, Environment, Merged, Text, MeshReflectorMaterial, Center, OrbitControls } from '@react-three/drei'
+import { useGLTF, useScroll, ScrollControls, Environment, Merged, Text, MeshReflectorMaterial, Center, OrbitControls, Sparkles } from '@react-three/drei'
 import { Spinner } from '../../widgets/Spinner'
 import { dividerClasses } from '@mui/material'
 import { ContactlessOutlined } from '@mui/icons-material'
@@ -52,6 +52,7 @@ export function TableContainer(props) {
                                                       cntChord ==='A' ? <A position={[-0.6,-0.16,0]} clr={chordColor}/> : cntChord ==='Am' ? <Am position={[-0.6,-0.16,0]} clr={chordColor}/> :
                                                       cntChord ==='B' ? <B position={[-0.6,-0.16,0]} clr={chordColor}/> : <Bm position={[-0.6,-0.16,0]}/>}
         </Center>
+        <Sparkles count={100} scale={8} size={2.5} speed={0.4} color={"lightblue"} />
         <mesh position={[0, -0.77, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[500000, 500000]} />
           <MeshReflectorMaterial
