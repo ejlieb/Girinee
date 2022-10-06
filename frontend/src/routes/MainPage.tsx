@@ -109,29 +109,29 @@ export function MainPage() {
         <MainContainer />
         <RotatingBtn />
       </SwiperSlide>
-      
+      {localStorage.getItem('accessToken') != null ?
       <SwiperSlide>
-        {({ isActive }) =>
-          <div id="main2">
-            {localStorage.getItem('accessToken') != null ? <Navbar /> : null }
-            {isActive ? <MenuContainer num={0.65}/> : null }
-            <div id="menu-span-container">
-              <span className="menu-span">Chord Game</span>
-              <span className="information">코드 게임을 진행할 수 있습니다.</span>
-            </div>
-            <h2 className="my-record" 
-              onClick={() => {
-                setTimeout(() => {
-                navigate('/profile')
-                }, 1000);
-              }}>
-              기록보기
-            </h2>
+      {({ isActive }) =>
+        <div id="main2">
+          {localStorage.getItem('accessToken') != null ? <Navbar /> : null }
+          {isActive ? <MenuContainer num={0.65}/> : null }
+          <div id="menu-span-container">
+            <span className="menu-span">Chord Game</span>
+            <span className="information">코드 게임을 진행할 수 있습니다.</span>
           </div>
-          }
-      </SwiperSlide>
-
-      <SwiperSlide>
+          <h2 className="my-record" 
+            onClick={() => {
+              setTimeout(() => {
+              navigate('/profile')
+              }, 1000);
+            }}>
+            기록보기
+          </h2>
+        </div>
+        }
+    </SwiperSlide> : null }
+      
+    {localStorage.getItem('accessToken') != null ? <SwiperSlide>
         {({ isActive }) =>
           <div id="main2">
             {localStorage.getItem('accessToken') != null ? <Navbar /> : null }
@@ -151,7 +151,8 @@ export function MainPage() {
 
           </div>
           }
-      </SwiperSlide>
+      </SwiperSlide> : null}
+      
 
       <div className="swiper-button-prev swiper-button-disabled"><MainBtn/></div>
       <div className="swiper-button-next"><MainBtn/></div>
