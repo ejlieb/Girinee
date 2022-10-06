@@ -46,7 +46,7 @@ export function MyRecord() {
           </Box>
 
           {/* 그래프 */}
-          <Box component="div" sx={{ display: 'flex', justifyContent: 'center', mt:5 }}>
+          <Box component="div" sx={{ display: 'flex', justifyContent: 'center', mt:15 }}>
             {Graph === 0 ? <PracticeReport/> : <GameReport/>}
           </Box>
 

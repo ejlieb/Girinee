@@ -95,14 +95,14 @@ export function PracticeReport() {
           left: 20,
           bottom: 5
         }}
-      >
+        >
         <CartesianGrid strokeDasharray="2 2" />
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="Success" fill="#e0ffff" barSize={20} />
-        <Bar dataKey="Failure" fill="#ffcdd2" barSize={20}/>
+        <Bar dataKey="Success" fill="#99ffff" barSize={20} />
+        <Bar dataKey="Failure" fill="#ffcccc" barSize={20} />
       </BarChart>
     </Box>
   )
