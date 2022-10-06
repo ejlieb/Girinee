@@ -125,7 +125,7 @@ export function NormalLevelController() {
       
 
       // Axios
-      axios.post('https://j7a202.p.ssafy.io/record/game', data, {
+      axios.post('https://j7a202.p.ssafy.io/api/record/game', data, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'multipart/form-data',
