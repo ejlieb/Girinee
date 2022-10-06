@@ -45,8 +45,8 @@ export function PracticeReport() {
   const graphdata = [
     {
       name: "A",
-      Success: users ? (users['A'] ? users['A']['success'] : 0) : 0,
-      Failure: users ? (users['A'] ? users['A']['failure'] : 0) : 0,
+      Success: users ? (users['A'] ? users['A']['success'] : 0) : 3,
+      Failure: users ? (users['A'] ? users['A']['failure'] : 0) : 4,
       // parseInt(users['A']['success'])/( parseInt(users['A']['success']) +  parseInt(users['A']['failure'])) * 100).toFixed(0)
     },
     {
@@ -99,10 +99,10 @@ export function PracticeReport() {
         <CartesianGrid strokeDasharray="2 2" />
         <XAxis dataKey="name" />
         <YAxis />
-        <Tooltip />
+        <Tooltip cursor={{fill: 'transparent'}}/>
         <Legend />
-        <Bar dataKey="Success" fill="#0099ff" barSize={20} />
-        <Bar dataKey="Failure" fill="#ff66cc" barSize={20}/>
+        <Bar dataKey="Success" fill="#e0ffff" barSize={20} />
+        <Bar dataKey="Failure" fill="#ffcccc" barSize={20}/>
       </BarChart>
     </Box>
   )
