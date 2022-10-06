@@ -62,7 +62,13 @@ export function RotatingBtn() {
                     <circle cx="90" cy="90" r="90" className="circle" id={roBtnState === 0 ? "rotating-circle" : roBtnState === 1 ? "rotating-circle-out": "rotating-circle-fade"} data-v-24c32f9e="" 
                     onClick={() => {
                       setTimeout(() => {
-                        navigate('/login')
+                        if (localStorage.getItem('accessToken') === null) {
+                          navigate('/login')
+                        }
+                        else {
+                          navigate('/profile')
+                        }
+                       
                         dispatch(setRoBtnState(2))
                       }, 3000);
                       dispatch(setRoBtnState(1))
@@ -70,7 +76,7 @@ export function RotatingBtn() {
                     </circle>
                 </svg>
             </div>
-            <span className={roBtnState === 0 ? "label" : roBtnState === 1 ? "label-out" : "label-fade"} data-v-24c32f9e="" id="rotating-span" >Enter</span>
+            <span className={roBtnState === 0 ? "label" : roBtnState === 1 ? "label-out" : "label-fade"} data-v-24c32f9e="" id="rotating-span" >{localStorage.getItem('accessToken') === null ? 'Enter': 'Profile'}</span>
         </button>
     )
 }

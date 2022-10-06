@@ -44,7 +44,7 @@ export function MainPage() {
     const accessToken = param.get('accessToken');
     console.log('code = ', code)
     console.log('accessToken = ', accessToken)
-    
+        
     if(accessToken) {
       console.log("현재 login됨")
       console.log(accessToken)
@@ -101,7 +101,7 @@ export function MainPage() {
     >
       
       <SwiperSlide id="main-canvas">
-        <Navbar />
+      {localStorage.getItem('accessToken') != null ? <Navbar /> : null }        
         <MainContainer />
         <RotatingBtn />
       </SwiperSlide>
@@ -109,7 +109,7 @@ export function MainPage() {
       <SwiperSlide>
         {({ isActive }) =>
           <div id="main2">
-            <Navbar />
+            {localStorage.getItem('accessToken') != null ? <Navbar /> : null }
             {isActive ? <MenuContainer num={0.65}/> : null }
             <div id="menu-span-container">
               <span className="menu-span">Chord Game</span>
@@ -130,7 +130,7 @@ export function MainPage() {
       <SwiperSlide>
         {({ isActive }) =>
           <div id="main2">
-            <Navbar />
+            {localStorage.getItem('accessToken') != null ? <Navbar /> : null }
             {isActive ? <MenuContainer num={0.83}/> : null}
             <div id="menu-span-container">
               <span className="menu-span">Chord Table</span>
