@@ -90,7 +90,7 @@ export function ChordTable() {
           {/* 코드 관련 */}
           <div id="chord-box">
           {/* 코드 운지표 */}
-            <img src={cntChord ===' C' ? C_chord : cntChord ==='Cm' ? Cm_chord :
+            <img src={cntChord ==='C' ? C_chord : cntChord ==='Cm' ? Cm_chord :
                       cntChord ==='D' ? D_chord : cntChord ==='Dm' ? Dm_chord :
                       cntChord ==='E' ? E_chord : cntChord ==='Em' ? Em_chord :
                       cntChord ==='F' ? F_chord : cntChord ==='Fm' ? Fm_chord :

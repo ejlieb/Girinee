@@ -83,38 +83,36 @@ export function NormalLevelController() {
 
       countDown()
       setTimeout(plusIdx, 4000)
-      setTimeout(flipChord, 3000)
+      setTimeout(flipChord, 4000)
       setWhichSet((prev) => cntChordset)
     }
 
     const accessToken = window.localStorage.getItem('accessToken')
 
     const checkRecord = () => {
-      const fullAudio = audioURL
-      console.log(fullAudio)
+      const fullFile = audioURL
+      // Wav 파일 헤더 추출
+      const wavHeader = fullFile.slice(0, 44)
+      // 헤더를 제외한 나머지 파일
+      const fullAudio = fullFile.slice(44)
+
+      // 헤더를 제외한 나머지 파일의 사이즈
       const fullSize = fullAudio.size
+      // 4등분 사이즈
       const quarterSize = Math.floor(fullSize / 4)
 
-      console.log(fullAudio.size)
-      console.log(whichSet)
-      // full Audio 자르기
-      const audio_1 = fullAudio.slice(0, quarterSize, 'audio/wav')
-      const audio_2 = fullAudio.slice(quarterSize, 2*quarterSize, 'audio/wav')
-      const audio_3 = fullAudio.slice(2*quarterSize, 3*quarterSize, 'audio/wav')
-      const audio_4 = fullAudio.slice(3*quarterSize, 4*quarterSize, 'audio/wav')
+      // 4등분한 각 파일에 헤더 더하기
+      const audio_1 = new Blob([wavHeader, fullAudio.slice(0, quarterSize, 'audio/wav')], {type: 'audio/wav'})
+      const audio_2 = new Blob([wavHeader, fullAudio.slice(quarterSize, 2*quarterSize, 'audio/wav')], {type: 'audio/wav'})
+      const audio_3 = new Blob([wavHeader, fullAudio.slice(2*quarterSize, 3*quarterSize, 'audio/wav')], {type: 'audio/wav'})
+      const audio_4 = new Blob([wavHeader, fullAudio.slice(3*quarterSize, 4*quarterSize, 'audio/wav')], {type: 'audio/wav'})
+
+  
+      //console.log(fullAudio)
+      //console.log(fullAudio.size)
+      //console.log(whichSet)
+      
       const [chord_1, chord_2, chord_3, chord_4] = whichSet
-      console.log(audio_1)
-      console.log(audio_2)
-      console.log(audio_3)
-      console.log(audio_4)
-      console.log(URL.createObjectURL(audio_1))
-      console.log(URL.createObjectURL(audio_2))
-      console.log(URL.createObjectURL(audio_3))
-      console.log(URL.createObjectURL(audio_4))
-      console.log(chord_1)
-      console.log(chord_2)
-      console.log(chord_3)
-      console.log(chord_4)
 
       const data = new FormData()
       data.append('files', audio_1, 'audio_1')
