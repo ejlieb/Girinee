@@ -1,16 +1,9 @@
 // Systems
-import { useState, useEffect } from 'react'
-import { Link } from "react-router-dom"
-import { AnimatePresence } from 'framer-motion'
-import { render } from "react-dom"
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { useAppSelector } from '../../app/hooks'
 import { useRef } from 'react'
-import playbtn from '../../assets/images/play-btn.png'
-import pausebtn from '../../assets/images/pause-btn.png'
 
 // Other Component 
 import '../../routes/Display.css'
-import useRecorder from "./useRecorder"
 import C_chord from '../../assets/images/chords/C_chord.png'
 import C_sound from '../../assets/chord_sounds/C_sound.wav'
 import Cm_chord from '../../assets/images/chords/Cm_chord.png'
@@ -52,15 +45,10 @@ export function LowLevelInfo() {
     const cntChord = useAppSelector((state)=>state.game.cntChord)
     const audioRef = useRef<HTMLAudioElement>(null)
 
+    // 오디오파일 재생
     const playAudio = () => {
       if (audioRef.current != null) {
         audioRef.current.play()
-        }
-    }
-  
-    const pauseAudio = () => {
-      if (audioRef.current != null) {
-        audioRef.current.pause()
         }
     }
     
@@ -105,7 +93,6 @@ export function LowLevelInfo() {
             </button>
             <p id="audio-play-btn-name" className="white-text">{cntChord} 코드 듣기</p>
           </Stack>          
-
         </Stack>
       </Stack>
     )

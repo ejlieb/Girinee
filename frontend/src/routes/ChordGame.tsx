@@ -1,7 +1,5 @@
 // Systems
-import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
-import { AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 
@@ -19,15 +17,12 @@ import { HighLevelController } from '../components/game/HighLevelController'
 import { setDegree, setSecond } from '../features/chordgame/GameSlice'
 import { TableContainer } from '../components/chordtable/TableContainer'
 
-// import { setSecond } from '../features/chordgame/GameSlice'
-
 // Material UI
 import { Box } from '@mui/system'
 import { Button, Stack, Grid, Slider, Typography } from '@mui/material'
 import AlarmIcon from '@mui/icons-material/Alarm';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { setChordColor } from '../features/chordthree/ChordSlice'
-
 
 // -----------------------------------------------------------------------------------------------------
 
@@ -43,7 +38,6 @@ export function ChordGame() {
   
       if (logoutConfirm) {
         localStorage.removeItem('accessToken')
-        console.log('로그아웃 되었습니다.')
         deleteCookie("Reply");
         window.location.replace('https://j7a202.p.ssafy.io')
       }
@@ -54,7 +48,7 @@ export function ChordGame() {
 
     const dispatch = useAppDispatch()
 
-    // const [controllerDegree, setDegree] = useState(0)
+    // 레벨 선택 노브각도 조절
     const controllerDegree = useAppSelector((state) => state.game.controllerDegree)
     const clickLow = () => dispatch(setDegree(0))
     const clickMid = () => dispatch(setDegree(1))
@@ -67,26 +61,13 @@ export function ChordGame() {
     
     // three 색상
     const selectedColor = useAppSelector((state) => state.chord.chordColor)
-
     const handleColor = (color: string) => {
       dispatch(setChordColor(color))
     }
 
-    let levelValue = "E A S Y - L E V E L"
-    let levelExplanation = "쉬워요"
-    if (controllerDegree === 0) {
-      levelValue = 'E A S Y - L E V E L'
-      levelExplanation = "연습하기 원하는 코드를 직접 선택하여 진행하세요."  
-    } else if (controllerDegree === 1) {
-      levelValue = 'N O R M A L - L E V E L'
-      levelExplanation = "'N O R M A L - L E V E L'에서는 실제 음악에서 자주 사용되는 코드 진행을 랜덤으로"
-    } else {
-      levelValue = 'H A R D - L E V E L'
-      levelExplanation = "어려워요"
-    }
-
     const navigate = useNavigate()
 
+    // 흰색 테마
     const theme = createTheme({
       palette: {
         primary: {

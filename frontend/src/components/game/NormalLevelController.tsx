@@ -1,11 +1,8 @@
 // Systems
-import { useState, useEffect, useRef } from 'react'
-import { Link } from "react-router-dom"
-import { AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-
 
 // Other Component 
 import useRecorder from "./useRecorder"
@@ -15,8 +12,8 @@ import { setSecond, setCountDownNumber, setCntChord } from '../../features/chord
 import Button from '@mui/material/Button'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Stack } from '@mui/system'
-import { DataArray } from '@mui/icons-material'
 
+// -----------------------------------------------------------------------------------------------------
 
 export function NormalLevelController() {
     // script
@@ -25,18 +22,16 @@ export function NormalLevelController() {
 
     const [whichSet, setWhichSet] = useState(['','','',''])
 
+    // 녹음이 되었는지 확인하는 플래그
+    const [recordedFlag, setRecoredFlag] = useState(false)
+
     // 녹음에 필요한 정보들
     let [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
 
     // 디스패치로 사용자가 슬라이더로 선택하는 시간 초 변경, 설정된 초 가져오기
-    const chordSecond:number = useAppSelector((state) => state.game.chordSecond)
+    const chordSecond:number = useAppSelector((state) => state.game.chordSecond
+    )
     const dispatch = useAppDispatch()
-    const handleChange = (event: Event, newValue: number | number[]) => {
-      dispatch(setSecond(newValue as number));
-    }
-
-    // 카운트다운 숫자
-    let countDownNumber:number = useAppSelector((state) => state.game.countDownNumber)
     
     const theme = createTheme({
       palette: {
@@ -53,31 +48,23 @@ export function NormalLevelController() {
       const randomIdx = Math.floor(Math.random() * 5)
       const cntChordset = guitarChordSets[randomIdx]
 
-      audioURL = ""
-      
-      console.log(cntChordset);
-      
       cntIdx++
 
-      // console.log('cntIdx', cntIdx)
       function plusIdx() {
           startRecording()
-          // console.log('start recording')
+          setRecoredFlag((prev) => true)
           if (cntIdx === -1) {
             cntIdx++
             dispatch(setCntChord(cntChordset[cntIdx] as string))
-            // console.log('cntIdx', cntIdx)
           }
         }
 
       function flipChord() {setInterval(function() {
           if (cntIdx === 0 || cntIdx === 1 || cntIdx === 2) {
             cntIdx++
-            // console.log('cntIdx', cntIdx)
             dispatch(setCntChord(cntChordset[cntIdx] as string))
           } else if (cntIdx === 3) {
             stopRecording()
-            // console.log('stop recording')
             cntIdx = -2
           }
         }, chordSecond*1000)
@@ -124,11 +111,6 @@ export function NormalLevelController() {
       const audio_2 = new Blob([wavHeader, fullAudio.slice(quarterSize, 2*quarterSize, 'audio/wav')], {type: 'audio/wav'})
       const audio_3 = new Blob([wavHeader, fullAudio.slice(2*quarterSize, 3*quarterSize, 'audio/wav')], {type: 'audio/wav'})
       const audio_4 = new Blob([wavHeader, fullAudio.slice(3*quarterSize, 4*quarterSize, 'audio/wav')], {type: 'audio/wav'})
-
-  
-      //console.log(fullAudio)
-      //console.log(fullAudio.size)
-      //console.log(whichSet)
       
       const [chord_1, chord_2, chord_3, chord_4] = whichSet
 
@@ -142,7 +124,6 @@ export function NormalLevelController() {
       data.append('chords', chord_3)
       data.append('chords', chord_4)
       data.append('difficulty', 'normal')
-      console.log(data)
 
       // Axios
       axios.post('https://j7a202.p.ssafy.io/api/record/game', data, {
@@ -152,7 +133,6 @@ export function NormalLevelController() {
           },
         })
         .then((response) => {
-          console.log(response.data)
           const resultArr = response.data
           const scoreForChords:string[] = ["", "", "", ""]
 
@@ -175,7 +155,6 @@ export function NormalLevelController() {
             }
           }
 
-          console.log(scoreForChords)
           const resultString = `${chord_1} : ${scoreForChords[0]} / ${chord_2} : ${scoreForChords[1]} / ${chord_3} : ${scoreForChords[2]} / ${chord_4} : ${scoreForChords[3]} `
 
           Swal.fire({
@@ -189,7 +168,7 @@ export function NormalLevelController() {
           })
         })
         .catch((error)=> {
-          console.log(error)
+          // console.log(error)
         })
     }
       
@@ -200,7 +179,7 @@ export function NormalLevelController() {
           <Button id="normal-start-btn" variant="outlined" className="white-text" disabled={isRecording} onClick={startGame}>시 작 하 기</Button>
         </ThemeProvider>
         <ThemeProvider theme={theme}>
-          <Button id="normal-check-btn" variant="outlined" className="white-text" disabled={isRecording || audioURL===""} onClick={checkRecord}>채 점 하 기</Button>
+          <Button id="normal-check-btn" variant="outlined" className="white-text" disabled={isRecording || recordedFlag === false} onClick={checkRecord}>채 점 하 기</Button>
         </ThemeProvider>
       </Stack>
     )

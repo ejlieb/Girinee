@@ -1,8 +1,5 @@
 // Systems
-import { useState, useEffect } from 'react'
-import { Link } from "react-router-dom"
-import { AnimatePresence } from 'framer-motion'
-import { render } from "react-dom"
+import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import axios from 'axios'
 import Swal from 'sweetalert2'
@@ -10,18 +7,13 @@ import Swal from 'sweetalert2'
 // Other components
 import useRecorder from "./useRecorder"
 import { setCntChord } from '../../features/chordgame/GameSlice'
-import { setSecond } from '../../features/chordgame/GameSlice'
-import C_sound from '../../assets/chord_sounds/C_sound.wav'
 
 // MUI
-import { InputLabel, FormControl, Stack, Button } from '@mui/material'
-// import FormControl from '@mui/material/FormControl'
-import MenuItem from '@mui/material/MenuItem';
+import { InputLabel, FormControl, Stack, Button, MenuItem } from '@mui/material'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import StopIcon from '@mui/icons-material/Stop';
 import MicIcon from '@mui/icons-material/Mic';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { grey } from '@mui/material/colors'
 
 // -----------------------------------------------------------------------------------------------------
 
@@ -37,8 +29,10 @@ export function LowLevelController() {
       dispatch(setCntChord(event.target.value as string))
     }
 
+    // 녹음이 되었는지 확인하는 플래그
+    const [recordedFlag, setRecoredFlag] = useState(false)
+
     // 녹음에 필요한 것
-    // 금단의 any를 사용하고 말았음
     const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
 
     // MUI select 테마 변경
@@ -50,23 +44,23 @@ export function LowLevelController() {
       },
     })
 
+    // 엑세스 토큰 정보
     const accessToken = window.localStorage.getItem('accessToken')
 
+    // 녹음시작
+    const startRecordingNFlag = () => {
+      startRecording()
+      setRecoredFlag((prev) => true)
+    }
+
+    // 녹음파일 채점하기
     const checkRecord = () => {
       // axios body에 담을 멀티파트 폼 데이터 생성
       const data = new FormData()
-      // audioURL (이름은 URL이지만 현재는 audio/wav형태의 blob)
-      console.log('audioURL', audioURL)
-
-      // axios로 보내기 전 파일 멀쩡한지 확인 => 정상
 
       // file과 chord 추가
-      // data.append('file', audioURL, 'recorded.wav')
       data.append('file', audioURL, 'audioName')
       data.append('chord', cntChord)
-
-      console.log('data_getall', data.get('file'))
-      console.log('data_getall', data.get('chord'))
 
       // Axios
       axios.post('https://j7a202.p.ssafy.io/api/record/practice', data, {
@@ -76,7 +70,6 @@ export function LowLevelController() {
           },
         })
         .then((response) => {
-          console.log(response.data)
           if (response.data === true) {
             Swal.fire({
               title: 'Correct Chord!',
@@ -96,7 +89,7 @@ export function LowLevelController() {
           }
         })
         .catch((error)=> {
-          console.log(error)
+          // console.log(error)
         })
     }
 
@@ -131,7 +124,7 @@ export function LowLevelController() {
           <Stack direction="row" spacing={5}>
             {/* 녹음 시작 */}
             <Stack>
-              <button id="record-btn" onClick={startRecording} disabled={isRecording}>
+              <button id="record-btn" onClick={startRecordingNFlag} disabled={isRecording}>
                 <MicIcon id="record-icon" fontSize="large"/>
               </button>
             </Stack>
@@ -147,7 +140,7 @@ export function LowLevelController() {
 
           {/* 녹음 파일 보내기 */}
           <ThemeProvider theme={theme}>
-            <Button id="easy-check-btn" variant="outlined" className="white-text" onClick={checkRecord} disabled={isRecording || audioURL === ""}>
+            <Button id="easy-check-btn" variant="outlined" className="white-text" onClick={checkRecord} disabled={isRecording || recordedFlag === false}>
             채 점 하 기</Button>
           </ThemeProvider>
         </Stack>

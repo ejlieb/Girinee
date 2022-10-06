@@ -1,8 +1,5 @@
 // Systems
-import { useState, useEffect, useRef } from 'react'
-import { Link } from "react-router-dom"
-import { AnimatePresence } from 'framer-motion'
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { useAppSelector } from '../../app/hooks'
 
 // Other Component 
 import useRecorder from "./useRecorder"
@@ -22,22 +19,13 @@ import B_chord from '../../assets/images/chords/B_chord.png'
 import Bm_chord from '../../assets/images/chords/Bm_chord.png'
 
 // Material UI
-import Button from '@mui/material/Button'
 import { Stack } from '@mui/system'
 
 // -----------------------------------------------------------------------------------------------------
 
 export function NormalLevelInfo() {
     // script
-    const guitarChordSets = [['C', 'G', 'Am', 'F'], ['D', 'A', 'E', 'A'], ['Em', 'C', 'D', 'G'],['C', 'D', 'Em', 'Bm'],['G', 'D', 'Em', 'G']]
-
-    // 녹음에 필요한 정보
-    const [audioURL, isRecording, startRecording, stopRecording]:any[] = useRecorder()
-
-    // 사용자가 선택한 시간초 정보
-    const chordSecond:number = useAppSelector((state) => state.game.chordSecond)
-
-    // 현재 코드
+    // 현재 기타코드
     const cntChord:string = useAppSelector((state) => state.game.cntChord)
 
     // JSX
