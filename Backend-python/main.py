@@ -12,4 +12,4 @@ async def check_hard(wav_path: str = Form(), answer: str = Form()):
         os.remove(img_path)
     if prediction == answer:
         return {"is_correct" : "true", "score": score}
-    return {"is_correct" : "false", "score": score}
+    return {"is_correct" : "false", "score": 0}
