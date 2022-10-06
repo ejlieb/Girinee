@@ -13,6 +13,7 @@ import { setSecond, setCountDownNumber, setCntChord } from '../../features/chord
 import Button from '@mui/material/Button'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Stack } from '@mui/system'
+import { DataArray } from '@mui/icons-material'
 
 
 export function NormalLevelController() {
@@ -112,20 +113,30 @@ export function NormalLevelController() {
       console.log(chord_4)
 
       const data = new FormData()
+      data.append('files', audio_1)
+      data.append('files', audio_2)
+      data.append('files', audio_3)
+      data.append('files', audio_4)
+      data.append('chords', chord_1)
+      data.append('chords', chord_2)
+      data.append('chords', chord_3)
+      data.append('chords', chord_4)
+      data.append('difficulty', 'normal')
+      
 
       // Axios
-      // axios.post('https://j7a202.p.ssafy.io/', data, {
-      //   headers: {
-      //     Authorization: `Bearer ${accessToken}`,
-      //     'Content-Type': 'multipart/form-data',
-      //     },
-      //   })
-      //   .then((response) => {
-      //     console.log(response.data)
-      //   })
-      //   .catch((error)=> {
-      //     console.log(error)
-      //   })
+      axios.post('https://j7a202.p.ssafy.io/record/game', data, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((response) => {
+          console.log(response.data)
+        })
+        .catch((error)=> {
+          console.log(error)
+        })
     }
       
     // JSX
